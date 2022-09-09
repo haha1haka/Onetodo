@@ -9,21 +9,42 @@
 /* Begin PBXBuildFile section */
 		F46B2EED28CADFE600B0AB5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EEC28CADFE600B0AB5D /* AppDelegate.swift */; };
 		F46B2EEF28CADFE600B0AB5D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EEE28CADFE600B0AB5D /* SceneDelegate.swift */; };
-		F46B2EF128CADFE600B0AB5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EF028CADFE600B0AB5D /* ViewController.swift */; };
+		F46B2EF128CADFE600B0AB5D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EF028CADFE600B0AB5D /* MainViewController.swift */; };
 		F46B2EF428CADFE600B0AB5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46B2EF228CADFE600B0AB5D /* Main.storyboard */; };
 		F46B2EF628CADFE800B0AB5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46B2EF528CADFE800B0AB5D /* Assets.xcassets */; };
 		F46B2EF928CADFE800B0AB5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46B2EF728CADFE800B0AB5D /* LaunchScreen.storyboard */; };
+		F46B2F0D28CAE2D200B0AB5D /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F0C28CAE2D200B0AB5D /* BaseView.swift */; };
+		F46B2F0F28CAE2DC00B0AB5D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F0E28CAE2DC00B0AB5D /* BaseViewController.swift */; };
+		F46B2F1428CAE32E00B0AB5D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1328CAE32E00B0AB5D /* UIViewController.swift */; };
+		F46B2F1628CAE33600B0AB5D /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1528CAE33600B0AB5D /* NSObject.swift */; };
+		F46B2F1928CAE3D600B0AB5D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1828CAE3D600B0AB5D /* MainView.swift */; };
+		F46B2F1C28CAE3FD00B0AB5D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F46B2F1B28CAE3FD00B0AB5D /* SnapKit */; };
+		F46B2F1E28CAE9E800B0AB5D /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1D28CAE9E800B0AB5D /* MainCell.swift */; };
+		F46B2F2028CAEA1900B0AB5D /* BaseUICollectionIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1F28CAEA1900B0AB5D /* BaseUICollectionIViewCell.swift */; };
+		F46B2F2228CAFBAE00B0AB5D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F2128CAFBAE00B0AB5D /* DetailViewController.swift */; };
+		F46B2F2528CAFBD100B0AB5D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F2428CAFBD100B0AB5D /* DetailView.swift */; };
+		F46B2F2728CAFC7100B0AB5D /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F2628CAFC7100B0AB5D /* DetailCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F46B2EE928CADFE600B0AB5D /* todotodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todotodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46B2EEC28CADFE600B0AB5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46B2EEE28CADFE600B0AB5D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F46B2EF028CADFE600B0AB5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F46B2EF028CADFE600B0AB5D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F46B2EF328CADFE600B0AB5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F46B2EF528CADFE800B0AB5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F46B2EF828CADFE800B0AB5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F46B2EFA28CADFE800B0AB5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F46B2F0C28CAE2D200B0AB5D /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		F46B2F0E28CAE2DC00B0AB5D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F46B2F1328CAE32E00B0AB5D /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		F46B2F1528CAE33600B0AB5D /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		F46B2F1828CAE3D600B0AB5D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F46B2F1D28CAE9E800B0AB5D /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		F46B2F1F28CAEA1900B0AB5D /* BaseUICollectionIViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUICollectionIViewCell.swift; sourceTree = "<group>"; };
+		F46B2F2128CAFBAE00B0AB5D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F46B2F2428CAFBD100B0AB5D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		F46B2F2628CAFC7100B0AB5D /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F46B2F1C28CAE3FD00B0AB5D /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +78,162 @@
 		F46B2EEB28CADFE600B0AB5D /* todotodo */ = {
 			isa = PBXGroup;
 			children = (
-				F46B2EEC28CADFE600B0AB5D /* AppDelegate.swift */,
-				F46B2EEE28CADFE600B0AB5D /* SceneDelegate.swift */,
-				F46B2EF028CADFE600B0AB5D /* ViewController.swift */,
+				F46B2F0028CAE19C00B0AB5D /* Sources */,
+				F46B2F0128CAE1A000B0AB5D /* Resources */,
+				F46B2F0428CAE1A600B0AB5D /* Supportings */,
+			);
+			path = todotodo;
+			sourceTree = "<group>";
+		};
+		F46B2F0028CAE19C00B0AB5D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2F0228CAE1A200B0AB5D /* Application */,
+				F46B2F0328CAE1A400B0AB5D /* Scenes */,
+				F46B2F0528CAE1A700B0AB5D /* Commons */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		F46B2F0128CAE1A000B0AB5D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				F46B2EF228CADFE600B0AB5D /* Main.storyboard */,
 				F46B2EF528CADFE800B0AB5D /* Assets.xcassets */,
 				F46B2EF728CADFE800B0AB5D /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F46B2F0228CAE1A200B0AB5D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2EEC28CADFE600B0AB5D /* AppDelegate.swift */,
+				F46B2EEE28CADFE600B0AB5D /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		F46B2F0328CAE1A400B0AB5D /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2F0B28CAE1B700B0AB5D /* Main */,
+				F46B2F0A28CAE1B500B0AB5D /* Detail */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		F46B2F0428CAE1A600B0AB5D /* Supportings */ = {
+			isa = PBXGroup;
+			children = (
 				F46B2EFA28CADFE800B0AB5D /* Info.plist */,
 			);
-			path = todotodo;
+			path = Supportings;
+			sourceTree = "<group>";
+		};
+		F46B2F0528CAE1A700B0AB5D /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2F0628CAE1A900B0AB5D /* Enum */,
+				F46B2F0828CAE1B000B0AB5D /* Components */,
+				F46B2F0928CAE1B300B0AB5D /* DataBase */,
+				F46B2F1028CAE30B00B0AB5D /* Extensions */,
+				F46B2F0728CAE1AB00B0AB5D /* Bases */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		F46B2F0628CAE1A900B0AB5D /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		F46B2F0728CAE1AB00B0AB5D /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2F0C28CAE2D200B0AB5D /* BaseView.swift */,
+				F46B2F0E28CAE2DC00B0AB5D /* BaseViewController.swift */,
+				F46B2F1F28CAEA1900B0AB5D /* BaseUICollectionIViewCell.swift */,
+			);
+			name = Bases;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		F46B2F0828CAE1B000B0AB5D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F46B2F0928CAE1B300B0AB5D /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		F46B2F0A28CAE1B500B0AB5D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2F2128CAFBAE00B0AB5D /* DetailViewController.swift */,
+				F46B2F2328CAFBC500B0AB5D /* Views */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		F46B2F0B28CAE1B700B0AB5D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2EF028CADFE600B0AB5D /* MainViewController.swift */,
+				F46B2F1728CAE3CA00B0AB5D /* Views */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F46B2F1028CAE30B00B0AB5D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2F1128CAE31800B0AB5D /* Foundation */,
+				F46B2F1228CAE32000B0AB5D /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F46B2F1128CAE31800B0AB5D /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2F1528CAE33600B0AB5D /* NSObject.swift */,
+			);
+			name = Foundation;
+			sourceTree = "<group>";
+		};
+		F46B2F1228CAE32000B0AB5D /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2F1328CAE32E00B0AB5D /* UIViewController.swift */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		F46B2F1728CAE3CA00B0AB5D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2F1828CAE3D600B0AB5D /* MainView.swift */,
+				F46B2F1D28CAE9E800B0AB5D /* MainCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F46B2F2328CAFBC500B0AB5D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F46B2F2428CAFBD100B0AB5D /* DetailView.swift */,
+				F46B2F2628CAFC7100B0AB5D /* DetailCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +252,9 @@
 			dependencies = (
 			);
 			name = todotodo;
+			packageProductDependencies = (
+				F46B2F1B28CAE3FD00B0AB5D /* SnapKit */,
+			);
 			productName = todotodo;
 			productReference = F46B2EE928CADFE600B0AB5D /* todotodo.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +283,9 @@
 				Base,
 			);
 			mainGroup = F46B2EE028CADFE500B0AB5D;
+			packageReferences = (
+				F46B2F1A28CAE3FD00B0AB5D /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = F46B2EEA28CADFE600B0AB5D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +313,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F46B2EF128CADFE600B0AB5D /* ViewController.swift in Sources */,
+				F46B2F2228CAFBAE00B0AB5D /* DetailViewController.swift in Sources */,
+				F46B2F2528CAFBD100B0AB5D /* DetailView.swift in Sources */,
+				F46B2F2728CAFC7100B0AB5D /* DetailCell.swift in Sources */,
+				F46B2F0F28CAE2DC00B0AB5D /* BaseViewController.swift in Sources */,
+				F46B2F1928CAE3D600B0AB5D /* MainView.swift in Sources */,
+				F46B2EF128CADFE600B0AB5D /* MainViewController.swift in Sources */,
+				F46B2F1428CAE32E00B0AB5D /* UIViewController.swift in Sources */,
+				F46B2F1628CAE33600B0AB5D /* NSObject.swift in Sources */,
+				F46B2F2028CAEA1900B0AB5D /* BaseUICollectionIViewCell.swift in Sources */,
 				F46B2EED28CADFE600B0AB5D /* AppDelegate.swift in Sources */,
 				F46B2EEF28CADFE600B0AB5D /* SceneDelegate.swift in Sources */,
+				F46B2F0D28CAE2D200B0AB5D /* BaseView.swift in Sources */,
+				F46B2F1E28CAE9E800B0AB5D /* MainCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +474,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M526U856M5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = todotodo/Info.plist;
+				INFOPLIST_FILE = todotodo/Supportings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +502,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M526U856M5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = todotodo/Info.plist;
+				INFOPLIST_FILE = todotodo/Supportings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -358,6 +543,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F46B2F1A28CAE3FD00B0AB5D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F46B2F1B28CAE3FD00B0AB5D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F46B2F1A28CAE3FD00B0AB5D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F46B2EE128CADFE500B0AB5D /* Project object */;
 }
