@@ -37,7 +37,7 @@ class PageView: BaseView {
         return UICollectionViewCompositionalLayout(section: sectionLayout)
     }
     
-    
+
 
 
     

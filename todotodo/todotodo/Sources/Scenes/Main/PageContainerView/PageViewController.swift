@@ -71,7 +71,8 @@ class PageViewController: UIViewController {
         return view
     }()
 
-    var collectionViewDataSource: UICollectionViewDiffableDataSource<String, String>!
+    var collectionView1DataSource: UICollectionViewDiffableDataSource<String, String>!
+    var collectionView2DataSource: UICollectionViewDiffableDataSource<String, String>!
     
     var dataStore: [Int] = []
     
@@ -157,24 +158,38 @@ extension PageViewController {
             cell.configureCell(itemIdentifier: itemIdentifier)
         }
 
-        collectionViewDataSource = .init(collectionView: mainCollectionView) { collectionView, indexPath, itemIdentifier in
+        collectionView1DataSource = .init(collectionView: mainCollectionView) { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: mainCellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         }
     }
     
+//    func configureCollectionViewDataSource2() {
+//        let mainCellRegistration = UICollectionView.CellRegistration<KeywordCell, String> { cell,indexPath,itemIdentifier in
+//            cell.configureCell(itemIdentifier: itemIdentifier)
+//        }
+//
+//        collectionView1DataSource = .init(collectionView: PageCell.collectionView) { collectionView, indexPath, itemIdentifier in
+//            let cell = collectionView.dequeueConfiguredReusableCell(using: mainCellRegistration, for: indexPath, item: itemIdentifier)
+//            return cell
+//        }
+//    }
+    
+    
     func applySnapshot(animatingDifferences: Bool = true, month: Int) {
         
         let numberofWeekPerMonth = makeNumberOfWeeksPerMonth(month: month)
         
-        var snapshot = collectionViewDataSource.snapshot()
+        var snapshot = collectionView1DataSource.snapshot()
         snapshot.appendSections(["topic"])
         snapshot.appendItems(a, toSection: "topic")
-        collectionViewDataSource.apply(snapshot) { [weak self] in // apply : UI Update 관련한걸 reflect 한다.
+        collectionView1DataSource.apply(snapshot) { [weak self] in // apply : UI Update 관련한걸 reflect 한다.
             guard let this = self else { return }
             this.mainCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
         }
     }
+    
+    
     
     
     
