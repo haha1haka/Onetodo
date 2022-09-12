@@ -9,23 +9,46 @@
 //typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Video>
 
 import UIKit
+import SnapKit
 
 class MainViewController: BaseViewController {
-
+    
     let mainView = MainView()
     
+    lazy var pageViewController: UIPageViewController = {
+        let pageViewController = UIPageViewController()
+        pageViewController.delegate = self
+        pageViewController.dataSource = self
+        return pageViewController
+    }()
+    
+    lazy var topicViewController: TopicViewController = {
+        let topicViewController = TopicViewController()
+        topicViewController.eventDelegate = self
+        return topicViewController
+    }()
+
+    var pageContentViewControllers: [UIViewController] = []
+    
+    var topicDataStore = ["1월", "2월", "3월",
+                          "4월", "5월", "6월",
+                          "7월", "8월", "9월",
+                          "10월", "11월", "12월"]
+    var monthData = [1,2,3,4,5,6,7,8,9,10,11,12]
+
     override func loadView() {
         self.view = mainView
     }
     
     override func configure() {
-        configureCollectionViewDataSource()
-        applySnapshot()
-        mainView.collectionView.delegate = self
         configureUINavigationBar()
+        setFirstPageViewController()
+        setupTopicViewController()
+        setupPageViewControllers()
+        
     }
+
     
-    var collectionViewDataSource: UICollectionViewDiffableDataSource<String, String>!
 }
 
 
@@ -33,12 +56,60 @@ class MainViewController: BaseViewController {
 
 
 
+
+
+extension MainViewController {
+    
+    func setFirstPageViewController() {
+        
+        pageContentViewControllers = monthData.map { month in
+            let vc = PageViewController()
+            vc.dataStore.append(month)
+            return vc
+        }
+        print("✅\(pageContentViewControllers)")
+
+        if let pageContentViewController = pageContentViewControllers.first {
+            pageViewController.setViewControllers([pageContentViewController],
+                                                   direction: .forward,
+                                                   animated: false)
+        }
+    }
+    
+    
+    func setupTopicViewController() {
+        addChild(topicViewController)
+        mainView.addSubview(topicViewController.view)
+        topicViewController.view.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(mainView.safeAreaLayoutGuide)
+            $0.height.equalTo(44)
+        }
+        topicViewController.didMove(toParent: self)
+    }
+    
+    
+    
+    func setupPageViewControllers() {
+        addChild(pageViewController)
+        mainView.addSubview(pageViewController.view)
+        pageViewController.view.snp.makeConstraints {
+            $0.top.equalTo(topicViewController.topicView.snp.bottom)
+            $0.leading.trailing.bottom.equalTo(mainView.safeAreaLayoutGuide)
+        }
+        pageViewController.didMove(toParent: self)
+    }
+    
+
+}
+
+
+
+
+
 extension MainViewController {
     func configureUINavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "todotodo"
         let appearance = UINavigationBarAppearance()
-//        appearance.backgroundColor = COLOR_BRANDI_PRIMARY
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
         appearance.shadowColor = .clear
         navigationItem.standardAppearance = appearance
@@ -50,28 +121,14 @@ extension MainViewController {
 
 
 
-// MARK: - CollectionViewDiffableDataSource
-extension MainViewController {
-    func configureCollectionViewDataSource() {
-        let mainCellRegistration = UICollectionView.CellRegistration<MainCell, String> { cell,indexPath,itemIdentifier in
-            cell.configureCell(itemIdentifier: itemIdentifier)
-        }
-        collectionViewDataSource = .init(collectionView: mainView.collectionView) { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueConfiguredReusableCell(using: mainCellRegistration, for: indexPath, item: itemIdentifier)
-            return cell
-        }
-    }
-    
-    func applySnapshot(animatingDifferences: Bool = true) {
-        var snapshot = collectionViewDataSource.snapshot()
-        snapshot.appendSections(["topic"])
-        snapshot.appendItems([
-            "1월", "2월", "3월", "4월", "5월",
-            "6월", "7월", "8월", "9월", "10월",
-            "11월", "12월"], toSection: "topic")
-        collectionViewDataSource.apply(snapshot) { [weak self] in // apply : UI Update 관련한걸 reflect 한다.
-            guard let this = self else { return }
-            this.mainView.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
+
+
+extension MainViewController: TopicViewControllerEvent {
+    func topic(_ viewController: TopicViewController, didSelectItem: String) {
+        if let selectedIndex = topicDataStore.firstIndex(of: didSelectItem) {
+            pageViewController.setViewControllers([pageContentViewControllers[selectedIndex]],
+                                                   direction: .forward,
+                                                   animated: false)
         }
     }
 }
@@ -79,10 +136,51 @@ extension MainViewController {
 
 
 
-// MARK: - CollectionViewDelegate
-extension MainViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = DetailViewController()
-        transition(detailViewController, transitionStyle: .push)
+
+
+
+extension MainViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        
+        if let currentIndex = pageContentViewControllers.firstIndex(of: viewController) {
+            
+            if currentIndex > 0 {
+                return pageContentViewControllers[currentIndex-1]
+            }
+            
+        }
+        
+        return nil
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
+        
+        if let currentIndex = pageContentViewControllers.firstIndex(of: viewController) {
+            
+            if currentIndex < pageContentViewControllers.count - 1 {
+                
+                return pageContentViewControllers[currentIndex+1]
+                
+            }
+            
+        }
+        
+        return nil
+    }
+    
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard completed else { return }
+        if let currentViewController = pageViewController.viewControllers?.first,
+           let currentIndex = pageContentViewControllers.firstIndex(of: currentViewController) {
+            let indexPath = IndexPath(item: currentIndex, section: .zero)
+            topicViewController.topicView.topicCollectionView.selectItem(at: indexPath,
+                                                           animated: true,
+                                                           scrollPosition: [.centeredHorizontally])
+        }
     }
 }

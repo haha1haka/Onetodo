@@ -8,12 +8,14 @@
 import UIKit
 import SnapKit
 
-class MainCell: BaseUICollectionViewCell {
+class PageCell: BaseUICollectionViewCell {
     
     
     let label: UILabel = {
         let view = UILabel()
-        view.backgroundColor = .brown
+        view.backgroundColor = .systemGreen
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 24, weight: .bold)
         return view
     }()
     
