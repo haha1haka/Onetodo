@@ -17,6 +17,7 @@ class DailyTopicCell: BaseCollectionViewCell {
         return view
     }()
     
+    
     override func configure() {
         self.addSubview(label)
     }

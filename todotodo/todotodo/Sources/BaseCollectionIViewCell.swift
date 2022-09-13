@@ -9,11 +9,13 @@ import UIKit
 
 class BaseCollectionViewCell: UICollectionViewCell {
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
         setConstraints()
-        //self.backgroundColor = .yellow
+        self.backgroundColor = .yellow
     }
     
     required init?(coder: NSCoder) {

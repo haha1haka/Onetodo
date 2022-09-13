@@ -38,6 +38,9 @@
 		F47B445728D053B3003837F2 /* PanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445628D053B3003837F2 /* PanelViewController.swift */; };
 		F47B445928D053B9003837F2 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445828D053B9003837F2 /* PanelView.swift */; };
 		F47B445B28D053D7003837F2 /* PanelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445A28D053D7003837F2 /* PanelCell.swift */; };
+		F47B445D28D0757D003837F2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445C28D0757D003837F2 /* Item.swift */; };
+		F47B445F28D07584003837F2 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445E28D07584003837F2 /* Section.swift */; };
+		F47B446128D07594003837F2 /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B446028D07594003837F2 /* SectionHeaderReusableView.swift */; };
 		F4E173C128CDB28F00D117E9 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C028CDB28F00D117E9 /* PageViewController.swift */; };
 		F4E173C428CDB34D00D117E9 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C328CDB34D00D117E9 /* PageView.swift */; };
 		F4E173C628CDC38D00D117E9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C528CDC38D00D117E9 /* ListViewController.swift */; };
@@ -78,6 +81,9 @@
 		F47B445628D053B3003837F2 /* PanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelViewController.swift; sourceTree = "<group>"; };
 		F47B445828D053B9003837F2 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		F47B445A28D053D7003837F2 /* PanelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelCell.swift; sourceTree = "<group>"; };
+		F47B445C28D0757D003837F2 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		F47B445E28D07584003837F2 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		F47B446028D07594003837F2 /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		F4E173C028CDB28F00D117E9 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		F4E173C328CDB34D00D117E9 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		F4E173C528CDC38D00D117E9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -318,6 +324,9 @@
 				F47B445628D053B3003837F2 /* PanelViewController.swift */,
 				F47B445828D053B9003837F2 /* PanelView.swift */,
 				F47B445A28D053D7003837F2 /* PanelCell.swift */,
+				F47B445C28D0757D003837F2 /* Item.swift */,
+				F47B445E28D07584003837F2 /* Section.swift */,
+				F47B446028D07594003837F2 /* SectionHeaderReusableView.swift */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -413,6 +422,7 @@
 				F46B2F2228CAFBAE00B0AB5D /* DetailViewController.swift in Sources */,
 				F478AB1228CF3965008D838A /* DailyTopicCell.swift in Sources */,
 				F46B2F2528CAFBD100B0AB5D /* DetailView.swift in Sources */,
+				F47B445D28D0757D003837F2 /* Item.swift in Sources */,
 				F46B2F2728CAFC7100B0AB5D /* DetailCell.swift in Sources */,
 				F478AB0E28CF38E9008D838A /* DailyTopicViewController.swift in Sources */,
 				F478AB0928CF2EA9008D838A /* ListCell.swift in Sources */,
@@ -426,6 +436,7 @@
 				F4E173C428CDB34D00D117E9 /* PageView.swift in Sources */,
 				F478AB1028CF395B008D838A /* DailyTopicView.swift in Sources */,
 				F4E173C628CDC38D00D117E9 /* ListViewController.swift in Sources */,
+				F47B445F28D07584003837F2 /* Section.swift in Sources */,
 				F46B2F1428CAE32E00B0AB5D /* UIViewController.swift in Sources */,
 				F4E173C128CDB28F00D117E9 /* PageViewController.swift in Sources */,
 				F46B2F1628CAE33600B0AB5D /* NSObject.swift in Sources */,
@@ -439,6 +450,7 @@
 				F47B445B28D053D7003837F2 /* PanelCell.swift in Sources */,
 				F46B2EEF28CADFE600B0AB5D /* SceneDelegate.swift in Sources */,
 				F46B2F0D28CAE2D200B0AB5D /* BaseView.swift in Sources */,
+				F47B446128D07594003837F2 /* SectionHeaderReusableView.swift in Sources */,
 				F46B2F1E28CAE9E800B0AB5D /* PageCell.swift in Sources */,
 				F46B2F3128CB14CC00B0AB5D /* TopicView.swift in Sources */,
 				F47B445728D053B3003837F2 /* PanelViewController.swift in Sources */,
