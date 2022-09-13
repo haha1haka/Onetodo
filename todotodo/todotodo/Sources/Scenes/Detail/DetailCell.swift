@@ -1,40 +1,31 @@
 //
-//  KewordCell.swift
+//  DetailCell.swift
 //  todotodo
 //
-//  Created by HWAKSEONG KIM on 2022/09/12.
+//  Created by HWAKSEONG KIM on 2022/09/09.
 //
 
 import UIKit
 import SnapKit
 
-class KeywordCell: BaseUICollectionViewCell {
+class DetailCell: BaseCollectionViewCell {
     
     
     let label: UILabel = {
         let view = UILabel()
-        view.backgroundColor = .systemPurple
-        view.font = .systemFont(ofSize: 22, weight: .bold)
+        view.backgroundColor = .brown
         return view
     }()
     
-
-    
     override func configure() {
         self.addSubview(label)
-        self.backgroundColor = .darkGray
-        self.layer.cornerRadius = 10
-        self.layer.masksToBounds = true
     }
     
     override func setConstraints() {
         label.snp.makeConstraints {
             $0.center.equalTo(self)
         }
-
-        
     }
-
     func configureCell(itemIdentifier: String) {
         label.text = itemIdentifier
     }
@@ -42,4 +33,5 @@ class KeywordCell: BaseUICollectionViewCell {
     
 }
 
-import Foundation
+
+

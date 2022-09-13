@@ -9,10 +9,13 @@ import UIKit
 import SnapKit
 
 class MainView: BaseView {
+    
 
+    
     override func configure() { }
         
     override func setConstraints() { }
+    
 }
 
 

@@ -1,16 +1,16 @@
 //
-//  TopicView.swift
+//  DailyTopicView.swift
 //  todotodo
 //
-//  Created by HWAKSEONG KIM on 2022/09/09.
+//  Created by HWAKSEONG KIM on 2022/09/12.
 //
 
 import UIKit
 import SnapKit
 
-class TopicView: BaseView {
+class DailyTopicView: BaseView {
     
-    lazy var topicCollectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.alwaysBounceVertical = false
         view.backgroundColor = .red
@@ -32,18 +32,20 @@ class TopicView: BaseView {
     }
     
     override func configure() {
-        self.addSubview(topicCollectionView)
+        self.addSubview(collectionView)
     }
     
     
     override func setConstraints() {
-        topicCollectionView.snp.makeConstraints {
+        collectionView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide)
             $0.height.equalTo(44)
         }
         
     }
 }
+
+
 
 
 

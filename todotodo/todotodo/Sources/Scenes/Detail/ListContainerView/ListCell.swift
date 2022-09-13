@@ -1,14 +1,14 @@
 //
-//  TopicCell.swift
+//  ListCell.swift
 //  todotodo
 //
-//  Created by HWAKSEONG KIM on 2022/09/09.
+//  Created by HWAKSEONG KIM on 2022/09/12.
 //
 
 import UIKit
 import SnapKit
 
-class TopicCell: BaseUICollectionViewCell {
+class ListCell: BaseCollectionViewCell {
     
     
     let label: UILabel = {
@@ -32,5 +32,8 @@ class TopicCell: BaseUICollectionViewCell {
     
     
 }
+
+
+
 
 
