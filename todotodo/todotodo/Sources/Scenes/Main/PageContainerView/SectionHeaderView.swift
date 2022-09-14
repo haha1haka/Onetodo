@@ -1,16 +1,16 @@
 //
-//  SectionHeaderReusableView.swift
+//  SectionHeaderView.swift
 //  todotodo
 //
-//  Created by HWAKSEONG KIM on 2022/09/13.
+//  Created by HWAKSEONG KIM on 2022/09/14.
 //
 
 import UIKit
 import SnapKit
 
-class SectionHeaderReusableView: UICollectionReusableView {
+class SectionHeaderView: UICollectionReusableView {
     static var identifier: String {
-        return String(describing: SectionHeaderReusableView.self)
+        return String(describing: SectionHeaderView.self)
     }
     // 2
     lazy var titleLabel: UILabel = {
@@ -31,13 +31,13 @@ class SectionHeaderReusableView: UICollectionReusableView {
         // 3
         backgroundColor = .systemBackground
         addSubview(titleLabel)
-        
+        self.backgroundColor = .clear
         
         titleLabel.snp.makeConstraints {
-            $0.leading.equalTo(self).offset(10)
-            $0.trailing.equalTo(self)
-            $0.top.equalTo(self).offset(5)
-            $0.bottom.equalTo(self).offset(-5)
+            $0.leading.trailing.equalTo(self)
+            $0.top.equalTo(self).offset(3)
+            $0.bottom.equalTo(self).offset(-3)
+            //$0.centerY.equalTo(self)
         }
         
 
@@ -47,4 +47,5 @@ class SectionHeaderReusableView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 

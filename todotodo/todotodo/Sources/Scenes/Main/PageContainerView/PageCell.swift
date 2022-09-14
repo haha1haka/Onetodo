@@ -11,37 +11,64 @@ import SnapKit
 class PageCell: BaseCollectionViewCell {
     
     
-    let label: UILabel = {
+    let dateNumberLabel: UILabel = {
         let view = UILabel()
-        view.backgroundColor = .systemGreen
-        view.textColor = .white
-        view.font = .systemFont(ofSize: 18, weight: .bold)
+        //view.backgroundColor = .brown
         return view
     }()
     
-
+    let dateStringLabel: UILabel = {
+        let view = UILabel()
+        view.layer.cornerRadius = 12
+        view.layer.masksToBounds = true
+        view.textAlignment = .center
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.darkGray.cgColor
+        return view
+    }()
+    
+    let contentLabel: UILabel = {
+        let view = UILabel()
+        view.layer.cornerRadius = 6
+        view.layer.masksToBounds = true
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.red.cgColor
+        return view
+    }()
     
     
     override func configure() {
-        self.addSubview(label)
-        //self.addSubview(collectionView)
-        self.backgroundColor = .darkGray
-        self.layer.cornerRadius = 10
-        self.layer.masksToBounds = true
-
+        [dateNumberLabel, dateStringLabel, contentLabel].forEach { self.addSubview($0) }
     }
     
     
     override func setConstraints() {
-        label.snp.makeConstraints {
-            $0.top.leading.equalTo(self).offset(10)
+        dateNumberLabel.snp.makeConstraints {
+            $0.width.height.equalTo(24)
+            $0.centerY.equalTo(self)
+            $0.leading.equalTo(10)
         }
-
+        
+        dateStringLabel.snp.makeConstraints {
+            $0.width.height.equalTo(24)
+            $0.centerY.equalTo(self)
+            $0.leading.equalTo(dateNumberLabel.snp.trailing).offset(10)
+        }
+        
+        contentLabel.snp.makeConstraints {
+            $0.width.height.equalTo(32)
+            $0.centerY.equalTo(self)
+            $0.leading.equalTo(dateStringLabel.snp.trailing).offset(20)
+        }
+        
+        
+        
         
     }
-    
-    func configureCell(itemIdentifier: String) {
-        label.text = itemIdentifier
+    func configureCell(itemIdentifier: ItemDay) {
+        dateNumberLabel.text = itemIdentifier.dateNumberLable
+        dateStringLabel.text = itemIdentifier.dateStringLable
+        contentLabel.text = itemIdentifier.contentLabel.first!
     }
 }
 
@@ -52,20 +79,3 @@ class PageCell: BaseCollectionViewCell {
 
 
 
-
-extension PageCell {
-    
-    func configureCollectionViewLayout() -> UICollectionViewLayout {
-        let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .estimated(128), heightDimension: .fractionalHeight(1.0))
-        let itemLayout = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
-        let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .estimated(128), heightDimension: .absolute(44))
-        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupLayoutSize, subitems: [itemLayout])
-        let sectionLayout = NSCollectionLayoutSection(group: groupLayout)
-        sectionLayout.contentInsets.top = 8
-        sectionLayout.contentInsets.leading = 16
-        sectionLayout.contentInsets.trailing = 16
-        sectionLayout.interGroupSpacing = 8
-        return UICollectionViewCompositionalLayout(section: sectionLayout)
-    }
-
-}

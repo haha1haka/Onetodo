@@ -15,7 +15,7 @@ class PageView: BaseView {
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.alwaysBounceVertical = false
-        view.backgroundColor = .systemMint
+        //view.backgroundColor = .systemMint
         return view
     }()
     
@@ -23,21 +23,48 @@ class PageView: BaseView {
 
     
     
+//    func configureCollectionViewLayout() -> UICollectionViewLayout {
+//        let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+//        let itemLayout = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
+//        //itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0.5, leading: 2, bottom: 0, trailing: 2)
+//        let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44*5))
+//        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupLayoutSize, subitems: [itemLayout,itemLayout,itemLayout,itemLayout,itemLayout,itemLayout,itemLayout])
+//        let sectionLayout = NSCollectionLayoutSection(group: groupLayout)
+//        sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 2, bottom: 0, trailing: 2)
+//        sectionLayout.contentInsets.leading = 16
+//        sectionLayout.contentInsets.trailing = 16
+//        sectionLayout.interGroupSpacing = 16
+//        return UICollectionViewCompositionalLayout(section: sectionLayout)
+//    }
+
     func configureCollectionViewLayout() -> UICollectionViewLayout {
-        let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let itemLayout = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
-        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
-        let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
-        let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupLayoutSize, subitems: [itemLayout])
-        let sectionLayout = NSCollectionLayoutSection(group: groupLayout)
-        sectionLayout.contentInsets.leading = 16
-        sectionLayout.contentInsets.trailing = 16
-        sectionLayout.interGroupSpacing = 16
-        return UICollectionViewCompositionalLayout(section: sectionLayout)
+        return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) in
+            let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(54))
+            let itemLayout = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
+            itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+            let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44*5))
+            let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupLayoutSize, subitems: [itemLayout,itemLayout,itemLayout,itemLayout,itemLayout,itemLayout,itemLayout])
+
+
+            let sectionLayout = NSCollectionLayoutSection(group: groupLayout)
+            //sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 2, bottom: 0, trailing: 2)
+            sectionLayout.contentInsets.leading = 16
+            sectionLayout.contentInsets.trailing = 16
+            sectionLayout.interGroupSpacing = 16
+
+            let headerFooterSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+              heightDimension: .estimated(8)
+            )
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+              layoutSize: headerFooterSize,
+              elementKind: UICollectionView.elementKindSectionHeader,
+              alignment: .top
+            )
+            sectionLayout.boundarySupplementaryItems = [sectionHeader]
+            return sectionLayout
+        }
     }
-    
-
-
 
     
     

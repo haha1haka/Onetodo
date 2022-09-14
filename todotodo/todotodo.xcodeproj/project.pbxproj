@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F40DEDEC28D1CB71001F4506 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40DEDEB28D1CB71001F4506 /* SectionHeaderView.swift */; };
 		F46B2EED28CADFE600B0AB5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EEC28CADFE600B0AB5D /* AppDelegate.swift */; };
 		F46B2EEF28CADFE600B0AB5D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EEE28CADFE600B0AB5D /* SceneDelegate.swift */; };
 		F46B2EF128CADFE600B0AB5D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EF028CADFE600B0AB5D /* MainViewController.swift */; };
@@ -18,7 +19,6 @@
 		F46B2F1428CAE32E00B0AB5D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1328CAE32E00B0AB5D /* UIViewController.swift */; };
 		F46B2F1628CAE33600B0AB5D /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1528CAE33600B0AB5D /* NSObject.swift */; };
 		F46B2F1928CAE3D600B0AB5D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1828CAE3D600B0AB5D /* MainView.swift */; };
-		F46B2F1C28CAE3FD00B0AB5D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F46B2F1B28CAE3FD00B0AB5D /* SnapKit */; };
 		F46B2F1E28CAE9E800B0AB5D /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1D28CAE9E800B0AB5D /* PageCell.swift */; };
 		F46B2F2028CAEA1900B0AB5D /* BaseCollectionIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1F28CAEA1900B0AB5D /* BaseCollectionIViewCell.swift */; };
 		F46B2F2228CAFBAE00B0AB5D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F2128CAFBAE00B0AB5D /* DetailViewController.swift */; };
@@ -27,7 +27,6 @@
 		F46B2F2F28CB14C200B0AB5D /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F2E28CB14C200B0AB5D /* TopicViewController.swift */; };
 		F46B2F3128CB14CC00B0AB5D /* TopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F3028CB14CC00B0AB5D /* TopicView.swift */; };
 		F46B2F3328CB167600B0AB5D /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F3228CB167600B0AB5D /* TopicCell.swift */; };
-		F478AB0728CF0806008D838A /* KewordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB0628CF0806008D838A /* KewordCell.swift */; };
 		F478AB0928CF2EA9008D838A /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB0828CF2EA9008D838A /* ListCell.swift */; };
 		F478AB0B28CF3415008D838A /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB0A28CF3415008D838A /* ListView.swift */; };
 		F478AB0E28CF38E9008D838A /* DailyTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB0D28CF38E9008D838A /* DailyTopicViewController.swift */; };
@@ -41,6 +40,7 @@
 		F47B445D28D0757D003837F2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445C28D0757D003837F2 /* Item.swift */; };
 		F47B445F28D07584003837F2 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445E28D07584003837F2 /* Section.swift */; };
 		F47B446128D07594003837F2 /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B446028D07594003837F2 /* SectionHeaderReusableView.swift */; };
+		F4B85A8D28D0A4FF00311A29 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F4B85A8C28D0A4FF00311A29 /* SnapKit */; };
 		F4E173C128CDB28F00D117E9 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C028CDB28F00D117E9 /* PageViewController.swift */; };
 		F4E173C428CDB34D00D117E9 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C328CDB34D00D117E9 /* PageView.swift */; };
 		F4E173C628CDC38D00D117E9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C528CDC38D00D117E9 /* ListViewController.swift */; };
@@ -49,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F40DEDEB28D1CB71001F4506 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		F46B2EE928CADFE600B0AB5D /* todotodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todotodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46B2EEC28CADFE600B0AB5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46B2EEE28CADFE600B0AB5D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		F46B2F2E28CB14C200B0AB5D /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		F46B2F3028CB14CC00B0AB5D /* TopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicView.swift; sourceTree = "<group>"; };
 		F46B2F3228CB167600B0AB5D /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
-		F478AB0628CF0806008D838A /* KewordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KewordCell.swift; sourceTree = "<group>"; };
 		F478AB0828CF2EA9008D838A /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		F478AB0A28CF3415008D838A /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		F478AB0D28CF38E9008D838A /* DailyTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTopicViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F46B2F1C28CAE3FD00B0AB5D /* SnapKit in Frameworks */,
+				F4B85A8D28D0A4FF00311A29 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +337,7 @@
 				F4E173C028CDB28F00D117E9 /* PageViewController.swift */,
 				F4E173C328CDB34D00D117E9 /* PageView.swift */,
 				F46B2F1D28CAE9E800B0AB5D /* PageCell.swift */,
-				F478AB0628CF0806008D838A /* KewordCell.swift */,
+				F40DEDEB28D1CB71001F4506 /* SectionHeaderView.swift */,
 			);
 			path = PageContainerView;
 			sourceTree = "<group>";
@@ -359,7 +359,7 @@
 			);
 			name = todotodo;
 			packageProductDependencies = (
-				F46B2F1B28CAE3FD00B0AB5D /* SnapKit */,
+				F4B85A8C28D0A4FF00311A29 /* SnapKit */,
 			);
 			productName = todotodo;
 			productReference = F46B2EE928CADFE600B0AB5D /* todotodo.app */;
@@ -390,7 +390,7 @@
 			);
 			mainGroup = F46B2EE028CADFE500B0AB5D;
 			packageReferences = (
-				F46B2F1A28CAE3FD00B0AB5D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				F4B85A8B28D0A4FF00311A29 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = F46B2EEA28CADFE600B0AB5D /* Products */;
 			projectDirPath = "";
@@ -426,7 +426,6 @@
 				F46B2F2728CAFC7100B0AB5D /* DetailCell.swift in Sources */,
 				F478AB0E28CF38E9008D838A /* DailyTopicViewController.swift in Sources */,
 				F478AB0928CF2EA9008D838A /* ListCell.swift in Sources */,
-				F478AB0728CF0806008D838A /* KewordCell.swift in Sources */,
 				F46B2F0F28CAE2DC00B0AB5D /* BaseViewController.swift in Sources */,
 				F46B2F1928CAE3D600B0AB5D /* MainView.swift in Sources */,
 				F46B2EF128CADFE600B0AB5D /* MainViewController.swift in Sources */,
@@ -452,6 +451,7 @@
 				F46B2F0D28CAE2D200B0AB5D /* BaseView.swift in Sources */,
 				F47B446128D07594003837F2 /* SectionHeaderReusableView.swift in Sources */,
 				F46B2F1E28CAE9E800B0AB5D /* PageCell.swift in Sources */,
+				F40DEDEC28D1CB71001F4506 /* SectionHeaderView.swift in Sources */,
 				F46B2F3128CB14CC00B0AB5D /* TopicView.swift in Sources */,
 				F47B445728D053B3003837F2 /* PanelViewController.swift in Sources */,
 			);
@@ -673,7 +673,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F46B2F1A28CAE3FD00B0AB5D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		F4B85A8B28D0A4FF00311A29 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
@@ -684,9 +684,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F46B2F1B28CAE3FD00B0AB5D /* SnapKit */ = {
+		F4B85A8C28D0A4FF00311A29 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F46B2F1A28CAE3FD00B0AB5D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = F4B85A8B28D0A4FF00311A29 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */

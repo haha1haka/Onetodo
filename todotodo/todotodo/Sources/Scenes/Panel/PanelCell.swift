@@ -42,7 +42,7 @@ class PanelCell: BaseCollectionViewCell {
     }
     func configureCell(itemIdentifier: ToDo) {
         //label.text = itemIdentifier.dateTitleLabel
-        content.text = itemIdentifier.contentLabel
+        content.text = itemIdentifier.todoLabel
     }
     
     

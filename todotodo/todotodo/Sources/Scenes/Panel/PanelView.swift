@@ -18,11 +18,11 @@ class PanelView: BaseView {
     
     func configureCollectionViewLayout() -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) in
-            let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
+            let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
             let itemLayout = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
-            itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
-            let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0))
-            let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupLayoutSize, subitems: [itemLayout])
+            //itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+            let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44*5))
+            let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupLayoutSize, subitems: [itemLayout,itemLayout,itemLayout])
             
             
             let sectionLayout = NSCollectionLayoutSection(group: groupLayout)
@@ -30,15 +30,8 @@ class PanelView: BaseView {
             sectionLayout.contentInsets.trailing = 16
             sectionLayout.interGroupSpacing = 16
     
-            let headerFooterSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-              heightDimension: .estimated(8)
-            )
-            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-              layoutSize: headerFooterSize,
-              elementKind: UICollectionView.elementKindSectionHeader,
-              alignment: .top
-            )
+            let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(8))
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
             sectionLayout.boundarySupplementaryItems = [sectionHeader]
             return sectionLayout
         }

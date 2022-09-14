@@ -7,7 +7,3 @@
 
 import Foundation
 
-struct ToDo: Hashable {
-    var dateTitleLabel: String
-    var contentLabel: String
-}

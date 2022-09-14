@@ -11,6 +11,14 @@
 import UIKit
 import SnapKit
 
+
+
+
+
+
+
+
+
 class MainViewController: BaseViewController {
     
     lazy var pageViewController: UIPageViewController = {
@@ -28,6 +36,8 @@ class MainViewController: BaseViewController {
     }()
 
     var pageContentViewControllers: [UIViewController] = []
+    
+    
     
     var dummyDatas = ["1월", "2월", "3월",
                           "4월", "5월", "6월",
