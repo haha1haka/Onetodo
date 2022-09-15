@@ -10,16 +10,11 @@
 
 import UIKit
 import SnapKit
-
-
-
-
-
-
-
+import FloatingPanel
 
 
 class MainViewController: BaseViewController {
+    
     
     lazy var pageViewController: UIPageViewController = {
         let pageViewController = UIPageViewController()
@@ -34,6 +29,10 @@ class MainViewController: BaseViewController {
         topicViewController.eventDelegate = self
         return topicViewController
     }()
+    
+    var fpc: FloatingPanelController!
+    var panelVC: PanelViewController!
+    
 
     var pageContentViewControllers: [UIViewController] = []
     
@@ -52,7 +51,7 @@ class MainViewController: BaseViewController {
         setFirstPageViewController()
         setupTopicViewController()
         setupPageViewControllers()
-        
+        setupPanelView()
         
     }
 
@@ -62,12 +61,8 @@ class MainViewController: BaseViewController {
 
 
 
-
-
-
-
 extension MainViewController {
-    
+
     func configureUINavigationBar() {
         self.navigationItem.title = "todotodo"
         let appearance = UINavigationBarAppearance()
@@ -115,6 +110,20 @@ extension MainViewController {
         }
         pageViewController.didMove(toParent: self)
     }
+    
+    func configureUIToolBar() {
+        self.navigationController?.isToolbarHidden = false
+        let writeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(writeButtonClicked))
+        writeButton.tintColor = .label
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        self.toolbarItems = [flexibleSpace, writeButton]
+    }
+    @objc func writeButtonClicked() {
+        let vc = DetailViewController()
+        transition(vc, transitionStyle: .push)
+    }
+
+    
 }
 
 
@@ -180,4 +189,58 @@ extension MainViewController: UIPageViewControllerDataSource, UIPageViewControll
             topicViewController.topicView.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [.centeredHorizontally])
         }
     }
+}
+
+
+
+
+
+
+
+
+// MARK: - Panel Methods
+extension MainViewController {
+    func setupPanelView() {
+        panelVC = PanelViewController()
+        fpc = FloatingPanelController()
+        fpc.changePanelStyle() // panel 스타일 변경 (대신 bar UI가 사라지므로 따로 넣어주어야함)
+        fpc.delegate = self
+        fpc.set(contentViewController: panelVC) // floating panel에 삽입할 것
+        fpc.track(scrollView: panelVC.panelView.collectionView)
+        fpc.addPanel(toParent: self) // fpc를 관리하는 UIViewController
+        fpc.layout = MyFloatingPanelLayout()
+        fpc.invalidateLayout() // if needed
+    }
+}
+
+
+extension FloatingPanelController {
+    func changePanelStyle() {
+            let appearance = SurfaceAppearance()
+            let shadow = SurfaceAppearance.Shadow()
+            shadow.color = UIColor.black
+            shadow.offset = CGSize(width: 0, height: -4.0)
+            shadow.opacity = 0.15
+            shadow.radius = 2
+            appearance.shadows = [shadow]
+            appearance.cornerRadius = 15.0
+            appearance.backgroundColor = .clear
+            appearance.borderColor = .clear
+            appearance.borderWidth = 0
+
+            surfaceView.grabberHandle.isHidden = true
+            surfaceView.appearance = appearance
+
+        }
+}
+
+extension MainViewController: FloatingPanelControllerDelegate {
+    func floatingPanelDidChangePosition(_ fpc: FloatingPanelController) {
+        if fpc.state == .full {
+                //
+            } else {
+
+            }
+        }
+    
 }

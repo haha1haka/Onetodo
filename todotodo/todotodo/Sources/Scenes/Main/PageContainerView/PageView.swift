@@ -39,10 +39,10 @@ class PageView: BaseView {
 
     func configureCollectionViewLayout() -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) in
-            let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(54))
+            let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
             let itemLayout = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
             itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
-            let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44*5))
+            let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(128))
             let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupLayoutSize, subitems: [itemLayout,itemLayout,itemLayout,itemLayout,itemLayout,itemLayout,itemLayout])
 
 

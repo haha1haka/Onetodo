@@ -44,6 +44,8 @@
 		F4E173C128CDB28F00D117E9 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C028CDB28F00D117E9 /* PageViewController.swift */; };
 		F4E173C428CDB34D00D117E9 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C328CDB34D00D117E9 /* PageView.swift */; };
 		F4E173C628CDC38D00D117E9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C528CDC38D00D117E9 /* ListViewController.swift */; };
+		F4E3358728D2E56F00BE64A7 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = F4E3358628D2E56F00BE64A7 /* FloatingPanel */; };
+		F4E3358928D2E6A500BE64A7 /* FloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3358828D2E6A500BE64A7 /* FloatingPanelLayout.swift */; };
 		F4F8F34728D003AA00D47DE7 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8F34628D003AA00D47DE7 /* BaseCollectionView.swift */; };
 		F4F8F34928D0044100D47DE7 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8F34828D0044100D47DE7 /* CustomNavigationController.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +89,7 @@
 		F4E173C028CDB28F00D117E9 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		F4E173C328CDB34D00D117E9 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		F4E173C528CDC38D00D117E9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		F4E3358828D2E6A500BE64A7 /* FloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelLayout.swift; sourceTree = "<group>"; };
 		F4F8F34628D003AA00D47DE7 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		F4F8F34828D0044100D47DE7 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4B85A8D28D0A4FF00311A29 /* SnapKit in Frameworks */,
+				F4E3358728D2E56F00BE64A7 /* FloatingPanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +280,7 @@
 			children = (
 				F46B2EF028CADFE600B0AB5D /* MainViewController.swift */,
 				F46B2F1828CAE3D600B0AB5D /* MainView.swift */,
+				F4E3358828D2E6A500BE64A7 /* FloatingPanelLayout.swift */,
 				F46B2F3528CB185200B0AB5D /* TopicViewController */,
 				F4E173BF28CDB28400D117E9 /* PageContainerView */,
 			);
@@ -360,6 +365,7 @@
 			name = todotodo;
 			packageProductDependencies = (
 				F4B85A8C28D0A4FF00311A29 /* SnapKit */,
+				F4E3358628D2E56F00BE64A7 /* FloatingPanel */,
 			);
 			productName = todotodo;
 			productReference = F46B2EE928CADFE600B0AB5D /* todotodo.app */;
@@ -391,6 +397,7 @@
 			mainGroup = F46B2EE028CADFE500B0AB5D;
 			packageReferences = (
 				F4B85A8B28D0A4FF00311A29 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				F4E3358528D2E56F00BE64A7 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = F46B2EEA28CADFE600B0AB5D /* Products */;
 			projectDirPath = "";
@@ -429,6 +436,7 @@
 				F46B2F0F28CAE2DC00B0AB5D /* BaseViewController.swift in Sources */,
 				F46B2F1928CAE3D600B0AB5D /* MainView.swift in Sources */,
 				F46B2EF128CADFE600B0AB5D /* MainViewController.swift in Sources */,
+				F4E3358928D2E6A500BE64A7 /* FloatingPanelLayout.swift in Sources */,
 				F478AB0B28CF3415008D838A /* ListView.swift in Sources */,
 				F478AB1728CF3CA6008D838A /* WriteView.swift in Sources */,
 				F46B2F2F28CB14C200B0AB5D /* TopicViewController.swift in Sources */,
@@ -681,6 +689,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		F4E3358528D2E56F00BE64A7 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -688,6 +704,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F4B85A8B28D0A4FF00311A29 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		F4E3358628D2E56F00BE64A7 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4E3358528D2E56F00BE64A7 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -14,14 +14,28 @@ class WriteViewController: BaseViewController {
     override func loadView() {
         self.view = writeView
     }
+    lazy var datePicker: UIPickerView = {
+        let picker = UIPickerView()
+//        picker.delegate = self
+//        picker.dataSource = self
+        return picker
+    }()
     
     override func configure() {
-        writeView.backgroundColor = .white
+        writeView.backgroundColor = .blue
     }
 }
 
 
 
-extension WriteViewController {
+//extension WriteViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        <#code#>
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        <#code#>
+//    }
+//
     
-}
+//}
