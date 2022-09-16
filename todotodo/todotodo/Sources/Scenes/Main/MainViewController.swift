@@ -33,6 +33,9 @@ class MainViewController: BaseViewController {
     var fpc: FloatingPanelController!
     var panelVC: PanelViewController!
     
+    
+    var fpc2: FloatingPanelController!
+    
 
     var pageContentViewControllers: [UIViewController] = []
     
@@ -47,18 +50,34 @@ class MainViewController: BaseViewController {
 
 
     override func configure() {
+        
         configureUINavigationBar()
         setFirstPageViewController()
+        
         setupTopicViewController()
         setupPageViewControllers()
-        setupPanelView()
         
+        setupPanelView()
+        configureUIToolBar()
+        
+        //fpc.contentMode = .fitToBounds
     }
 
     
 }
 
+extension MainViewController {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isToolbarHidden = false
+        
+        
+        self.navigationController?.toolbar.frame = CGRect(x: 0, y: UIScreen.main.bounds.height-80, width: self.view.frame.size.width, height: 180)
+        print("🟩fdsfdsfdsfds")
 
+
+    }
+}
 
 
 extension MainViewController {
@@ -111,14 +130,55 @@ extension MainViewController {
         pageViewController.didMove(toParent: self)
     }
     
+    
+    
+    
     func configureUIToolBar() {
-        self.navigationController?.isToolbarHidden = false
-        let writeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(writeButtonClicked))
-        writeButton.tintColor = .label
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        self.toolbarItems = [flexibleSpace, writeButton]
+//        self.navigationController?.isToolbarHidden = false
+//        var items = [UIBarButtonItem]()
+//        let writeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(writeButtonClicked))
+//        writeButton.tintColor = .label
+//        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+//
+//
+//
+//        self.toolbarItems = [flexibleSpace, writeButton]
+        
+        //var addBUtton = UIBarButtonitem(
+        navigationController?.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+        //tabBar.barTintColor = .purple
+        //tabBar.isTranslucent = false
+    
+
+        var items = [UIBarButtonItem]()
+        //UIBarButtonItem(image: <#T##UIImage?#>, style: <#T##UIBarButtonItem.Style#>, target: <#T##Any?#>, action: <#T##Selector?#>)
+        
+        items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil) )
+        items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add)) ) // replace add with your function
+        //self.toolbar.barTintColor = UIColor.red
+        
+        //self.setToolbarItems(items, animated: true)
+        
+        //navigationController?.toolbar.tintColor = .red
+        //navigationController?.toolbar.backgroundColor = .black
+        
+        //UIToolbar.appearance().tintColor = .red
+        //let navi = UINavigationBarAppearance()
+        
+        //navi.titleTextAttributes = [
+        //    .font: UIFont.systemFont(ofSize: 40, weight: .medium)
+        //]
+        //navi.backgroundColor = .red
+        
+        //self.navigationController?.navigationBar.standardAppearance = navi
+        
+        //UIToolbarAppearance(barAppearance: UINavigationBarAppearance())
+        //let toolBar = UIToolbar()
+        //toolBar.barStyle = UIBarStyle.default
+        //toolBar.isTranslucent = true
+        //toolBar.barTintColor = UIColor.red
     }
-    @objc func writeButtonClicked() {
+    @objc func add() {
         let vc = DetailViewController()
         transition(vc, transitionStyle: .push)
     }
@@ -208,8 +268,17 @@ extension MainViewController {
         fpc.set(contentViewController: panelVC) // floating panel에 삽입할 것
         fpc.track(scrollView: panelVC.panelView.collectionView)
         fpc.addPanel(toParent: self) // fpc를 관리하는 UIViewController
-        fpc.layout = MyFloatingPanelLayout()
+        fpc.behavior = FloatingPanelStocksBehavior()
+        //fpc.layout = MyFloatingPanelLayout()
+        fpc.layout = FloatingPanelBottomLayout()
         fpc.invalidateLayout() // if needed
+        //self.view.addSubview(fpc.view)
+        //view.addSubview(fpc.view)
+        //addChild(fpc)
+//        fpc.show(animated: false) { [weak self] in
+//            guard let self = self else { return }
+//            self.didMove(toParent: self)
+//        }
     }
 }
 
@@ -235,6 +304,15 @@ extension FloatingPanelController {
 }
 
 extension MainViewController: FloatingPanelControllerDelegate {
+    func floatingPanelDidMove(_ fpc: FloatingPanelController) {
+        
+        if fpc.surfaceLocation.y <= fpc.surfaceLocation(for: .full).y + 100 {
+            print("🟥🟥🟥🟥🟥🟥")
+        } else {
+            print("🟩🟩🟩🟩🟩🟩")
+        }
+
+    }
     func floatingPanelDidChangePosition(_ fpc: FloatingPanelController) {
         if fpc.state == .full {
                 //
@@ -243,4 +321,16 @@ extension MainViewController: FloatingPanelControllerDelegate {
             }
         }
     
+}
+
+
+
+
+
+
+
+
+class FloatingPanelStocksBehavior: FloatingPanelBehavior {
+    let springDecelerationRate: CGFloat = UIScrollView.DecelerationRate.fast.rawValue
+    let springResponseTime: CGFloat = 0.25
 }

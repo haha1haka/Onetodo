@@ -39,6 +39,7 @@ class PageCell: BaseCollectionViewCell {
     
     override func configure() {
         [dateNumberLabel, dateStringLabel, contentLabel].forEach { self.addSubview($0) }
+        //self.backgroundColor = .black
     }
     
     
@@ -61,10 +62,9 @@ class PageCell: BaseCollectionViewCell {
             $0.leading.equalTo(dateStringLabel.snp.trailing).offset(20)
         }
         
-        
-        
-        
     }
+    
+    
     func configureCell(itemIdentifier: ItemDay) {
         dateNumberLabel.text = itemIdentifier.dateNumberLable
         dateStringLabel.text = itemIdentifier.dateStringLable

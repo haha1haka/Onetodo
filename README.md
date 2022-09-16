@@ -34,17 +34,27 @@
 
 ### 9월 15일
 
-* 판넬 만들기
-* 탭바 안에 작성버튼 달기
-* 모든 화면 이동 구현하기(판넬팝업, 셀클릭시 팝업)
+* ✅판넬 만들기
+* ⚠️탭바 안에 작성버튼 달기
+* ⚠️플로팅 딜리게이트 공부
+* ✅속도감 줄려고 코드추가
+* ⚠️모든 화면 이동 구현하기(판넬팝업, 셀클릭시 팝업)
 
 
 
-* UI: Section 간격 띄우기
+* 
 * UI: InsetGrouped 로 변경
 * UI: ListContentConfiguration 적용 해보기 
 
+### 9월 16일(금)
 
+
+
+* UI: (Main)Section 간격 띄우기
+* UI: (Main)InsetGrouped 로 변경
+* UI: (Main)ListContentConfiguration 적용 해보기 
+
+### 
 
 * picker 학습
 * picker 적용
@@ -53,7 +63,7 @@
 
 
 
-* 일반상태 PanelVC 구체화 
+* d일반상태 PanelVC 구체화 
 
 
 
@@ -84,7 +94,7 @@
 
 
 
-
+### 9월 16일
 
 
 

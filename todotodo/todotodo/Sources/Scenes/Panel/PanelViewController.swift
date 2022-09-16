@@ -70,6 +70,8 @@ class PanelViewController: BaseViewController {
         
         panelView.collectionView.register(SectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderReusableView.identifier)
         
+        
+        
       
     }
     

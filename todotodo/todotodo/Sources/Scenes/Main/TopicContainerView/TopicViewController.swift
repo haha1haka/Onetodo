@@ -47,6 +47,7 @@ extension TopicViewController {
     func configureCollectionViewDataSource() {
         let topicCellRegistration = UICollectionView.CellRegistration<TopicCell, String> { cell,indexPath,itemIdentifier in
             cell.configureCell(itemIdentifier: itemIdentifier)
+            cell.backgroundColor = .black
         }
         collectionViewDataSource = .init(collectionView: topicView.collectionView) { ㄱr, indexPath, itemIdentifier in
             let cell = self.topicView.collectionView.dequeueConfiguredReusableCell(using: topicCellRegistration, for: indexPath, item: itemIdentifier)

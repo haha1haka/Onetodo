@@ -23,6 +23,16 @@ class WriteViewController: BaseViewController {
     
     override func configure() {
         writeView.backgroundColor = .blue
+        //fpc.delegate = self
+    }
+}
+extension WriteViewController {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.toolbarItems.c
+        navigationController?.isToolbarHidden = true
+//        navigationController?.isNavigationBarHidden = true
+        
     }
 }
 

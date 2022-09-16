@@ -7,90 +7,7 @@
 
 import UIKit
 import SnapKit
-
-
-//class SectionWeek: Hashable {
-//    var id = UUID()
-//
-//    var title: String
-//    var days: [ItemDay]
-//
-//    init(title: String, days: [ItemDay]) {
-//        self.title = title
-//        self.days = days
-//    }
-//
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
-//
-//    static func == (lhs: SectionWeek, rhs: SectionWeek) -> Bool {
-//        lhs.id == rhs.id
-//    }
-//}
-
-struct SectionWeek: Hashable {
-    var title: String
-    var days: [ItemDay]
-}
-
-struct ItemDay: Hashable {
-    var dateNumberLable: String
-    var dateStringLable: String
-    var contentLabel: [String]
-}
-
-extension SectionWeek {
-  static var allSections: [SectionWeek] = [
-    SectionWeek(title: "1 주차", days: [ItemDay(dateNumberLable: "7", dateStringLable: "월", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "8", dateStringLable: "화", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "9", dateStringLable: "수", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "10", dateStringLable: "목", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "11", dateStringLable: "금", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "12", dateStringLable: "토", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "13", dateStringLable: "일", contentLabel: ["놀기","밥먹기"])
-                                     ]
-               ),
-    SectionWeek(title: "2 주차", days: [ItemDay(dateNumberLable: "14", dateStringLable: "월", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "15", dateStringLable: "화", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "16", dateStringLable: "수", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "17", dateStringLable: "목", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "18", dateStringLable: "금", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "19", dateStringLable: "토", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "20", dateStringLable: "일", contentLabel: ["놀기","밥먹기"])
-                                     ]
-               ),
-    SectionWeek(title: "3 주차", days: [ItemDay(dateNumberLable: "21", dateStringLable: "월", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "22", dateStringLable: "화", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "23", dateStringLable: "수", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "24", dateStringLable: "목", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "25", dateStringLable: "금", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "26", dateStringLable: "토", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "27", dateStringLable: "일", contentLabel: ["놀기","밥먹기"])
-                                     ]
-               ),
-    SectionWeek(title: "4 주차", days: [ItemDay(dateNumberLable: "28", dateStringLable: "월", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "29", dateStringLable: "화", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "30", dateStringLable: "수", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "31", dateStringLable: "목", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "32", dateStringLable: "금", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "33", dateStringLable: "토", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "34", dateStringLable: "일", contentLabel: ["놀기","밥먹기"])
-                                     ]
-               ),
-    SectionWeek(title: "5 주차", days: [ItemDay(dateNumberLable: "35", dateStringLable: "월", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "36", dateStringLable: "화", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "37", dateStringLable: "수", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "38", dateStringLable: "목", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "39", dateStringLable: "금", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "40", dateStringLable: "토", contentLabel: ["놀기","밥먹기"]),
-                                      ItemDay(dateNumberLable: "41", dateStringLable: "일", contentLabel: ["놀기","밥먹기"])
-                                     ]
-               )
-    
-  ]
-}
-
+import FloatingPanel
 
 
 class PageViewController: BaseViewController {
@@ -99,20 +16,17 @@ class PageViewController: BaseViewController {
 
     var collectionViewDataSource: UICollectionViewDiffableDataSource<SectionWeek, ItemDay>!
     
-    
     var sections = SectionWeek.allSections
-    
-    
     var dataStore: [Int] = []
-    
     var a: [String] = []
     
     override func loadView() {
         self.view = pageView
     }
+    
     override func configure() {
-        
         configureCollectionViewDataSource()
+        
         applySnapshot(month: dataStore.first!)
         pageView.collectionView.delegate = self
         print("🟪\(dataStore)")
@@ -121,7 +35,6 @@ class PageViewController: BaseViewController {
     }
     
 }
-
 
 
 
@@ -149,16 +62,24 @@ extension PageViewController {
 extension PageViewController {
 
     func configureCollectionViewDataSource() {
+        
+        //1
         let mainCellRegistration = UICollectionView.CellRegistration<PageCell, ItemDay> { cell,indexPath,itemIdentifier in
             cell.configureCell(itemIdentifier: itemIdentifier)
+            //cell.backgroundColor = .lightGray
             //cell.layer.cornerRadius = 8
             //cell.layer.masksToBounds = true
         }
+        //2
         collectionViewDataSource = .init(collectionView: pageView.collectionView) { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: mainCellRegistration, for: indexPath, item: itemIdentifier)
+            cell.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1.0)
             return cell
         }
         
+        
+        
+        //3
         collectionViewDataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             guard kind == UICollectionView.elementKindSectionHeader else { return nil }
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.identifier, for: indexPath) as? SectionHeaderView
@@ -193,7 +114,44 @@ extension PageViewController {
 // MARK: - CollectionViewDelegate
 extension PageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = DetailViewController()
-        transition(detailViewController, transitionStyle: .push)
+        //let detailViewController = DetailViewController()
+        //transition(detailViewController, transitionStyle: .push)
+        let fpc = FloatingPanelController()
+        let contentVC = WriteViewController()
+        fpc.set(contentViewController: contentVC)
+        fpc.layout = MyFloatingPanelLayout2()
+        fpc.isRemovalInteractionEnabled = true // Optional: Let it removable by a swipe-down
+//        UIView.animate(withDuration: 0.25) { [weak self] in
+//            fpc.move(to: .full, animated: false)
+//        }
+        
+        
+        fpc.delegate = self
+        fpc.behavior = FloatingPanelStocksBehavior()
+        
+        
+        
+        self.present(fpc, animated: true, completion: nil)
     }
 }
+
+extension PageViewController: FloatingPanelControllerDelegate {
+    func floatingPanelDidMove(_ fpc: FloatingPanelController) {
+        
+        if fpc.surfaceLocation.y <= fpc.surfaceLocation(for: .full).y + 100 {
+            print("🟥🟥🟥🟥🟥🟥")
+        } else {
+            print("🟩🟩🟩🟩🟩🟩")
+        }
+
+    }
+    func floatingPanelDidChangePosition(_ fpc: FloatingPanelController) {
+        if fpc.state == .full {
+                //
+            } else {
+
+            }
+        }
+    
+}
+

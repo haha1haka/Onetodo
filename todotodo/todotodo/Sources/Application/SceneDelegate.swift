@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         window?.rootViewController =  CustomNavigationController(rootViewController: MainViewController())
-//        window?.rootViewController =  WriteViewController()
+//        window?.rootViewController =  PageViewController()
         window?.makeKeyAndVisible()
     }
 }

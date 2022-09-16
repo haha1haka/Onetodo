@@ -39,6 +39,7 @@ class DetailViewController: BaseViewController {
         setFirstPageViewController()
         setupTopicViewController()
         setupPageViewControllers()
+        self.navigationController?.isToolbarHidden = true
     }
 }
 

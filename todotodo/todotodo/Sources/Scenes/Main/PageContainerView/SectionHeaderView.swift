@@ -35,8 +35,8 @@ class SectionHeaderView: UICollectionReusableView {
         
         titleLabel.snp.makeConstraints {
             $0.leading.trailing.equalTo(self)
-            $0.top.equalTo(self).offset(3)
-            $0.bottom.equalTo(self).offset(-3)
+            $0.top.equalTo(self).offset(40)
+            $0.bottom.equalTo(self).offset(-8)
             //$0.centerY.equalTo(self)
         }
         

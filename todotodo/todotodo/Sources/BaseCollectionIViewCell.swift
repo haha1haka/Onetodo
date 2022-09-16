@@ -15,7 +15,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         configure()
         setConstraints()
-        self.backgroundColor = .white
+        //self.backgroundColor = .black
         
     }
     

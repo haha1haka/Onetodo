@@ -12,7 +12,7 @@ class PanelView: BaseView {
     
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-        view.backgroundColor = .systemPurple
+        view.backgroundColor = .black
         return view
     }()
     

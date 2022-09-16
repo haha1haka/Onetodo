@@ -40,12 +40,14 @@
 		F47B445D28D0757D003837F2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445C28D0757D003837F2 /* Item.swift */; };
 		F47B445F28D07584003837F2 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445E28D07584003837F2 /* Section.swift */; };
 		F47B446128D07594003837F2 /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B446028D07594003837F2 /* SectionHeaderReusableView.swift */; };
+		F49F0A1A28D4A73900BC9EC6 /* DidSelectPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F0A1928D4A73900BC9EC6 /* DidSelectPanelViewController.swift */; };
 		F4B85A8D28D0A4FF00311A29 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F4B85A8C28D0A4FF00311A29 /* SnapKit */; };
 		F4E173C128CDB28F00D117E9 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C028CDB28F00D117E9 /* PageViewController.swift */; };
 		F4E173C428CDB34D00D117E9 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C328CDB34D00D117E9 /* PageView.swift */; };
 		F4E173C628CDC38D00D117E9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C528CDC38D00D117E9 /* ListViewController.swift */; };
 		F4E3358728D2E56F00BE64A7 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = F4E3358628D2E56F00BE64A7 /* FloatingPanel */; };
 		F4E3358928D2E6A500BE64A7 /* FloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3358828D2E6A500BE64A7 /* FloatingPanelLayout.swift */; };
+		F4E3358E28D303E800BE64A7 /* CustomUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3358D28D303E800BE64A7 /* CustomUIToolbar.swift */; };
 		F4F8F34728D003AA00D47DE7 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8F34628D003AA00D47DE7 /* BaseCollectionView.swift */; };
 		F4F8F34928D0044100D47DE7 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8F34828D0044100D47DE7 /* CustomNavigationController.swift */; };
 /* End PBXBuildFile section */
@@ -86,10 +88,12 @@
 		F47B445C28D0757D003837F2 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F47B445E28D07584003837F2 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		F47B446028D07594003837F2 /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
+		F49F0A1928D4A73900BC9EC6 /* DidSelectPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidSelectPanelViewController.swift; sourceTree = "<group>"; };
 		F4E173C028CDB28F00D117E9 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		F4E173C328CDB34D00D117E9 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		F4E173C528CDC38D00D117E9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		F4E3358828D2E6A500BE64A7 /* FloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelLayout.swift; sourceTree = "<group>"; };
+		F4E3358D28D303E800BE64A7 /* CustomUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIToolbar.swift; sourceTree = "<group>"; };
 		F4F8F34628D003AA00D47DE7 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		F4F8F34828D0044100D47DE7 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,8 +170,10 @@
 		F46B2F0328CAE1A400B0AB5D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F4E3358D28D303E800BE64A7 /* CustomUIToolbar.swift */,
 				F46B2F3428CB184D00B0AB5D /* Main */,
 				F46B2F0A28CAE1B500B0AB5D /* Detail */,
+				F49F0A1828D4A72100BC9EC6 /* DidSelecPanel */,
 				F47B445528D0539E003837F2 /* Panel */,
 				F478AB1328CF3BBE008D838A /* Write */,
 			);
@@ -281,20 +287,20 @@
 				F46B2EF028CADFE600B0AB5D /* MainViewController.swift */,
 				F46B2F1828CAE3D600B0AB5D /* MainView.swift */,
 				F4E3358828D2E6A500BE64A7 /* FloatingPanelLayout.swift */,
-				F46B2F3528CB185200B0AB5D /* TopicViewController */,
+				F46B2F3528CB185200B0AB5D /* TopicContainerView */,
 				F4E173BF28CDB28400D117E9 /* PageContainerView */,
 			);
 			path = Main;
 			sourceTree = "<group>";
 		};
-		F46B2F3528CB185200B0AB5D /* TopicViewController */ = {
+		F46B2F3528CB185200B0AB5D /* TopicContainerView */ = {
 			isa = PBXGroup;
 			children = (
 				F46B2F2E28CB14C200B0AB5D /* TopicViewController.swift */,
 				F46B2F3028CB14CC00B0AB5D /* TopicView.swift */,
 				F46B2F3228CB167600B0AB5D /* TopicCell.swift */,
 			);
-			path = TopicViewController;
+			path = TopicContainerView;
 			sourceTree = "<group>";
 		};
 		F478AB0428CEFFFF008D838A /* Model */ = {
@@ -334,6 +340,14 @@
 				F47B446028D07594003837F2 /* SectionHeaderReusableView.swift */,
 			);
 			path = Panel;
+			sourceTree = "<group>";
+		};
+		F49F0A1828D4A72100BC9EC6 /* DidSelecPanel */ = {
+			isa = PBXGroup;
+			children = (
+				F49F0A1928D4A73900BC9EC6 /* DidSelectPanelViewController.swift */,
+			);
+			path = DidSelecPanel;
 			sourceTree = "<group>";
 		};
 		F4E173BF28CDB28400D117E9 /* PageContainerView */ = {
@@ -460,8 +474,10 @@
 				F47B446128D07594003837F2 /* SectionHeaderReusableView.swift in Sources */,
 				F46B2F1E28CAE9E800B0AB5D /* PageCell.swift in Sources */,
 				F40DEDEC28D1CB71001F4506 /* SectionHeaderView.swift in Sources */,
+				F4E3358E28D303E800BE64A7 /* CustomUIToolbar.swift in Sources */,
 				F46B2F3128CB14CC00B0AB5D /* TopicView.swift in Sources */,
 				F47B445728D053B3003837F2 /* PanelViewController.swift in Sources */,
+				F49F0A1A28D4A73900BC9EC6 /* DidSelectPanelViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
