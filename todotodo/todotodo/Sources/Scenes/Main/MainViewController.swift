@@ -31,7 +31,7 @@ class MainViewController: BaseViewController {
     }()
     
     var fpc: FloatingPanelController!
-    var panelVC: PanelViewController!
+    var panelVC: PopPanelViewController!
     
     
     var fpc2: FloatingPanelController!
@@ -261,16 +261,17 @@ extension MainViewController: UIPageViewControllerDataSource, UIPageViewControll
 // MARK: - Panel Methods
 extension MainViewController {
     func setupPanelView() {
-        panelVC = PanelViewController()
+        panelVC = PopPanelViewController()
         fpc = FloatingPanelController()
         fpc.changePanelStyle() // panel 스타일 변경 (대신 bar UI가 사라지므로 따로 넣어주어야함)
         fpc.delegate = self
         fpc.set(contentViewController: panelVC) // floating panel에 삽입할 것
-        fpc.track(scrollView: panelVC.panelView.collectionView)
+        fpc.track(scrollView: panelVC.popPanelView.collectionView)
         fpc.addPanel(toParent: self) // fpc를 관리하는 UIViewController
         fpc.behavior = FloatingPanelStocksBehavior()
-        //fpc.layout = MyFloatingPanelLayout()
-        fpc.layout = FloatingPanelBottomLayout()
+        fpc.layout = MyFloatingPanelLayout()
+        
+        //fpc.layout = FloatingPanelBottomLayout()
         fpc.invalidateLayout() // if needed
         //self.view.addSubview(fpc.view)
         //view.addSubview(fpc.view)
@@ -293,7 +294,7 @@ extension FloatingPanelController {
             shadow.radius = 2
             appearance.shadows = [shadow]
             appearance.cornerRadius = 15.0
-            appearance.backgroundColor = .clear
+            appearance.backgroundColor = .red
             appearance.borderColor = .clear
             appearance.borderWidth = 0
 

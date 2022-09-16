@@ -64,19 +64,18 @@ extension PageViewController {
     func configureCollectionViewDataSource() {
         
         //1
-        let mainCellRegistration = UICollectionView.CellRegistration<PageCell, ItemDay> { cell,indexPath,itemIdentifier in
-            cell.configureCell(itemIdentifier: itemIdentifier)
-            //cell.backgroundColor = .lightGray
-            //cell.layer.cornerRadius = 8
-            //cell.layer.masksToBounds = true
-        }
-        //2
-        collectionViewDataSource = .init(collectionView: pageView.collectionView) { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueConfiguredReusableCell(using: mainCellRegistration, for: indexPath, item: itemIdentifier)
-            cell.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1.0)
-            return cell
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell,ItemDay> { cell,  indexPath, itemIdentifier in
+            var contentConfiguration = cell.defaultContentConfiguration()
+            contentConfiguration.text = itemIdentifier.dateStringLable
+            contentConfiguration.secondaryTextProperties.color = .secondaryLabel
+            cell.contentConfiguration = contentConfiguration
         }
         
+        //2
+        collectionViewDataSource = .init(collectionView: pageView.collectionView) { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            return cell
+        }
         
         
         //3
@@ -154,4 +153,11 @@ extension PageViewController: FloatingPanelControllerDelegate {
         }
     
 }
+
+
+
+//1
+//        let mainCellRegistration = UICollectionView.CellRegistration<PageCell, ItemDay> { cell,indexPath,itemIdentifier in
+//            cell.configureCell(itemIdentifier: itemIdentifier)
+//        }
 
