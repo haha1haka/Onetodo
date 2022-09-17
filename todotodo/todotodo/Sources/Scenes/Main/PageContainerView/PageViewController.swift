@@ -20,6 +20,11 @@ class PageViewController: BaseViewController {
     var dataStore: [Int] = []
     var a: [String] = []
     
+    
+    let fpc = FloatingPanelController()
+    let contentVC = DetailViewController()
+    
+    
     override func loadView() {
         self.view = pageView
     }
@@ -112,11 +117,12 @@ extension PageViewController {
 
 // MARK: - CollectionViewDelegate
 extension PageViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //let detailViewController = DetailViewController()
         //transition(detailViewController, transitionStyle: .push)
-        let fpc = FloatingPanelController()
-        let contentVC = WriteViewController()
+        
+        
         fpc.set(contentViewController: contentVC)
         fpc.layout = MyFloatingPanelLayout2()
         fpc.isRemovalInteractionEnabled = true // Optional: Let it removable by a swipe-down
@@ -126,27 +132,31 @@ extension PageViewController: UICollectionViewDelegate {
         
         
         fpc.delegate = self
+        fpc.changePanelStyle()
         fpc.behavior = FloatingPanelStocksBehavior()
-        
+        //fpc.show()
         
         
         self.present(fpc, animated: true, completion: nil)
     }
+    func floatingPanelDidMove(_ fpc: FloatingPanelController) {
+        
+        print("\(fpc.surfaceLocation.y)")
+        print("\(fpc.surfaceLocation(for: .tip).y)")
+        if fpc.surfaceLocation.y >= fpc.surfaceLocation(for: .tip).y - 100 {
+            print("🟧🟧🟧🟧🟧🟧🟧")
+            contentVC.dismiss(animated: true)
+        }
+        
+    }
 }
 
 extension PageViewController: FloatingPanelControllerDelegate {
-    func floatingPanelDidMove(_ fpc: FloatingPanelController) {
-        
-        if fpc.surfaceLocation.y <= fpc.surfaceLocation(for: .full).y + 100 {
-            print("🟥🟥🟥🟥🟥🟥")
-        } else {
-            print("🟩🟩🟩🟩🟩🟩")
-        }
-
-    }
+  
     func floatingPanelDidChangePosition(_ fpc: FloatingPanelController) {
         if fpc.state == .full {
-                //
+            print("🍠🍠🍠")
+                fp_dismiss(animated: true)
             } else {
 
             }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F40DEDEC28D1CB71001F4506 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40DEDEB28D1CB71001F4506 /* SectionHeaderView.swift */; };
+		F45108B928D567DF00D3DA94 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45108B828D567DF00D3DA94 /* DetailViewController.swift */; };
+		F45108BB28D5681000D3DA94 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45108BA28D5681000D3DA94 /* DetailView.swift */; };
 		F46B2EED28CADFE600B0AB5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EEC28CADFE600B0AB5D /* AppDelegate.swift */; };
 		F46B2EEF28CADFE600B0AB5D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EEE28CADFE600B0AB5D /* SceneDelegate.swift */; };
 		F46B2EF128CADFE600B0AB5D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EF028CADFE600B0AB5D /* MainViewController.swift */; };
@@ -47,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		F40DEDEB28D1CB71001F4506 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		F45108B828D567DF00D3DA94 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F45108BA28D5681000D3DA94 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		F46B2EE928CADFE600B0AB5D /* todotodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todotodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46B2EEC28CADFE600B0AB5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46B2EEE28CADFE600B0AB5D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F45108B728D567CB00D3DA94 /* DetailPanel */ = {
+			isa = PBXGroup;
+			children = (
+				F45108B828D567DF00D3DA94 /* DetailViewController.swift */,
+				F45108BA28D5681000D3DA94 /* DetailView.swift */,
+			);
+			path = DetailPanel;
+			sourceTree = "<group>";
+		};
 		F46B2EE028CADFE500B0AB5D = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +172,7 @@
 				F4E3358D28D303E800BE64A7 /* CustomUIToolbar.swift */,
 				F46B2F3428CB184D00B0AB5D /* Main */,
 				F49F0A1828D4A72100BC9EC6 /* PopPanel */,
+				F45108B728D567CB00D3DA94 /* DetailPanel */,
 				F478AB1328CF3BBE008D838A /* Write */,
 				F47B445528D0539E003837F2 /* Panel */,
 			);
@@ -402,6 +416,7 @@
 				F4E3358928D2E6A500BE64A7 /* FloatingPanelLayout.swift in Sources */,
 				F478AB1728CF3CA6008D838A /* WriteView.swift in Sources */,
 				F46B2F2F28CB14C200B0AB5D /* TopicViewController.swift in Sources */,
+				F45108B928D567DF00D3DA94 /* DetailViewController.swift in Sources */,
 				F4E173C428CDB34D00D117E9 /* PageView.swift in Sources */,
 				F47B445F28D07584003837F2 /* Section.swift in Sources */,
 				F46B2F1428CAE32E00B0AB5D /* UIViewController.swift in Sources */,
@@ -419,6 +434,7 @@
 				F47B445B28D053D7003837F2 /* PanelCell.swift in Sources */,
 				F46B2EEF28CADFE600B0AB5D /* SceneDelegate.swift in Sources */,
 				F46B2F0D28CAE2D200B0AB5D /* BaseView.swift in Sources */,
+				F45108BB28D5681000D3DA94 /* DetailView.swift in Sources */,
 				F47B446128D07594003837F2 /* SectionHeaderReusableView.swift in Sources */,
 				F46B2F1E28CAE9E800B0AB5D /* PageCell.swift in Sources */,
 				F40DEDEC28D1CB71001F4506 /* SectionHeaderView.swift in Sources */,

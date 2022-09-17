@@ -270,17 +270,22 @@ extension MainViewController {
         fpc.addPanel(toParent: self) // fpc를 관리하는 UIViewController
         fpc.behavior = FloatingPanelStocksBehavior()
         fpc.layout = MyFloatingPanelLayout()
+
         
-        //fpc.layout = FloatingPanelBottomLayout()
         fpc.invalidateLayout() // if needed
         //self.view.addSubview(fpc.view)
         //view.addSubview(fpc.view)
         //addChild(fpc)
-//        fpc.show(animated: false) { [weak self] in
-//            guard let self = self else { return }
-//            self.didMove(toParent: self)
-//        }
+        fpc.show(animated: false) { [weak self] in
+            guard let self = self else { return }
+            self.didMove(toParent: self)
+        }
+        
+        
     }
+    
+    
+
 }
 
 
@@ -298,8 +303,10 @@ extension FloatingPanelController {
             appearance.borderColor = .clear
             appearance.borderWidth = 0
 
-            surfaceView.grabberHandle.isHidden = true
+            
+            //surfaceView.grabberHandle.isHidden = true
             surfaceView.appearance = appearance
+            surfaceView.backgroundColor = .clear
 
         }
 }

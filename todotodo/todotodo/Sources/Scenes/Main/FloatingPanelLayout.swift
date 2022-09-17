@@ -11,7 +11,7 @@ import FloatingPanel
 class MyFloatingPanelLayout: FloatingPanelLayout {
     var position: FloatingPanelPosition = .bottom
     
-    var initialState: FloatingPanelState = .tip
+    var initialState: FloatingPanelState = .half
         
     
 
@@ -54,7 +54,7 @@ class MyFloatingPanelLayout2: FloatingPanelLayout {
             .full: FloatingPanelLayoutAnchor(absoluteInset: 56.0, edge: .top, referenceGuide: .safeArea),
             //.half: FloatingPanelLayoutAnchor(absoluteInset: 262.0, edge: .bottom, referenceGuide: .safeArea),
              /* Visible + ToolView */
-                .tip: FloatingPanelLayoutAnchor(absoluteInset: 0.0 + 0.0, edge: .bottom, referenceGuide: .superview),
+            .tip: FloatingPanelLayoutAnchor(absoluteInset: 10.0 + 0.0, edge: .bottom, referenceGuide: .superview),
         ]
     }
 }
