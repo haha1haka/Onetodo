@@ -17,6 +17,12 @@ class TopicView: BaseView {
         return view
     }()
     
+    let dividerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .opaqueSeparator
+        return view
+    }()
+    
     
     func configureCollectionViewLayout() -> UICollectionViewLayout {
         let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .estimated(128), heightDimension: .fractionalHeight(1.0))
@@ -33,6 +39,7 @@ class TopicView: BaseView {
     
     override func configure() {
         self.addSubview(collectionView)
+        self.addSubview(dividerView)
     }
     
     
@@ -40,6 +47,12 @@ class TopicView: BaseView {
         collectionView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide)
             $0.height.equalTo(44)
+        }
+        dividerView.snp.makeConstraints {
+            $0.height.equalTo(1)
+            $0.leading.trailing.equalTo(self)
+            $0.bottom.equalTo(self)
+            
         }
         
     }

@@ -25,7 +25,7 @@ class MyFloatingPanelLayout: FloatingPanelLayout {
             .full: FloatingPanelLayoutAnchor(absoluteInset: 20.0, edge: .top, referenceGuide: .safeArea),
             .half: FloatingPanelLayoutAnchor(absoluteInset: 262.0, edge: .bottom, referenceGuide: .safeArea),
              /* Visible + ToolView */
-            .tip: FloatingPanelLayoutAnchor(absoluteInset: 44.0, edge: .bottom, referenceGuide: .safeArea),
+            .tip: FloatingPanelLayoutAnchor(absoluteInset: 44.0 + 44, edge: .bottom, referenceGuide: .safeArea),
         ]
     }
 }

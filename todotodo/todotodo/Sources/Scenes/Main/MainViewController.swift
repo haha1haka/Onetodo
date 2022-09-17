@@ -333,5 +333,6 @@ extension MainViewController: FloatingPanelControllerDelegate {
 
 class FloatingPanelStocksBehavior: FloatingPanelBehavior {
     let springDecelerationRate: CGFloat = UIScrollView.DecelerationRate.fast.rawValue
-    let springResponseTime: CGFloat = 0.25
+    
+    let springResponseTime: CGFloat = 0.2
 }

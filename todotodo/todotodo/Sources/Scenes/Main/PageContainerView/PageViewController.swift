@@ -156,6 +156,9 @@ extension PageViewController: FloatingPanelControllerDelegate {
 
 
 
+
+
+
 //1
 //        let mainCellRegistration = UICollectionView.CellRegistration<PageCell, ItemDay> { cell,indexPath,itemIdentifier in
 //            cell.configureCell(itemIdentifier: itemIdentifier)

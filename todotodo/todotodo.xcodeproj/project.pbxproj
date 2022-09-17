@@ -21,17 +21,9 @@
 		F46B2F1928CAE3D600B0AB5D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1828CAE3D600B0AB5D /* MainView.swift */; };
 		F46B2F1E28CAE9E800B0AB5D /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1D28CAE9E800B0AB5D /* PageCell.swift */; };
 		F46B2F2028CAEA1900B0AB5D /* BaseCollectionIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1F28CAEA1900B0AB5D /* BaseCollectionIViewCell.swift */; };
-		F46B2F2228CAFBAE00B0AB5D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F2128CAFBAE00B0AB5D /* DetailViewController.swift */; };
-		F46B2F2528CAFBD100B0AB5D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F2428CAFBD100B0AB5D /* DetailView.swift */; };
-		F46B2F2728CAFC7100B0AB5D /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F2628CAFC7100B0AB5D /* DetailCell.swift */; };
 		F46B2F2F28CB14C200B0AB5D /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F2E28CB14C200B0AB5D /* TopicViewController.swift */; };
 		F46B2F3128CB14CC00B0AB5D /* TopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F3028CB14CC00B0AB5D /* TopicView.swift */; };
 		F46B2F3328CB167600B0AB5D /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F3228CB167600B0AB5D /* TopicCell.swift */; };
-		F478AB0928CF2EA9008D838A /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB0828CF2EA9008D838A /* ListCell.swift */; };
-		F478AB0B28CF3415008D838A /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB0A28CF3415008D838A /* ListView.swift */; };
-		F478AB0E28CF38E9008D838A /* DailyTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB0D28CF38E9008D838A /* DailyTopicViewController.swift */; };
-		F478AB1028CF395B008D838A /* DailyTopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB0F28CF395B008D838A /* DailyTopicView.swift */; };
-		F478AB1228CF3965008D838A /* DailyTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB1128CF3965008D838A /* DailyTopicCell.swift */; };
 		F478AB1528CF3BE4008D838A /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB1428CF3BE4008D838A /* WriteViewController.swift */; };
 		F478AB1728CF3CA6008D838A /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB1628CF3CA6008D838A /* WriteView.swift */; };
 		F47B445728D053B3003837F2 /* PanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445628D053B3003837F2 /* PanelViewController.swift */; };
@@ -46,7 +38,6 @@
 		F4B85A8D28D0A4FF00311A29 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F4B85A8C28D0A4FF00311A29 /* SnapKit */; };
 		F4E173C128CDB28F00D117E9 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C028CDB28F00D117E9 /* PageViewController.swift */; };
 		F4E173C428CDB34D00D117E9 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C328CDB34D00D117E9 /* PageView.swift */; };
-		F4E173C628CDC38D00D117E9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C528CDC38D00D117E9 /* ListViewController.swift */; };
 		F4E3358728D2E56F00BE64A7 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = F4E3358628D2E56F00BE64A7 /* FloatingPanel */; };
 		F4E3358928D2E6A500BE64A7 /* FloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3358828D2E6A500BE64A7 /* FloatingPanelLayout.swift */; };
 		F4E3358E28D303E800BE64A7 /* CustomUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3358D28D303E800BE64A7 /* CustomUIToolbar.swift */; };
@@ -71,17 +62,9 @@
 		F46B2F1828CAE3D600B0AB5D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F46B2F1D28CAE9E800B0AB5D /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		F46B2F1F28CAEA1900B0AB5D /* BaseCollectionIViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionIViewCell.swift; sourceTree = "<group>"; };
-		F46B2F2128CAFBAE00B0AB5D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		F46B2F2428CAFBD100B0AB5D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		F46B2F2628CAFC7100B0AB5D /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		F46B2F2E28CB14C200B0AB5D /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		F46B2F3028CB14CC00B0AB5D /* TopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicView.swift; sourceTree = "<group>"; };
 		F46B2F3228CB167600B0AB5D /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
-		F478AB0828CF2EA9008D838A /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
-		F478AB0A28CF3415008D838A /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		F478AB0D28CF38E9008D838A /* DailyTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTopicViewController.swift; sourceTree = "<group>"; };
-		F478AB0F28CF395B008D838A /* DailyTopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTopicView.swift; sourceTree = "<group>"; };
-		F478AB1128CF3965008D838A /* DailyTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTopicCell.swift; sourceTree = "<group>"; };
 		F478AB1428CF3BE4008D838A /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		F478AB1628CF3CA6008D838A /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		F47B445628D053B3003837F2 /* PanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +78,6 @@
 		F49F0A1D28D4A94400BC9EC6 /* PopPanelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPanelCell.swift; sourceTree = "<group>"; };
 		F4E173C028CDB28F00D117E9 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		F4E173C328CDB34D00D117E9 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
-		F4E173C528CDC38D00D117E9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		F4E3358828D2E6A500BE64A7 /* FloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelLayout.swift; sourceTree = "<group>"; };
 		F4E3358D28D303E800BE64A7 /* CustomUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIToolbar.swift; sourceTree = "<group>"; };
 		F4F8F34628D003AA00D47DE7 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
@@ -176,10 +158,9 @@
 			children = (
 				F4E3358D28D303E800BE64A7 /* CustomUIToolbar.swift */,
 				F46B2F3428CB184D00B0AB5D /* Main */,
-				F47B445528D0539E003837F2 /* Panel */,
 				F49F0A1828D4A72100BC9EC6 /* PopPanel */,
 				F478AB1328CF3BBE008D838A /* Write */,
-				F46B2F0A28CAE1B500B0AB5D /* Detail */,
+				F47B445528D0539E003837F2 /* Panel */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -238,28 +219,6 @@
 			path = DataBase;
 			sourceTree = "<group>";
 		};
-		F46B2F0A28CAE1B500B0AB5D /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				F46B2F2128CAFBAE00B0AB5D /* DetailViewController.swift */,
-				F46B2F2428CAFBD100B0AB5D /* DetailView.swift */,
-				F46B2F2628CAFC7100B0AB5D /* DetailCell.swift */,
-				F478AB0C28CF37A9008D838A /* DailyTopicViewController */,
-				F46B2F0B28CAE1B700B0AB5D /* ListContainerView */,
-			);
-			path = Detail;
-			sourceTree = "<group>";
-		};
-		F46B2F0B28CAE1B700B0AB5D /* ListContainerView */ = {
-			isa = PBXGroup;
-			children = (
-				F4E173C528CDC38D00D117E9 /* ListViewController.swift */,
-				F478AB0A28CF3415008D838A /* ListView.swift */,
-				F478AB0828CF2EA9008D838A /* ListCell.swift */,
-			);
-			path = ListContainerView;
-			sourceTree = "<group>";
-		};
 		F46B2F1028CAE30B00B0AB5D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,16 +271,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		F478AB0C28CF37A9008D838A /* DailyTopicViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F478AB0D28CF38E9008D838A /* DailyTopicViewController.swift */,
-				F478AB0F28CF395B008D838A /* DailyTopicView.swift */,
-				F478AB1128CF3965008D838A /* DailyTopicCell.swift */,
-			);
-			path = DailyTopicViewController;
 			sourceTree = "<group>";
 		};
 		F478AB1328CF3BBE008D838A /* Write */ = {
@@ -446,23 +395,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F46B2F2228CAFBAE00B0AB5D /* DetailViewController.swift in Sources */,
-				F478AB1228CF3965008D838A /* DailyTopicCell.swift in Sources */,
-				F46B2F2528CAFBD100B0AB5D /* DetailView.swift in Sources */,
 				F47B445D28D0757D003837F2 /* Item.swift in Sources */,
-				F46B2F2728CAFC7100B0AB5D /* DetailCell.swift in Sources */,
-				F478AB0E28CF38E9008D838A /* DailyTopicViewController.swift in Sources */,
-				F478AB0928CF2EA9008D838A /* ListCell.swift in Sources */,
 				F46B2F0F28CAE2DC00B0AB5D /* BaseViewController.swift in Sources */,
 				F46B2F1928CAE3D600B0AB5D /* MainView.swift in Sources */,
 				F46B2EF128CADFE600B0AB5D /* MainViewController.swift in Sources */,
 				F4E3358928D2E6A500BE64A7 /* FloatingPanelLayout.swift in Sources */,
-				F478AB0B28CF3415008D838A /* ListView.swift in Sources */,
 				F478AB1728CF3CA6008D838A /* WriteView.swift in Sources */,
 				F46B2F2F28CB14C200B0AB5D /* TopicViewController.swift in Sources */,
 				F4E173C428CDB34D00D117E9 /* PageView.swift in Sources */,
-				F478AB1028CF395B008D838A /* DailyTopicView.swift in Sources */,
-				F4E173C628CDC38D00D117E9 /* ListViewController.swift in Sources */,
 				F47B445F28D07584003837F2 /* Section.swift in Sources */,
 				F46B2F1428CAE32E00B0AB5D /* UIViewController.swift in Sources */,
 				F4E173C128CDB28F00D117E9 /* PageViewController.swift in Sources */,
