@@ -13,7 +13,6 @@ class TopicView: BaseView {
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.alwaysBounceVertical = false
-        //view.backgroundColor = .red
         return view
     }()
     
@@ -23,7 +22,6 @@ class TopicView: BaseView {
         return view
     }()
     
-    
     func configureCollectionViewLayout() -> UICollectionViewLayout {
         let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .estimated(128), heightDimension: .fractionalHeight(1.0))
         let itemLayout = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
@@ -31,6 +29,7 @@ class TopicView: BaseView {
         let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupLayoutSize, subitems: [itemLayout])
         let sectionLayout = NSCollectionLayoutSection(group: groupLayout)
         sectionLayout.orthogonalScrollingBehavior = .continuous
+        
         sectionLayout.contentInsets.leading = 16
         sectionLayout.contentInsets.trailing = 16
         sectionLayout.interGroupSpacing = 16
@@ -38,11 +37,10 @@ class TopicView: BaseView {
     }
     
     override func configure() {
-        self.addSubview(collectionView)
-        self.addSubview(dividerView)
+        [collectionView, dividerView].forEach { self.addSubview($0) }
     }
     
-    
+
     override func setConstraints() {
         collectionView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide)

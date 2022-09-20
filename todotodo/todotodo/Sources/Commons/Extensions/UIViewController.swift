@@ -31,5 +31,13 @@ extension UIViewController {
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-    
+}
+
+extension UIViewController {
+    func presentAlertController(_ title: String) {
+        let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "확인", style: .cancel)
+        alert.addAction(cancel)
+        present(alert, animated: false)
+    }
 }

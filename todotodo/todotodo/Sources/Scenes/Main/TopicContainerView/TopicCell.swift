@@ -10,31 +10,19 @@ import SnapKit
 
 class TopicCell: BaseCollectionViewCell {
     
-    
     let label: UILabel = {
         let view = UILabel()
         //view.backgroundColor = .brown
         view.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return view
     }()
-    
 
-    
-    
     let selectionView: UIView = {
         let view = UIView()
         view.backgroundColor = .label
         view.isHidden = true
         return view
     }()
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-        invalidateCell()
-    }
     
     override var isSelected: Bool {
         didSet {
@@ -46,7 +34,6 @@ class TopicCell: BaseCollectionViewCell {
         selectionView.isHidden = !isSelected
     }
     
-    
     override func configure() {
         [selectionView, label].forEach { self.addSubview($0) }
     }
@@ -55,25 +42,16 @@ class TopicCell: BaseCollectionViewCell {
         label.snp.makeConstraints {
             $0.center.equalTo(self)
         }
-        
         selectionView.snp.makeConstraints {
             $0.height.equalTo(2)
             $0.leading.trailing.equalTo(self).inset(20)
             $0.bottom.equalTo(self)
-            
         }
     }
     
-    
-    func configureCell(itemIdentifier: String) {
-        label.text = itemIdentifier
-    }
-    
-    
-    
-    
-    
-    
+    func configureCell(itemIdentifier: Month) {
+        label.text = itemIdentifier.title
+    }  
 }
 
 

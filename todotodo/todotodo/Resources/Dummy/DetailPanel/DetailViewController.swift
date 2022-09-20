@@ -11,9 +11,9 @@ class DetailViewController: BaseViewController {
     
     let detailView = DetailView()
     
-    var collectionViewDataSource: UICollectionViewDiffableDataSource<SectionWeek, ItemDay>!
+    var collectionViewDataSource: UICollectionViewDiffableDataSource<SectionWeek, Item>!
     
-    var sections = SectionWeek.allSections
+//    var sections = SectionWeek.allSections
 
     
     override func loadView() {
@@ -23,7 +23,7 @@ class DetailViewController: BaseViewController {
     override func configure() {
         configureCollectionViewDataSource()
         
-        applySnapshot()
+        //applySnapshot()
         
         
         
@@ -49,9 +49,9 @@ extension DetailViewController {
     func configureCollectionViewDataSource() {
         
         //1
-        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell,ItemDay> { cell,  indexPath, itemIdentifier in
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell,Item> { cell,  indexPath, itemIdentifier in
             var contentConfiguration = cell.defaultContentConfiguration()
-            contentConfiguration.text = itemIdentifier.dateStringLable
+//            contentConfiguration.text = itemIdentifier.dateStringLable
             contentConfiguration.secondaryTextProperties.color = .secondaryLabel
             cell.contentConfiguration = contentConfiguration
         }
@@ -78,16 +78,16 @@ extension DetailViewController {
     
     
     
-    func applySnapshot(animatingDifferences: Bool = true) {
-        //makeNumberOfWeeksPerMonth(month: month)
-        var snapshot = collectionViewDataSource.snapshot()
-        snapshot.appendSections(sections)
-        sections.forEach { section in
-            snapshot.appendItems(section.days, toSection: section)
-        }
-        collectionViewDataSource.apply(snapshot) { [weak self] in
-            guard let this = self else { return }
-            this.detailView.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
-        }
-    }
+//    func applySnapshot(animatingDifferences: Bool = true) {
+//        //makeNumberOfWeeksPerMonth(month: month)
+//        var snapshot = collectionViewDataSource.snapshot()
+//        snapshot.appendSections(sections)
+//        sections.forEach { section in
+////            snapshot.appendItems(section.days, toSection: section)
+//        }
+//        collectionViewDataSource.apply(snapshot) { [weak self] in
+//            guard let this = self else { return }
+//            this.detailView.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
+//        }
+//    }
 }

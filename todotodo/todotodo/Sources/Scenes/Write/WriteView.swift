@@ -9,127 +9,56 @@ import UIKit
 import SnapKit
 
 class WriteView: BaseView {
-
     
-    lazy var titleLabel: UILabel = {
-        let view = UILabel()
-        view.backgroundColor = .lightGray
-        view.layer.cornerRadius = 8
-        view.layer.masksToBounds = true
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 1
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    lazy var titleLabelTextField: UITextField = {
-        let view = UITextField()
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    lazy var dateLabel: UILabel = {
-        let view = UILabel()
-        view.backgroundColor = .lightGray
-        view.layer.cornerRadius = 8
-        view.layer.masksToBounds = true
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 1
-        
-        return view
-    }()
-
-    lazy var dateLabelTextField: UITextField = {
-        let view = UITextField()
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    lazy var statusLable: UILabel = {
-        let view = UILabel()
-        view.backgroundColor = .lightGray
-        view.layer.cornerRadius = 8
-        view.layer.masksToBounds = true
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 1
-        return view
-    }()
-    lazy var stackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.distribution = .fillEqually
-        view.spacing = 8
-        return view
-    }()
-    
-    lazy var completeButton: UIButton = {
+    let dateButton: UIButton = {
         let view = UIButton()
-        view.setTitle("완료", for: .normal)
-        view.backgroundColor = .red
+        view.backgroundColor = .link
+        view.setTitle("날짜선택", for: .normal)
+        view.setTitleColor(.white, for: .normal)
         return view
     }()
-    lazy var deleteButton: UIButton = {
-        let view = UIButton()
-        view.setTitle("삭제", for: .normal)
+    
+    let dateLable: UILabel = {
+        let view = UILabel()
+        view.textColor = .black
+        view.backgroundColor = .brown
+        return view
+    }()
+    
+    let contentTextField: UITextField = {
+        let view = UITextField()
         view.backgroundColor = .black
+        view.placeholder = "할 일을 입력해주세요"
         return view
     }()
-
-    
-    
-    
     
     
     override func configure() {
-        [titleLabel, titleLabelTextField].forEach { self.addSubview($0) }
-        [dateLabel, dateLabelTextField].forEach { self.addSubview($0) }
-        self.addSubview(stackView)
-        [completeButton, deleteButton].forEach { stackView.addArrangedSubview($0) }
+        [dateButton, dateLable].forEach { self.addSubview($0) }
+        [contentTextField].forEach { self.addSubview($0) }
     }
-        
+    
+    
     override func setConstraints() {
-        
-        
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(20)
-            $0.width.equalTo(80)
+        dateButton.snp.makeConstraints {
+            $0.top.leading.equalTo(self.safeAreaLayoutGuide).inset(20)
+            $0.width.equalTo(88)
+            $0.height.equalTo(55)
+        }
+        dateLable.snp.makeConstraints {
+            $0.centerY.equalTo(dateButton.snp.centerY)
+            $0.leading.equalTo(dateButton.snp.trailing).offset(10)
+            $0.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
             $0.height.equalTo(44)
-            $0.leading.equalTo(self).offset(20)
         }
         
-        titleLabelTextField.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+        contentTextField.snp.makeConstraints {
+            $0.top.equalTo(dateLable.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(self).inset(20)
             $0.height.equalTo(44)
+            
         }
-        
-        dateLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabelTextField.snp.bottom).offset(20)
-            $0.width.equalTo(80)
-            $0.height.equalTo(44)
-            $0.leading.equalTo(self).offset(20)
-        }
-        
-        dateLabelTextField.snp.makeConstraints {
-            $0.top.equalTo(dateLabel.snp.bottom).offset(20)
-            $0.leading.trailing.equalTo(self).inset(20)
-            $0.height.equalTo(44)
-        }
-        
-        
-        
-        
-        
-        stackView.snp.makeConstraints {
-            $0.top.equalTo(dateLabelTextField.snp.bottom).offset(20)
-            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(20)
-            $0.width.equalTo(200)
-            $0.height.equalTo(54)
-        }
-        
-        
-        
     }
+    
+    
 }
-
-

@@ -32,57 +32,59 @@ extension TodoStatus {
 
 
 
-class PopPanelViewController: BaseViewController {
-    let popPanelView = PopPanelView()
-
+class MainPanelViewController: BaseViewController {
+    
+    let mainPanelView = MainPanelView()
     var collectionViewDataSource: UICollectionViewDiffableDataSource<TodoStatus, Item>!
-
     var sections = TodoStatus.allSections
-
+    
     override func loadView() {
-        self.view = popPanelView
+        self.view = mainPanelView
     }
     
     override func configure() {
-        popPanelView.backgroundColor = .red
+        mainPanelView.backgroundColor = .red
         configureCollectionViewDataSource()
         applySnapshot()
-        
-        
-        popPanelView.collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.identifier)
+        registerSectionHeaderView()
     }
-
 }
 
-extension PopPanelViewController {
-    func configureCollectionViewDataSource() {
 
-        popPanelView.backgroundColor = .red
+
+
+
+extension MainPanelViewController {
+    
+    func registerSectionHeaderView() {
+        mainPanelView.collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.identifier)
+    }
+    
+    func configureCollectionViewDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell,Item> { cell,  indexPath, itemIdentifier in
             var contentConfiguration = cell.defaultContentConfiguration()
             contentConfiguration.text = itemIdentifier.todo
             
             contentConfiguration.secondaryTextProperties.color = .secondaryLabel
-            //cell.backgroundColor = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1.0)
+            
             cell.contentConfiguration = contentConfiguration
             
-            var backgroundConfig = UIBackgroundConfiguration.listGroupedCell()
-            /* Set a beige background color to use the cell's tint color. */
-            backgroundConfig.backgroundColor = UIColor(named: "CellColor")
-            backgroundConfig.strokeColor = .green
-            cell.backgroundConfiguration = backgroundConfig
+//            var backgroundConfig = UIBackgroundConfiguration.listGroupedCell()
+//            backgroundConfig.backgroundColor = UIColor(named: "CellColor")
+//            backgroundConfig.strokeColor = .green
+//            cell.backgroundConfiguration = backgroundConfig
             
-//            var background = UIBackgroundConfiguration.listGroupedCell()
-//              background.backgroundColorTransformer = UIConfigurationColorTransformer { [weak cell] c in
-//                guard let state = cell?.configurationState else { return .darkGray }
-//                return state.isSelected || state.isHighlighted ? .green : .clear
-//              }
-//              cell.backgroundConfiguration = background
+            var background = UIBackgroundConfiguration.listGroupedCell()
+              background.backgroundColorTransformer = UIConfigurationColorTransformer { [weak cell] c in
+                guard let state = cell?.configurationState else { return .darkGray }
+                return state.isSelected || state.isHighlighted ? .green : .clear
+              }
+              cell.backgroundConfiguration = background
         }
         
         
         //2
-        collectionViewDataSource = .init(collectionView: popPanelView.collectionView) { collectionView, indexPath, itemIdentifier in
+        collectionViewDataSource = .init(collectionView: mainPanelView.collectionView) { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             
             return cell
@@ -114,7 +116,7 @@ extension PopPanelViewController {
         }
         collectionViewDataSource.apply(snapshot) { [weak self] in
             guard let this = self else { return }
-            this.popPanelView.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
+            this.mainPanelView.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
         }
     }
 }

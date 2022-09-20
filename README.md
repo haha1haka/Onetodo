@@ -94,7 +94,19 @@
 
 
 
-### 9월 16일
+### 9월 17일토
+
+
+
+![스크린샷 2022-09-17 15.54.07](/Users/haha1haka/Desktop/스크린샷/스크린샷 2022-09-17 15.54.07.png)
+
+
+
+[https://blog.dehol.kr/modern-collection-view/](https://blog.dehol.kr/modern-collection-view/)
+
+
+
+
 
 
 
@@ -113,6 +125,12 @@
 
 
 <br/><br/><br/>
+
+
+
+
+
+### 9월 18일
 
 
 
