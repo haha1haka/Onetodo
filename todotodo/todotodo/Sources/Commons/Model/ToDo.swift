@@ -9,8 +9,8 @@ import Foundation
 import RealmSwift
 
 
-enum Month: CaseIterable {
-    case jan, feb, mar, apr,
+enum Month:Int, CaseIterable {
+    case jan = 1, feb, mar, apr,
          may, jun, jul, aug,
          sep, oct, nov, dec
     
@@ -35,8 +35,8 @@ enum Month: CaseIterable {
 //struct SectionWeek: Hashable {
 //    var title: String
 //}
-enum SectionWeek: CaseIterable {
-    case week1, week2, week3, week4, week5, week6, week7
+enum SectionWeek:Int, CaseIterable {
+    case week1 = 1, week2, week3, week4, week5, week6, week7
     
     var title: String {
         switch self {
@@ -61,17 +61,20 @@ enum SectionWeek: CaseIterable {
 class ToDo: Object {
     @Persisted var content: String
     @Persisted var date: Date
-    @Persisted var dateString: String
+    @Persisted var dateMonth: String
+    @Persisted var dateWeek: String
+    //@Persisted var date: String
     @Persisted var completed: Bool
     @Persisted var priority: Int
 
     @Persisted(primaryKey: true) var objectId: ObjectId
     
-    convenience init(content: String, date: Date, dateString: String, completed: Bool, priority: Int) {
+    convenience init(content: String, date: Date, dateMonth: String, dateWeek: String, completed: Bool, priority: Int) {
         self.init()
         self.content = content
         self.date = date
-        self.dateString = dateString
+        self.dateMonth = dateMonth
+        self.dateWeek = dateWeek
         self.completed = false
         self.priority = priority
     }

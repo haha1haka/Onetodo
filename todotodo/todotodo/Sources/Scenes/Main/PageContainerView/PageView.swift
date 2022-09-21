@@ -15,6 +15,7 @@ class PageView: BaseView {
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.alwaysBounceVertical = false
+        
         return view
     }()
     // MARK: - 3
@@ -48,6 +49,14 @@ class PageView: BaseView {
 
             return collectionLayoutSection
         }, configuration: configuration)
+        
+        // MARK: - 3
+//        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
+//        listConfiguration.headerMode = .supplementary
+//        listConfiguration.backgroundColor = .black
+//
+//        return UICollectionViewCompositionalLayout.list(using: listConfiguration)
+        
     }
     
 //    func configureCollectionViewLayout() -> UICollectionViewLayout {

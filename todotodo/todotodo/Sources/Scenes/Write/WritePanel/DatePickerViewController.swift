@@ -22,6 +22,7 @@ class DatePickerViewController: BaseViewController {
         picker.timeZone = NSTimeZone.local
         picker.tintColor = .link
         picker.preferredDatePickerStyle = .inline
+        
         return picker
     }()
     

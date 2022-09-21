@@ -10,7 +10,8 @@ import SnapKit
 import FloatingPanel
 
 class MainViewController: BaseViewController {
-        
+
+    
     lazy var pageViewController: UIPageViewController = {
         let pageViewController = UIPageViewController()
         pageViewController.delegate = self
@@ -28,10 +29,20 @@ class MainViewController: BaseViewController {
     var contentVC: MainPanelViewController!
     
     var pageContentViewControllers: [UIViewController] = []
-    var topicDataStore = Month.allCases.map { $0.title } // ["1월", ... , "12월"]
+    var topicDataStore = Month.allCases.map { $0 } // ["1월", ... , "12월"]
     var selectedMonth: Month!
 
+    
+    var isSearchControllerFiltering: Bool {
+        guard let searchController = self.navigationItem.searchController, let searchBarText = self.navigationItem.searchController?.searchBar.text else { return false }
+        let isActive = searchController.isActive
+        let hasText = searchBarText.isEmpty == false
+        return isActive && hasText
+    }
+    
+    
     override func configure() {
+        setupSearchController()
         configureUINavigationBar()
         configureNavigationBarButtonItem()
         configureFirstPageViewController()
@@ -44,6 +55,16 @@ class MainViewController: BaseViewController {
 
 extension MainViewController {
 
+    
+    func setupSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
+    
     func configureUINavigationBar() {
         self.navigationItem.title = "todotodo"
         let appearance = UINavigationBarAppearance()
@@ -66,7 +87,7 @@ extension MainViewController {
     func configureFirstPageViewController() {
         pageContentViewControllers = topicDataStore.map { month in
             let vc = PageViewController()
-            vc.dataStore.append(month)
+            vc.isSelectedMonth = month
             return vc
         }
         print("✅\(pageContentViewControllers)")
@@ -111,6 +132,8 @@ extension MainViewController {
             self.didMove(toParent: self)
         }
     }
+    
+    
 }
 
 
@@ -120,9 +143,15 @@ extension MainViewController {
 extension MainViewController: TopicViewControllerEvent {
     //didSelectItem 받아오기
     func topic(_ viewController: TopicViewController, didSelectItem: Month) {
-        if let selectedIndex = topicDataStore.firstIndex(of: didSelectItem.title) {
+        print(didSelectItem)
+        print("🟪🟪🟪🟪\(didSelectItem)")
+        if let selectedIndex = topicDataStore.firstIndex(of: didSelectItem) {
+            //print("🟧🟧\(selectedIndex)")
             pageViewController.setViewControllers([pageContentViewControllers[selectedIndex]], direction: .forward, animated: false)
+            //pageContentViewControllers[selectedIndex].
+            //pageViewController.collectionViewDataSource
         }
+
     }
 }
 
@@ -177,8 +206,11 @@ extension MainViewController: FloatingPanelControllerDelegate {
 }
 
 
-
-
+extension MainViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print("fdfd")
+    }
+}
 
 
 

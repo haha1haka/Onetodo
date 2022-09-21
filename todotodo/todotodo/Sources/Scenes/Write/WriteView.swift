@@ -46,7 +46,7 @@ class WriteView: BaseView {
             $0.height.equalTo(55)
         }
         dateLable.snp.makeConstraints {
-            $0.centerY.equalTo(dateButton.snp.centerY)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(30)
             $0.leading.equalTo(dateButton.snp.trailing).offset(10)
             $0.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
             $0.height.equalTo(44)

@@ -70,6 +70,33 @@ class ToDoRepository: ToDoDataBaseRepository {
     }
     
     
+    func filterMonth(currentMonth: Month) -> Results<ToDo> {
+        //return database.objects(ToDo.self).filter($0.date.month == Date().month)
+        print("🟥\(currentMonth.rawValue)")
+        return database.objects(ToDo.self).filter("dateMonth == '\(currentMonth.rawValue)'")
+    }
+    
+    func filterWeek(currentMonth: Month, currnetWeek: SectionWeek) -> Results<ToDo> {
+        return filterMonth(currentMonth: currentMonth).filter("dateWeek == '\(currnetWeek.rawValue)'")
+    }
+    
+//    func fistWeek(currenMonth: Month) -> Results<ToDo> {
+//        return filterMonth(currentMonth: currenMonth).filter(<#T##isIncluded: (ToDo) -> Bool##(ToDo) -> Bool#>)
+//    }
+    
+    
+//    func makeNumberOfWeeksPerMonth(month: Int)  {
+//        let pointDateComponent = DateComponents( year: 2022, month: month)
+//        let calendar2 = Calendar.current
+//        let hateDay = calendar2.date(from: pointDateComponent)
+//        
+//        let calendar = Calendar.current
+//        let weekRange = calendar.range(of: .weekOfMonth, in: .month, for: hateDay!)
+//        for i in weekRange! {
+//            a.append(String(i) + "주")
+//        }
+//    }
+    
 //    //- 패치필터(고정,비고정)
 //    func fetchFilter(in object: Results<Memo>, isFixed: Bool) -> Results<Memo> {
 //        return object.filter("isFixed == \(isFixed)").sorted(byKeyPath: "date", ascending: false)

@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4006DDB28DAD5D400F8ECC9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4006DDA28DAD5D400F8ECC9 /* Date.swift */; };
 		F40FC49B28D59BE7005D2A6A /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FC49A28D59BE7005D2A6A /* ToDo.swift */; };
 		F40FC49E28D59F46005D2A6A /* ToDoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FC49D28D59F46005D2A6A /* ToDoRepository.swift */; };
 		F40FC4A128D5A548005D2A6A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F40FC4A028D5A548005D2A6A /* Realm */; };
 		F40FC4A328D5A548005D2A6A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F40FC4A228D5A548005D2A6A /* RealmSwift */; };
 		F42DDFD528D958310084538E /* Test2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42DDFD428D958310084538E /* Test2VC.swift */; };
 		F42DDFD728D977130084538E /* Test3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42DDFD628D977130084538E /* Test3VC.swift */; };
+		F446099628DAB10A006CD694 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446099528DAB10A006CD694 /* Results.swift */; };
 		F44EC49E28D7609E008BB438 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44EC49D28D7609E008BB438 /* Week.swift */; };
 		F45108B928D567DF00D3DA94 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45108B828D567DF00D3DA94 /* DetailViewController.swift */; };
 		F45108BB28D5681000D3DA94 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45108BA28D5681000D3DA94 /* DetailView.swift */; };
@@ -49,6 +51,7 @@
 		F49F0A1E28D4A94400BC9EC6 /* MainPanelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F0A1D28D4A94400BC9EC6 /* MainPanelCell.swift */; };
 		F4B85A8D28D0A4FF00311A29 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F4B85A8C28D0A4FF00311A29 /* SnapKit */; };
 		F4C66FEE28D85B2D00BC7E40 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C66FED28D85B2D00BC7E40 /* DatePickerViewController.swift */; };
+		F4DC37CF28DB5A6C004FEA87 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC37CE28DB5A6C004FEA87 /* PageCell.swift */; };
 		F4E173C128CDB28F00D117E9 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C028CDB28F00D117E9 /* PageViewController.swift */; };
 		F4E173C428CDB34D00D117E9 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C328CDB34D00D117E9 /* PageView.swift */; };
 		F4E3358728D2E56F00BE64A7 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = F4E3358628D2E56F00BE64A7 /* FloatingPanel */; };
@@ -59,10 +62,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F4006DDA28DAD5D400F8ECC9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F40FC49A28D59BE7005D2A6A /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		F40FC49D28D59F46005D2A6A /* ToDoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRepository.swift; sourceTree = "<group>"; };
 		F42DDFD428D958310084538E /* Test2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2VC.swift; sourceTree = "<group>"; };
 		F42DDFD628D977130084538E /* Test3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test3VC.swift; sourceTree = "<group>"; };
+		F446099528DAB10A006CD694 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		F44EC49D28D7609E008BB438 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		F45108B828D567DF00D3DA94 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F45108BA28D5681000D3DA94 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -100,6 +105,7 @@
 		F49F0A1B28D4A81300BC9EC6 /* MainPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPanelView.swift; sourceTree = "<group>"; };
 		F49F0A1D28D4A94400BC9EC6 /* MainPanelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPanelCell.swift; sourceTree = "<group>"; };
 		F4C66FED28D85B2D00BC7E40 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		F4DC37CE28DB5A6C004FEA87 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		F4E173C028CDB28F00D117E9 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		F4E173C328CDB34D00D117E9 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		F4F2BA3D28D8BD7A00A31F73 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +271,7 @@
 				F46B2F1128CAE31800B0AB5D /* Foundation */,
 				F46B2F1228CAE32000B0AB5D /* UIKit */,
 				F4730BC528D8836C0032C32E /* FloatingPanel */,
+				F446099528DAB10A006CD694 /* Results.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -273,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				F46B2F1528CAE33600B0AB5D /* NSObject.swift */,
+				F4006DDA28DAD5D400F8ECC9 /* Date.swift */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -382,6 +390,7 @@
 			children = (
 				F4E173C028CDB28F00D117E9 /* PageViewController.swift */,
 				F4E173C328CDB34D00D117E9 /* PageView.swift */,
+				F4DC37CE28DB5A6C004FEA87 /* PageCell.swift */,
 			);
 			path = PageContainerView;
 			sourceTree = "<group>";
@@ -484,8 +493,10 @@
 				F40FC49B28D59BE7005D2A6A /* ToDo.swift in Sources */,
 				F4C66FEE28D85B2D00BC7E40 /* DatePickerViewController.swift in Sources */,
 				F49F0A1E28D4A94400BC9EC6 /* MainPanelCell.swift in Sources */,
+				F446099628DAB10A006CD694 /* Results.swift in Sources */,
 				F46B2F1628CAE33600B0AB5D /* NSObject.swift in Sources */,
 				F478AB1528CF3BE4008D838A /* WriteViewController.swift in Sources */,
+				F4006DDB28DAD5D400F8ECC9 /* Date.swift in Sources */,
 				F47B445928D053B9003837F2 /* PanelView.swift in Sources */,
 				F46B2F3328CB167600B0AB5D /* TopicCell.swift in Sources */,
 				F49F0A1C28D4A81300BC9EC6 /* MainPanelView.swift in Sources */,
@@ -507,6 +518,7 @@
 				F45108BB28D5681000D3DA94 /* DetailView.swift in Sources */,
 				F47B446128D07594003837F2 /* SectionHeaderReusableView.swift in Sources */,
 				F46B2F1E28CAE9E800B0AB5D /* PageCell.swift in Sources */,
+				F4DC37CF28DB5A6C004FEA87 /* PageCell.swift in Sources */,
 				F46B2F3128CB14CC00B0AB5D /* TopicView.swift in Sources */,
 				F47B445728D053B3003837F2 /* PanelViewController.swift in Sources */,
 				F49F0A1A28D4A73900BC9EC6 /* MainPanelViewController.swift in Sources */,
