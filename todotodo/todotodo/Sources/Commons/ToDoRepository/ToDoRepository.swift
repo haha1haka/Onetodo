@@ -80,6 +80,13 @@ class ToDoRepository: ToDoDataBaseRepository {
         return filterMonth(currentMonth: currentMonth).filter("dateWeek == '\(currnetWeek.rawValue)'")
     }
     
+    func filterTodoDay(object: ToDo, currentMonth: Month, currentToday: Int) -> Results<ToDo> {
+        return filterMonth(currentMonth: currentMonth).filter("dateToday == '\(currentToday)'")
+    }
+    
+    
+    
+    
 //    func fistWeek(currenMonth: Month) -> Results<ToDo> {
 //        return filterMonth(currentMonth: currenMonth).filter(<#T##isIncluded: (ToDo) -> Bool##(ToDo) -> Bool#>)
 //    }

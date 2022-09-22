@@ -22,72 +22,25 @@ class PageView: BaseView {
     func configureCollectionViewLayout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
 
-
-
         return UICollectionViewCompositionalLayout.init(sectionProvider: { sectionIndex, environment in
+            //1️⃣ Item, Group Section Layout
+            let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(128), heightDimension: .estimated(128))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.edgeSpacing = .init(leading: .fixed(8), top: .fixed(8), trailing: .fixed(8), bottom: .fixed(8))
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(128))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            
 
-            let collectionLayoutItemSize = NSCollectionLayoutSize(widthDimension: .estimated(128), heightDimension: .estimated(128))
-            let collectionLayoutItem = NSCollectionLayoutItem(layoutSize: collectionLayoutItemSize)
-            let collectionLayoutGroupSize = collectionLayoutItemSize
-            let collectionLayoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: collectionLayoutGroupSize,
-                                                                           subitems: [collectionLayoutItem])
-            
-            let collectionLayoutSection = NSCollectionLayoutSection(group: collectionLayoutGroup)
-            collectionLayoutSection.orthogonalScrollingBehavior = .continuous
-            
-            collectionLayoutSection.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
-            collectionLayoutSection.interGroupSpacing = 16
-
-            
-            
-            //헤더뷰3🥹
+            //2️⃣ Header Layout
             let headerItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(128))
-            let headerItemLayout = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize,
-                                                                               elementKind: UICollectionView.elementKindSectionHeader,
-                                                                               alignment: .top)
-            collectionLayoutSection.boundarySupplementaryItems = [headerItemLayout]
-
-            return collectionLayoutSection
+            let headerItemLayout = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+            section.boundarySupplementaryItems = [headerItemLayout]
+            return section
         }, configuration: configuration)
-        
-        // MARK: - 3
-//        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
-//        listConfiguration.headerMode = .supplementary
-//        listConfiguration.backgroundColor = .black
-//
-//        return UICollectionViewCompositionalLayout.list(using: listConfiguration)
+
         
     }
-    
-//    func configureCollectionViewLayout() -> UICollectionViewLayout {
-//
-//        let configuration = UICollectionViewCompositionalLayoutConfiguration()
-//
-//        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(
-//            sectionProvider: { sectionIndex, environment in
-//
-//                let collectionLayoutItemSize = NSCollectionLayoutSize(widthDimension: .estimated(128), heightDimension: .estimated(128))
-//                let collectionLayoutItem = NSCollectionLayoutItem(layoutSize: collectionLayoutItemSize)
-//                let collectionLayoutGroupSize = collectionLayoutItemSize
-//                let collectionLayoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: collectionLayoutGroupSize,
-//                                                                               subitems: [collectionLayoutItem])
-//                let collectionLayoutSection = NSCollectionLayoutSection(group: collectionLayoutGroup)
-//                collectionLayoutSection.orthogonalScrollingBehavior = .continuous
-//                collectionLayoutSection.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
-//                collectionLayoutSection.interGroupSpacing = 16
-//
-//                let headerItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(128))
-//                let headerItemLayout = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize,
-//                                                                                   elementKind: UICollectionView.elementKindSectionHeader,
-//                                                                                   alignment: .top)
-//                collectionLayoutSection.boundarySupplementaryItems = [headerItemLayout]
-//
-//                return collectionLayoutSection
-//            },
-//            configuration: configuration
-//        )
-//        //collectionView.contentInset.top = 24
-//    }
 
 
     override func configure() {
@@ -102,63 +55,4 @@ class PageView: BaseView {
     }
 }
 
-
-
-
-
-
-// MARK: -1
-//        return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) in
-//            let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
-//            let itemLayout = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
-//            itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
-//            let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(128))
-//            let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupLayoutSize, subitems: [itemLayout,itemLayout,itemLayout,itemLayout,itemLayout,itemLayout,itemLayout])
-//
-//            let sectionLayout = NSCollectionLayoutSection(group: groupLayout)
-//            //sectionLayout.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 2, bottom: 0, trailing: 2)
-//            sectionLayout.contentInsets.leading = 16
-//            sectionLayout.contentInsets.trailing = 16
-//            sectionLayout.interGroupSpacing = 16
-//
-//            let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(8))
-//            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerFooterSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-//
-//            sectionLayout.boundarySupplementaryItems = [sectionHeader]
-//
-//            return sectionLayout
-//        }
-
-// MARK: -2
-//        let configuration = UICollectionViewCompositionalLayoutConfiguration()
-//
-//
-//
-//
-//        return UICollectionViewCompositionalLayout.init(sectionProvider: { sectionIndex, environment in
-//
-//            let collectionLayoutItemSize = NSCollectionLayoutSize(widthDimension: .estimated(128), heightDimension: .estimated(128))
-//            let collectionLayoutItem = NSCollectionLayoutItem(layoutSize: collectionLayoutItemSize)
-//            let collectionLayoutGroupSize = collectionLayoutItemSize
-//            let collectionLayoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: collectionLayoutGroupSize,
-//                                                                           subitems: [collectionLayoutItem])
-//            let collectionLayoutSection = NSCollectionLayoutSection(group: collectionLayoutGroup)
-//            collectionLayoutSection.orthogonalScrollingBehavior = .continuous
-//            collectionLayoutSection.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
-//            collectionLayoutSection.interGroupSpacing = 16
-//
-//            let headerItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(128))
-//            let headerItemLayout = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize,
-//                                                                               elementKind: UICollectionView.elementKindSectionHeader,
-//                                                                               alignment: .top)
-//            collectionLayoutSection.boundarySupplementaryItems = [headerItemLayout]
-//
-//            return collectionLayoutSection
-//        }, configuration: configuration)
-
-
-// MARK: - 3
-//var listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
-//listConfiguration.headerMode = .supplementary
-//return UICollectionViewCompositionalLayout.list(using: listConfiguration)
 

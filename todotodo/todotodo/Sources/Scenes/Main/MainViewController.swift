@@ -46,6 +46,7 @@ class MainViewController: BaseViewController {
         configureUINavigationBar()
         configureNavigationBarButtonItem()
         configureFirstPageViewController()
+        configureFirstPageViewController()
         configureTopicViewController()
         configurePageViewControllers()
         configurePanelView()
@@ -193,14 +194,21 @@ extension MainViewController: UIPageViewControllerDataSource, UIPageViewControll
 
 
 
-
+    //.full: FloatingPanelLayoutAnchor(absoluteInset: 0.0, edge: .top, referenceGuide: .safeArea),
 // MARK: - FloatingPanelControllerDelegate
 extension MainViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidMove(_ fpc: FloatingPanelController) {
-        if fpc.surfaceLocation.y <= fpc.surfaceLocation(for: .full).y + 100 {
-            print("🟥🟥🟥🟥🟥🟥")
+        print(fpc.surfaceLocation.y , fpc.surfaceLocation(for: .full).y)
+        print(round(fpc.surfaceLocation.y))
+        if round(fpc.surfaceLocation.y) == fpc.surfaceLocation(for: .full).y {
+
+            print("🟥🟥🟥🟥🟥🟥\(fpc.surfaceLocation.y)")
+            
+            contentVC.fullScreenSnapShot()
+            
         } else {
             print("🟩🟩🟩🟩🟩🟩")
+            //contentVC.halfCurrentSnapShot()
         }
     }
 }

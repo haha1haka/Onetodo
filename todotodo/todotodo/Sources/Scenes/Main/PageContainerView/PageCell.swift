@@ -24,4 +24,7 @@ class PageCell: BaseCollectionViewCell {
             $0.top.leading.trailing.bottom.equalTo(self).inset(20)
         }
     }
+    func configureCell(itemIdentifier: ToDo) {
+        label.text = itemIdentifier.content
+    }
 }

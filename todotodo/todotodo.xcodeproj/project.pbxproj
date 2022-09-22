@@ -12,6 +12,7 @@
 		F40FC49E28D59F46005D2A6A /* ToDoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FC49D28D59F46005D2A6A /* ToDoRepository.swift */; };
 		F40FC4A128D5A548005D2A6A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F40FC4A028D5A548005D2A6A /* Realm */; };
 		F40FC4A328D5A548005D2A6A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F40FC4A228D5A548005D2A6A /* RealmSwift */; };
+		F427D81F28DC0ADD00D51282 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F427D81E28DC0ADD00D51282 /* UIColor.swift */; };
 		F42DDFD528D958310084538E /* Test2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42DDFD428D958310084538E /* Test2VC.swift */; };
 		F42DDFD728D977130084538E /* Test3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42DDFD628D977130084538E /* Test3VC.swift */; };
 		F446099628DAB10A006CD694 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446099528DAB10A006CD694 /* Results.swift */; };
@@ -28,7 +29,7 @@
 		F46B2F0F28CAE2DC00B0AB5D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F0E28CAE2DC00B0AB5D /* BaseViewController.swift */; };
 		F46B2F1428CAE32E00B0AB5D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1328CAE32E00B0AB5D /* UIViewController.swift */; };
 		F46B2F1628CAE33600B0AB5D /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1528CAE33600B0AB5D /* NSObject.swift */; };
-		F46B2F1E28CAE9E800B0AB5D /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1D28CAE9E800B0AB5D /* PageCell.swift */; };
+		F46B2F1E28CAE9E800B0AB5D /* PageCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1D28CAE9E800B0AB5D /* PageCell2.swift */; };
 		F46B2F2028CAEA1900B0AB5D /* BaseCollectionIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F1F28CAEA1900B0AB5D /* BaseCollectionIViewCell.swift */; };
 		F46B2F2F28CB14C200B0AB5D /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F2E28CB14C200B0AB5D /* TopicViewController.swift */; };
 		F46B2F3128CB14CC00B0AB5D /* TopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2F3028CB14CC00B0AB5D /* TopicView.swift */; };
@@ -41,7 +42,7 @@
 		F478AB1728CF3CA6008D838A /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478AB1628CF3CA6008D838A /* WriteView.swift */; };
 		F47B445728D053B3003837F2 /* PanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445628D053B3003837F2 /* PanelViewController.swift */; };
 		F47B445928D053B9003837F2 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445828D053B9003837F2 /* PanelView.swift */; };
-		F47B445B28D053D7003837F2 /* PanelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445A28D053D7003837F2 /* PanelCell.swift */; };
+		F47B445B28D053D7003837F2 /* PanelCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445A28D053D7003837F2 /* PanelCell2.swift */; };
 		F47B445D28D0757D003837F2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445C28D0757D003837F2 /* Item.swift */; };
 		F47B445F28D07584003837F2 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B445E28D07584003837F2 /* Section.swift */; };
 		F47B446128D07594003837F2 /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B446028D07594003837F2 /* SectionHeaderReusableView.swift */; };
@@ -65,6 +66,7 @@
 		F4006DDA28DAD5D400F8ECC9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F40FC49A28D59BE7005D2A6A /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		F40FC49D28D59F46005D2A6A /* ToDoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRepository.swift; sourceTree = "<group>"; };
+		F427D81E28DC0ADD00D51282 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		F42DDFD428D958310084538E /* Test2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2VC.swift; sourceTree = "<group>"; };
 		F42DDFD628D977130084538E /* Test3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test3VC.swift; sourceTree = "<group>"; };
 		F446099528DAB10A006CD694 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
@@ -83,7 +85,7 @@
 		F46B2F0E28CAE2DC00B0AB5D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F46B2F1328CAE32E00B0AB5D /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		F46B2F1528CAE33600B0AB5D /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
-		F46B2F1D28CAE9E800B0AB5D /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		F46B2F1D28CAE9E800B0AB5D /* PageCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell2.swift; sourceTree = "<group>"; };
 		F46B2F1F28CAEA1900B0AB5D /* BaseCollectionIViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionIViewCell.swift; sourceTree = "<group>"; };
 		F46B2F2E28CB14C200B0AB5D /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		F46B2F3028CB14CC00B0AB5D /* TopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicView.swift; sourceTree = "<group>"; };
@@ -96,7 +98,7 @@
 		F478AB1628CF3CA6008D838A /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		F47B445628D053B3003837F2 /* PanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelViewController.swift; sourceTree = "<group>"; };
 		F47B445828D053B9003837F2 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
-		F47B445A28D053D7003837F2 /* PanelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelCell.swift; sourceTree = "<group>"; };
+		F47B445A28D053D7003837F2 /* PanelCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelCell2.swift; sourceTree = "<group>"; };
 		F47B445C28D0757D003837F2 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F47B445E28D07584003837F2 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		F47B446028D07594003837F2 /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				F46B2F1328CAE32E00B0AB5D /* UIViewController.swift */,
+				F427D81E28DC0ADD00D51282 /* UIColor.swift */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -333,7 +336,7 @@
 		F4730BD228D892760032C32E /* Dummy */ = {
 			isa = PBXGroup;
 			children = (
-				F46B2F1D28CAE9E800B0AB5D /* PageCell.swift */,
+				F46B2F1D28CAE9E800B0AB5D /* PageCell2.swift */,
 				F45108B728D567CB00D3DA94 /* DetailPanel */,
 				F47B445528D0539E003837F2 /* Panel */,
 				F4F2BA3D28D8BD7A00A31F73 /* TestViewController.swift */,
@@ -366,7 +369,7 @@
 			children = (
 				F47B445628D053B3003837F2 /* PanelViewController.swift */,
 				F47B445828D053B9003837F2 /* PanelView.swift */,
-				F47B445A28D053D7003837F2 /* PanelCell.swift */,
+				F47B445A28D053D7003837F2 /* PanelCell2.swift */,
 				F47B445C28D0757D003837F2 /* Item.swift */,
 				F47B445E28D07584003837F2 /* Section.swift */,
 				F47B446028D07594003837F2 /* SectionHeaderReusableView.swift */,
@@ -509,7 +512,8 @@
 				F48E655E28D60E4100CF9A8B /* Month.swift in Sources */,
 				F42DDFD728D977130084538E /* Test3VC.swift in Sources */,
 				F46B2EED28CADFE600B0AB5D /* AppDelegate.swift in Sources */,
-				F47B445B28D053D7003837F2 /* PanelCell.swift in Sources */,
+				F47B445B28D053D7003837F2 /* PanelCell2.swift in Sources */,
+				F427D81F28DC0ADD00D51282 /* UIColor.swift in Sources */,
 				F4730BD128D889450032C32E /* SectionHeaderView.swift in Sources */,
 				F4730BCF28D884CA0032C32E /* FloatingPanelLayout.swift in Sources */,
 				F46B2EEF28CADFE600B0AB5D /* SceneDelegate.swift in Sources */,
@@ -517,7 +521,7 @@
 				F46B2F0D28CAE2D200B0AB5D /* BaseView.swift in Sources */,
 				F45108BB28D5681000D3DA94 /* DetailView.swift in Sources */,
 				F47B446128D07594003837F2 /* SectionHeaderReusableView.swift in Sources */,
-				F46B2F1E28CAE9E800B0AB5D /* PageCell.swift in Sources */,
+				F46B2F1E28CAE9E800B0AB5D /* PageCell2.swift in Sources */,
 				F4DC37CF28DB5A6C004FEA87 /* PageCell.swift in Sources */,
 				F46B2F3128CB14CC00B0AB5D /* TopicView.swift in Sources */,
 				F47B445728D053B3003837F2 /* PanelViewController.swift in Sources */,

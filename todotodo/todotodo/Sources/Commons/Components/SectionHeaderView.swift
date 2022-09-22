@@ -24,13 +24,13 @@ class SectionHeaderView: UICollectionReusableView {
         return label
     }()
     
-    
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // 3
         backgroundColor = .systemBackground
         addSubview(titleLabel)
+        
         self.backgroundColor = .clear
         
         titleLabel.snp.makeConstraints {
@@ -39,6 +39,7 @@ class SectionHeaderView: UICollectionReusableView {
             $0.bottom.equalTo(self).offset(-8)
             //$0.centerY.equalTo(self)
         }
+
         
 
     }
