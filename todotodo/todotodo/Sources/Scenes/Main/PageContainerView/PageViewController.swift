@@ -10,6 +10,10 @@ import SnapKit
 import FloatingPanel
 import RealmSwift
 
+//protocol PageViewControllerDatasourceDelegate: AnyObject {
+//    func datasource(viewController: PageViewController, datasource: UICollectionViewDiffableDataSource<SectionWeek, ToDo>)
+//}
+
 
 
 class PageViewController: BaseViewController {
@@ -25,23 +29,14 @@ class PageViewController: BaseViewController {
     let contentVC = WriteViewController()
     
     var collectionViewDataSource: UICollectionViewDiffableDataSource<SectionWeek, ToDo>!
-    var contentConfiguration: UIListContentConfiguration!
-    
-    var SectionDataStore = SectionWeek.allCases.map { $0.title }
-    var sectionArray = SectionWeek.allCases.map { $0 } //[]
     var isSelectedMonth: Month? //ex 3월 --> march
-    var weekStatus: SectionWeek? = .week5
-    var a: [String] = []
+    
+    var delegate: passUISearchResultsUpdating?
     
     var todoList: Results<ToDo> {
         return repository.fetch()
     }
-    
-
-    
-    
-    var weekList: [Results<ToDo>] = []
-    
+    var isFilterling: Bool?
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -50,19 +45,19 @@ class PageViewController: BaseViewController {
         return formatter
     }
     
+    //var SectionDataStore = SectionWeek.allCases.map { $0.title }
+    //var sectionArray = SectionWeek.allCases.map { $0 } //[]
+    //var weekStatus: SectionWeek? = .week5
+    //var a: [String] = []
+    //var weekList: [Results<ToDo>] = []
     
-    
+
     override func configure() {
         pageView.collectionView.delegate = self
-        
-        
         registerSectionHeaterView()
         configureCollectionViewDataSource()
-        //applyInitialSnapShot()
-        
-
     }
-    
+    //let mainVC = MainViewController()
 }
 
 
@@ -71,18 +66,18 @@ class PageViewController: BaseViewController {
 extension PageViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("♥️♥️♥️\(todoList)")
+        print("✅✅✅\(todoList)")
         snapShot(month: isSelectedMonth!)
-        //configureSnapShot(month: isSelectedMonth!)
-//        configureSnapShot2()
+        
+        //mainVC.delegate = self
     }
 }
 
 
-// MARK: - DataSource, applySnapShot
+// MARK: - HeaderRegister, DataSource, applySnapShot Methods
 extension PageViewController {
     
-    //헤더등록
+    //
     func registerSectionHeaterView() {
         pageView.collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.identifier)
     }
@@ -99,15 +94,15 @@ extension PageViewController {
             cell.backgroundColor = .random
             return cell
         }
-        
         // 2️⃣ Header
-        collectionViewDataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-            guard kind == UICollectionView.elementKindSectionHeader else { return nil }
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.identifier, for: indexPath) as? SectionHeaderView
-            let section = self.collectionViewDataSource.snapshot().sectionIdentifiers[indexPath.section]
-            view?.titleLabel.text = section.title
-            return view
+        let headerRegistration = UICollectionView.SupplementaryRegistration<SectionHeaderView>.init( elementKind: UICollectionView.elementKindSectionHeader) { [weak self] supplementaryView, elementKind, indexPath in
+            guard let self = self, let sectionIdentifier = self.collectionViewDataSource.sectionIdentifier(for: indexPath.section) else { return }
+            supplementaryView.titleLabel.text = sectionIdentifier.title
         }
+        collectionViewDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
+            return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
+        })
+
     }
     
     
@@ -121,22 +116,54 @@ extension PageViewController {
     
     func snapShot(month: Month) {
         var newSnapshot = NSDiffableDataSourceSnapshot<SectionWeek, ToDo>()
-        newSnapshot.deleteItems(repository.fetch().toArray())
+        newSnapshot.deleteItems(repository.fetch().toArray()) //다른 화면 갔다 왔을 경우 때문에.
         newSnapshot.appendSections([.week1])
         newSnapshot.appendItems(repository.filterMonth(currentMonth: month).toArray())
         collectionViewDataSource.apply(newSnapshot)
+        //collectionViewDataSource에 item들 많이 있는상태
     }
     
-
+    func searchSnapShot() {
+        
+    }
+    
+//    var isSearchControllerFiltering: Bool {
+//        guard let searchController = self.navigationItem.searchController, let searchBarText = self.navigationItem.searchController?.searchBar.text else { return false }
+//        let isActive = searchController.isActive
+//        let hasText = searchBarText.isEmpty == false
+//        return isActive && hasText
+//    }
 
 }
 
+extension PageViewController: passUISearchResultsUpdating {
+//    func pass(,searchController: UISearchController, searchedText: String) {
+//        <#code#>
+//    }
+    func pass(_ viewController: MainViewController, searchController: UISearchController, searchedText: String) {
+        if viewController.isSearchControllerFiltering || searchController.isActive {
+             //pageVC 에서 생성한 이 매서드 넘겨주기
+            //writeVC.delgate = self  -> 다음
+            
+            print("🥧🥧🥧🥧\(searchedText)")
+            var snapShot = self.collectionViewDataSource.snapshot()
+            snapShot.deleteItems(self.repository.fetch().toArray())
+            snapShot.appendSections([.week1])
+            snapShot.appendItems(self.repository.fetch().toArray())
+            //contentVC.collectionViewDataSource.apply(snapShot, to: .)
+            collectionViewDataSource.apply(snapShot)
+            
+            
+        }
+    }
+    
+    
+}
 
 
 
 // MARK: - CollectionViewDelegate
 extension PageViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         fpc.set(contentViewController: contentVC)
         fpc.layout = MyFloatingPanelLayout2()
@@ -150,12 +177,9 @@ extension PageViewController: UICollectionViewDelegate {
 
 
 
-
 // MARK: - FloatingPanelControllerDelegate
 extension PageViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidMove(_ fpc: FloatingPanelController) {
-        print("\(fpc.surfaceLocation.y)")
-        print("\(fpc.surfaceLocation(for: .tip).y)")
         if fpc.surfaceLocation.y >= fpc.surfaceLocation(for: .tip).y - 100 {
             print("🟧🟧🟧🟧🟧🟧🟧")
             contentVC.dismiss(animated: true)

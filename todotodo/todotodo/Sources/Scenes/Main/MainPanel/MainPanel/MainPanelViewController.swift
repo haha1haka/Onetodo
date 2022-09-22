@@ -8,16 +8,7 @@
 import UIKit
 import RealmSwift
 
-//struct TodaySection: Hashable {
-//
-//    var name: String
-//
-//    static let queue: TodaySection = .init(name: "Queue")
-//
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(name)
-//    }
-//}
+
 enum TodaySection {
     case widthScroll
     case heightScroll
@@ -60,14 +51,17 @@ class MainPanelViewController: BaseViewController {
     var collectionViewDataSource: UICollectionViewDiffableDataSource<Section22, ToDo>!
     //var sections = TodoStatus.allSections
     
-    var today = Date()
+    var today = Date().day
     override func loadView() {
         self.view = mainPanelView
     }
     
     var todayToDo: Results<ToDo> {
-        return repository.fetch().filter("dateToday == '\(today.day)'")
+        return repository.fetch().filter("dateToday == '\(today)'")
     }
+    
+    var sectionTitle = Section22()
+    var radomNumber = Int.random(in: 1...1000)
     
     override func configure() {
         mainPanelView.backgroundColor = .red
@@ -90,7 +84,7 @@ extension MainPanelViewController {
 
 
 
-
+// MARK: - HeaderRegister, DataSource, applySnapShot Methods
 extension MainPanelViewController {
     
     func registerSectionHeaderView() {
@@ -98,78 +92,65 @@ extension MainPanelViewController {
     }
     
     func configureCollectionViewDataSource() {
+        // 1️⃣ Cell
         let cellRegistration = UICollectionView.CellRegistration<MainPanelCell,ToDo> { cell,  indexPath, itemIdentifier in
             cell.configureCell(item: itemIdentifier)
         }
-        
         collectionViewDataSource = .init(collectionView: mainPanelView.collectionView) { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             cell.backgroundColor = .random
             return cell
         }
-
-        let headerRegistration = UICollectionView.SupplementaryRegistration<SectionHeaderView>.init(
-            elementKind: UICollectionView.elementKindSectionHeader
-        ) { [weak self] supplementaryView, elementKind, indexPath in
-
-            guard let self = self,
-                  let sectionIdentifier = self.collectionViewDataSource.sectionIdentifier(for: indexPath.section) else { return }
-
+        // 2️⃣ Header
+        let headerRegistration = UICollectionView.SupplementaryRegistration<SectionHeaderView>.init( elementKind: UICollectionView.elementKindSectionHeader) { [weak self] supplementaryView, elementKind, indexPath in
+            guard let self = self, let sectionIdentifier = self.collectionViewDataSource.sectionIdentifier(for: indexPath.section) else { return }
             supplementaryView.titleLabel.text = sectionIdentifier.name
         }
-        
         collectionViewDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
             return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         })
-
-
-
-        //3
-//        collectionViewDataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-//            guard kind == UICollectionView.elementKindSectionHeader else { return nil }
-//            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.identifier, for: indexPath) as? SectionHeaderView
-//
-//            let sectionIdentifier = self.collectionViewDataSource.sectionIdentifier(for: indexPath.section)
-//            //let section = self.collectionViewDataSource.snapshot().sectionIdentifiers[indexPath.section]
-//            view?.titleLabel.text = sectionIdentifier.title
-//            return view
-//        }
-
-
     }
+    
+    
     func loadInitialData() {
         var snapshot = collectionViewDataSource.snapshot()
+        //.width섹션 없으면 추가
         if !snapshot.sectionIdentifiers.contains(.width) {
             snapshot.appendSections([.width])
         }
+        //.width섹션에 오늘 todo 만 넣기.
         snapshot.appendItems(todayToDo.toArray(), toSection: .width)
         collectionViewDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
 
-
+    
     func fullScreenSnapShot() {
-        
+        //datasource 에 오늘 메모 들어가 있음
         for item in collectionViewDataSource.snapshot(for: .width).items {
             //DispatchQueue.global().async {
+            //해당 메모만큼 섹션 만들기 위해
+            sectionTitle = Section22(name: "\(Int.random(in: 1...1000))")
+            //datasource 에 오늘 메모 들어가 있음
+            var snapShot = self.collectionViewDataSource.snapshot()
+            //모두 지우기
+            snapShot.deleteItems([item])
             
-            let sectionTitle = Section22(name: "\(Int.random(in: 1...1000))")
-            
-                var snapShot = self.collectionViewDataSource.snapshot()
-                snapShot.deleteItems([item])
+            //섹션 아이템 모두 없어졌으면 지우기
             if snapShot.itemIdentifiers(inSection: .width).isEmpty {
                 snapShot.deleteSections([.width])
-                }
-                //넣을려는 섹션이 없으면 섹샨 추가
-            if !snapShot.sectionIdentifiers.contains(sectionTitle) {
-                    snapShot.appendSections([sectionTitle])
-                }
-                
-                snapShot.appendItems([item], toSection: sectionTitle)
-                self.collectionViewDataSource.apply(snapShot, animatingDifferences: true, completion: nil)
-                
             }
             
+            //넣을려는 섹션이 없으면 섹션 추가
+            if !snapShot.sectionIdentifiers.contains(sectionTitle) {
+                snapShot.appendSections([sectionTitle])
+            }
+            
+            snapShot.appendItems([item], toSection: sectionTitle)
+            self.collectionViewDataSource.apply(snapShot, animatingDifferences: true, completion: nil)
+            
+        }
+        
         
         //}
     }
@@ -179,10 +160,15 @@ extension MainPanelViewController {
 //        if !snapshot.sectionIdentifiers.contains(.width) {
 //            snapshot.appendSections([.width])
 //        }
+        //snapshot.deleteSections(<#T##identifiers: [Section22]##[Section22]#>)
         snapshot.deleteItems(todayToDo.toArray())
         snapshot.appendItems(todayToDo.toArray(), toSection: .width)
         collectionViewDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
         
+        
+
+        
+
     }
     
     

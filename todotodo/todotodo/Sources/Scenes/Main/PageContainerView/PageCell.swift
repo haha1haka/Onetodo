@@ -12,9 +12,9 @@ class PageCell: BaseCollectionViewCell {
     
     var label: UILabel = {
         let view = UILabel()
-        
         return view
     }()
+    
     override func configure() {
         self.addSubview(label)
     }

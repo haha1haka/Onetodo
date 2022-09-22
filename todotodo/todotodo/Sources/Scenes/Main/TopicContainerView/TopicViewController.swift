@@ -22,7 +22,7 @@ class TopicViewController: BaseViewController {
     var topicDataStore = Month.allCases.map { $0.title } // ["1월", ... , "12월"]
     var months = Month.allCases //[Month]
     weak var eventDelegate: TopicViewControllerEvent?
-    
+    var currentMonth: Month = .nov
 
     
     override func configure() {
@@ -63,6 +63,8 @@ extension TopicViewController {
 // MARK: - UICollectionViewDelegate - didSelectItemAt
 extension TopicViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         if let itemIdentifier = collectionViewDataSource.itemIdentifier(for: indexPath) {
             eventDelegate?.topic(self, didSelectItem: itemIdentifier)

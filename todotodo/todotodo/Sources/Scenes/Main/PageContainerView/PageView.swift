@@ -15,13 +15,11 @@ class PageView: BaseView {
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.alwaysBounceVertical = false
-        
         return view
     }()
-    // MARK: - 3
+    
     func configureCollectionViewLayout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
-
         return UICollectionViewCompositionalLayout.init(sectionProvider: { sectionIndex, environment in
             //1️⃣ Item, Group Section Layout
             let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(128), heightDimension: .estimated(128))
@@ -30,18 +28,13 @@ class PageView: BaseView {
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(128))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
-            
-
             //2️⃣ Header Layout
             let headerItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(128))
             let headerItemLayout = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
             section.boundarySupplementaryItems = [headerItemLayout]
             return section
         }, configuration: configuration)
-
-        
     }
-
 
     override func configure() {
         self.addSubview(collectionView)

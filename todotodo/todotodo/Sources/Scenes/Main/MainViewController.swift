@@ -9,9 +9,16 @@ import UIKit
 import SnapKit
 import FloatingPanel
 
+
+protocol passUISearchResultsUpdating: AnyObject {
+    func pass(_ viewController: MainViewController,searchController: UISearchController, searchedText: String)
+}
+
 class MainViewController: BaseViewController {
 
     
+
+
     lazy var pageViewController: UIPageViewController = {
         let pageViewController = UIPageViewController()
         pageViewController.delegate = self
@@ -25,13 +32,15 @@ class MainViewController: BaseViewController {
         return topicViewController
     }()
     
+    var delegate: passUISearchResultsUpdating?
+    
     var fpc: FloatingPanelController!
     var contentVC: MainPanelViewController!
     
     var pageContentViewControllers: [UIViewController] = []
-    var topicDataStore = Month.allCases.map { $0 } // ["1월", ... , "12월"]
-    var selectedMonth: Month!
-
+    var topicDataStore = Month.allCases.map { $0 } // [Month]
+    var selectedMonth: Month = .aug
+    var flag = false
     
     var isSearchControllerFiltering: Bool {
         guard let searchController = self.navigationItem.searchController, let searchBarText = self.navigationItem.searchController?.searchBar.text else { return false }
@@ -45,12 +54,19 @@ class MainViewController: BaseViewController {
         setupSearchController()
         configureUINavigationBar()
         configureNavigationBarButtonItem()
-        configureFirstPageViewController()
-        configureFirstPageViewController()
+        configureFirstPageViewController(isSelectedMonth:selectedMonth )
         configureTopicViewController()
         configurePageViewControllers()
         configurePanelView()
+        
+        
+        
+        
+//        topicViewController.topicView.collectionView.s
+        
+     
     }
+    //let vc = PageViewController()
 }
 
 
@@ -85,16 +101,27 @@ extension MainViewController {
         transition(vc, transitionStyle: .push)
     }
     
-    func configureFirstPageViewController() {
+    func configureFirstPageViewController(isSelectedMonth: Month) {
+        
         pageContentViewControllers = topicDataStore.map { month in
             let vc = PageViewController()
             vc.isSelectedMonth = month
+            
             return vc
         }
         print("✅\(pageContentViewControllers)")
-        if let pageContentViewController = pageContentViewControllers.first {
-            pageViewController.setViewControllers([pageContentViewController], direction: .forward, animated: false)
+        let pageContentViewController = pageContentViewControllers[isSelectedMonth.rawValue]
+        print("\(pageContentViewController)")
+        pageViewController.setViewControllers([pageContentViewController], direction: .forward, animated: false)
+        
+        DispatchQueue.main.async { //왜 이렇게 해줘야 할까? --> 그냥 시점만 빠르게 해줌.
+            let indexPath = IndexPath(row: isSelectedMonth.rawValue, section: 0)
+            self.topicViewController.topicView.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
+        
+        //        if let pageContentViewController = pageContentViewControllers.first {
+//            pageViewController.setViewControllers([pageContentViewController], direction: .forward, animated: false)
+//        }
     }
     
     func configureTopicViewController() {
@@ -144,16 +171,17 @@ extension MainViewController {
 extension MainViewController: TopicViewControllerEvent {
     //didSelectItem 받아오기
     func topic(_ viewController: TopicViewController, didSelectItem: Month) {
-        print(didSelectItem)
-        print("🟪🟪🟪🟪\(didSelectItem)")
         if let selectedIndex = topicDataStore.firstIndex(of: didSelectItem) {
-            //print("🟧🟧\(selectedIndex)")
             pageViewController.setViewControllers([pageContentViewControllers[selectedIndex]], direction: .forward, animated: false)
-            //pageContentViewControllers[selectedIndex].
-            //pageViewController.collectionViewDataSource
         }
 
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        let indexPathForFirstRow = IndexPath(row: 0, section: 0)
+//        topicViewController.topicView.selectItem(at: indexPathForFirstRow, animated: true, scrollPosition: [])
+//        collectionView(CollectionView, didSelectItemAt: indexPathForFirstRow)
+//    }
 }
 
 
@@ -181,13 +209,27 @@ extension MainViewController: UIPageViewControllerDataSource, UIPageViewControll
         return nil
     }
     
-    // 페이징 할때, topic 넘어가기
+    
+    // 페이징 -> topicVC 전달
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard completed else { return }
-        if let currentViewController = pageViewController.viewControllers?.first,
+        
+        if flag == false {
+            flag = true
+            print("🌝🌝\(selectedMonth.rawValue)")
+            let indexPathForFirstRow = IndexPath(row: selectedMonth.rawValue, section: 0)
+            topicViewController.topicView.collectionView.selectItem(at: indexPathForFirstRow, animated: true, scrollPosition: [.centeredHorizontally])
+
+        }
+        
+        
+        if let currentViewController = pageViewController.viewControllers?.first!,
            let currentIndex = pageContentViewControllers.firstIndex(of: currentViewController) {
             let indexPath = IndexPath(item: currentIndex, section: .zero)
             topicViewController.topicView.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [.centeredHorizontally])
+            
+            
+
         }
     }
 }
@@ -212,14 +254,21 @@ extension MainViewController: FloatingPanelControllerDelegate {
         }
     }
 }
-
+//writeVC.delgate = self
 
 extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print("fdfd")
+        guard let searchController = self.navigationItem.searchController, let text = self.navigationItem.searchController?.searchBar.text else { return }
+        
+        print("🍱🍱🍱🍱\(text)")
+        
+        
+        
+        
+        delegate?.pass(self,searchController: searchController, searchedText: text)
+
     }
 }
-
 
 
 
