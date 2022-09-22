@@ -16,7 +16,20 @@ protocol passUISearchResultsUpdating: AnyObject {
 
 class MainViewController: BaseViewController {
 
-    
+//    lazy var containerView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .blue
+//        return view
+//    }()
+//
+//    lazy var searchButton: UIButton = {
+//        let view = UIButton()
+//        view.backgroundColor = .darkGray
+//        view.layer.cornerRadius = 8
+//        view.layer.masksToBounds = true
+//        view.setTitle("검색어를 입력해주세요", for: .normal)
+//        return view
+//    }()
 
 
     lazy var pageViewController: UIPageViewController = {
@@ -51,14 +64,16 @@ class MainViewController: BaseViewController {
     
     
     override func configure() {
-        setupSearchController()
+        //setupSearchController()
+        
+        configureSearchButton()
         configureUINavigationBar()
         configureNavigationBarButtonItem()
         configureFirstPageViewController(isSelectedMonth:selectedMonth )
         configureTopicViewController()
         configurePageViewControllers()
         configurePanelView()
-        
+        searchButton.addTarget(self, action: #selector(tappedSearchButton), for: .touchUpInside)
         
         
         
@@ -70,16 +85,30 @@ class MainViewController: BaseViewController {
 }
 
 
+
 extension MainViewController {
+    
+    @objc
+    func tappedSearchButton() {
+        let searchVC = SearchViewController()
+        transition(searchVC, transitionStyle: .push)
+    }
+    
+    func configureSearchButton() {
+        view.addSubview(containerView)
+        containerView.addSubview(searchButton)
+        containerView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+            $0.height.equalTo(44)
+        }
+        searchButton.snp.makeConstraints {
+            $0.edges.equalTo(containerView)
+        }
+        
+    }
 
     
-    func setupSearchController() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchResultsUpdater = self
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-    }
+
     
     
     func configureUINavigationBar() {
@@ -128,7 +157,8 @@ extension MainViewController {
         addChild(topicViewController)
         view.addSubview(topicViewController.view)
         topicViewController.view.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(containerView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(44)
         }
         topicViewController.didMove(toParent: self)

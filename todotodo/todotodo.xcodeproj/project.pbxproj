@@ -17,6 +17,7 @@
 		F42DDFD728D977130084538E /* Test3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42DDFD628D977130084538E /* Test3VC.swift */; };
 		F446099628DAB10A006CD694 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446099528DAB10A006CD694 /* Results.swift */; };
 		F44EC49E28D7609E008BB438 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44EC49D28D7609E008BB438 /* Week.swift */; };
+		F44F2C4828DCBFE2003CFA54 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F2C4728DCBFE2003CFA54 /* SearchViewController.swift */; };
 		F45108B928D567DF00D3DA94 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45108B828D567DF00D3DA94 /* DetailViewController.swift */; };
 		F45108BB28D5681000D3DA94 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45108BA28D5681000D3DA94 /* DetailView.swift */; };
 		F46B2EED28CADFE600B0AB5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EEC28CADFE600B0AB5D /* AppDelegate.swift */; };
@@ -71,6 +72,7 @@
 		F42DDFD628D977130084538E /* Test3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test3VC.swift; sourceTree = "<group>"; };
 		F446099528DAB10A006CD694 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		F44EC49D28D7609E008BB438 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		F44F2C4728DCBFE2003CFA54 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F45108B828D567DF00D3DA94 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F45108BA28D5681000D3DA94 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		F46B2EE928CADFE600B0AB5D /* todotodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todotodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,14 @@
 				F40FC49D28D59F46005D2A6A /* ToDoRepository.swift */,
 			);
 			path = ToDoRepository;
+			sourceTree = "<group>";
+		};
+		F44F2C4628DCBFD3003CFA54 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F44F2C4728DCBFE2003CFA54 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		F45108B728D567CB00D3DA94 /* DetailPanel */ = {
@@ -209,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				F46B2F3428CB184D00B0AB5D /* Main */,
+				F44F2C4628DCBFD3003CFA54 /* Search */,
 				F478AB1328CF3BBE008D838A /* Write */,
 			);
 			path = Scenes;
@@ -488,6 +499,7 @@
 				F46B2F2F28CB14C200B0AB5D /* TopicViewController.swift in Sources */,
 				F45108B928D567DF00D3DA94 /* DetailViewController.swift in Sources */,
 				F4E173C428CDB34D00D117E9 /* PageView.swift in Sources */,
+				F44F2C4828DCBFE2003CFA54 /* SearchViewController.swift in Sources */,
 				F42DDFD528D958310084538E /* Test2VC.swift in Sources */,
 				F47B445F28D07584003837F2 /* Section.swift in Sources */,
 				F4730BC928D8845C0032C32E /* FloatingPanelBehavior.swift in Sources */,
