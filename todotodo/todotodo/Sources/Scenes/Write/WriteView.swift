@@ -12,7 +12,9 @@ class WriteView: BaseView {
     
     let dateButton: UIButton = {
         let view = UIButton()
-        view.backgroundColor = .link
+        view.layer.cornerRadius = 8
+        view.layer.borderColor = UIColor.darkGray.cgColor
+        view.layer.borderWidth = 1
         view.setTitle("날짜선택", for: .normal)
         view.setTitleColor(.white, for: .normal)
         return view
@@ -20,8 +22,10 @@ class WriteView: BaseView {
     
     let dateLable: UILabel = {
         let view = UILabel()
-        view.textColor = .black
-        view.backgroundColor = .brown
+        view.textColor = .white
+        
+//        view.backgroundColor = .brown
+//        view.
         return view
     }()
     

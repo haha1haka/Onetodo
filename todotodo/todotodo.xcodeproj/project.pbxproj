@@ -18,6 +18,7 @@
 		F446099628DAB10A006CD694 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446099528DAB10A006CD694 /* Results.swift */; };
 		F44EC49E28D7609E008BB438 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44EC49D28D7609E008BB438 /* Week.swift */; };
 		F44F2C4828DCBFE2003CFA54 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F2C4728DCBFE2003CFA54 /* SearchViewController.swift */; };
+		F44F2C4A28DCC900003CFA54 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F2C4928DCC900003CFA54 /* SearchCell.swift */; };
 		F45108B928D567DF00D3DA94 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45108B828D567DF00D3DA94 /* DetailViewController.swift */; };
 		F45108BB28D5681000D3DA94 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45108BA28D5681000D3DA94 /* DetailView.swift */; };
 		F46B2EED28CADFE600B0AB5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B2EEC28CADFE600B0AB5D /* AppDelegate.swift */; };
@@ -73,6 +74,7 @@
 		F446099528DAB10A006CD694 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		F44EC49D28D7609E008BB438 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		F44F2C4728DCBFE2003CFA54 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F44F2C4928DCC900003CFA54 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		F45108B828D567DF00D3DA94 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F45108BA28D5681000D3DA94 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		F46B2EE928CADFE600B0AB5D /* todotodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todotodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				F44F2C4728DCBFE2003CFA54 /* SearchViewController.swift */,
+				F44F2C4928DCC900003CFA54 /* SearchCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4F2BA4028D8BE9B00A31F73 /* TestVC.swift in Sources */,
+				F44F2C4A28DCC900003CFA54 /* SearchCell.swift in Sources */,
 				F47B445D28D0757D003837F2 /* Item.swift in Sources */,
 				F46B2F0F28CAE2DC00B0AB5D /* BaseViewController.swift in Sources */,
 				F46B2EF128CADFE600B0AB5D /* MainViewController.swift in Sources */,

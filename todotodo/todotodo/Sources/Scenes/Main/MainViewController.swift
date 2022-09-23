@@ -16,22 +16,6 @@ protocol passUISearchResultsUpdating: AnyObject {
 
 class MainViewController: BaseViewController {
 
-//    lazy var containerView: UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .blue
-//        return view
-//    }()
-//
-//    lazy var searchButton: UIButton = {
-//        let view = UIButton()
-//        view.backgroundColor = .darkGray
-//        view.layer.cornerRadius = 8
-//        view.layer.masksToBounds = true
-//        view.setTitle("검색어를 입력해주세요", for: .normal)
-//        return view
-//    }()
-
-
     lazy var pageViewController: UIPageViewController = {
         let pageViewController = UIPageViewController()
         pageViewController.delegate = self
@@ -64,53 +48,22 @@ class MainViewController: BaseViewController {
     
     
     override func configure() {
-        //setupSearchController()
-        
-        configureSearchButton()
         configureUINavigationBar()
         configureNavigationBarButtonItem()
         configureFirstPageViewController(isSelectedMonth:selectedMonth )
         configureTopicViewController()
         configurePageViewControllers()
         configurePanelView()
-        searchButton.addTarget(self, action: #selector(tappedSearchButton), for: .touchUpInside)
-        
-        
-        
-//        topicViewController.topicView.collectionView.s
-        
-     
+
     }
-    //let vc = PageViewController()
+    
 }
 
 
 
 extension MainViewController {
-    
-    @objc
-    func tappedSearchButton() {
-        let searchVC = SearchViewController()
-        transition(searchVC, transitionStyle: .push)
-    }
-    
-    func configureSearchButton() {
-        view.addSubview(containerView)
-        containerView.addSubview(searchButton)
-        containerView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-            $0.height.equalTo(44)
-        }
-        searchButton.snp.makeConstraints {
-            $0.edges.equalTo(containerView)
-        }
-        
-    }
 
-    
 
-    
-    
     func configureUINavigationBar() {
         self.navigationItem.title = "todotodo"
         let appearance = UINavigationBarAppearance()
@@ -123,11 +76,18 @@ extension MainViewController {
     func configureNavigationBarButtonItem() {
         let createButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(tappedCreateButton))
         navigationItem.rightBarButtonItem = createButton
+        let searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(tappedSearchButton))
+        navigationItem.leftBarButtonItem = searchButton
     }
     @objc
     func tappedCreateButton() {
         let vc = WriteViewController()
         transition(vc, transitionStyle: .push)
+    }
+    @objc
+    func tappedSearchButton() {
+        let vc = SearchViewController()
+        transition(vc, transitionStyle: .presentNavigation)
     }
     
     func configureFirstPageViewController(isSelectedMonth: Month) {
@@ -147,18 +107,14 @@ extension MainViewController {
             let indexPath = IndexPath(row: isSelectedMonth.rawValue, section: 0)
             self.topicViewController.topicView.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
-        
-        //        if let pageContentViewController = pageContentViewControllers.first {
-//            pageViewController.setViewControllers([pageContentViewController], direction: .forward, animated: false)
-//        }
+
     }
     
     func configureTopicViewController() {
         addChild(topicViewController)
         view.addSubview(topicViewController.view)
         topicViewController.view.snp.makeConstraints {
-            $0.top.equalTo(containerView.snp.bottom)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(44)
         }
         topicViewController.didMove(toParent: self)

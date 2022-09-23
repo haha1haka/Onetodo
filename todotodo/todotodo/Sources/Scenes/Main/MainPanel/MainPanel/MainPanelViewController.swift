@@ -25,7 +25,7 @@ struct Section22: Hashable {
 
     var name: String = ""
 
-    static let width: Section22 = .init(name: "width")
+    static let width: Section22 = .init(name: "오늘의 주요사항")
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(name)
@@ -61,7 +61,7 @@ class MainPanelViewController: BaseViewController {
     }
     
     var sectionTitle = Section22()
-    var radomNumber = Int.random(in: 1...1000)
+    var radomNumber = Int.random(in: 1...10000)
     
     override func configure() {
         mainPanelView.backgroundColor = .red
