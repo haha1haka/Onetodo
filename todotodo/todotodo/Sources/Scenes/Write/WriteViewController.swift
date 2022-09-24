@@ -93,7 +93,7 @@ extension WriteViewController {
         }
         //ToDo(content: textFieldText, date: Date(), dateString: dateLabelText, completed: false, priority: 1)
         if todo == nil { //작성
-            repository.create(ToDo(content: textFieldText, date: currentDate, dateMonth: String(currentDate.month), dateWeek: String(currentDate.week),dateToday: String(currentDate.day), completed: false, priority: 1))
+            repository.create(ToDo(content: textFieldText, date: currentDate, dateMonth: currentDate.month, dateWeek: currentDate.week, dateToday: currentDate.day, completed: false, priority: 1))
             
         } else { //작성
             guard let todo = todo else { return print("수정하기!")}

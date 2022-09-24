@@ -42,7 +42,11 @@ class PageView: BaseView {
         
     override func setConstraints() {
         collectionView.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.top.equalTo(self)
+            $0.leading.equalTo(self)
+            $0.trailing.equalTo(self)
+            //$0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide)
+            $0.bottom.equalToSuperview()
         }
         
     }

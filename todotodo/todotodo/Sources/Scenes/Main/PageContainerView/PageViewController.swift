@@ -14,6 +14,7 @@ import RealmSwift
 //    func datasource(viewController: PageViewController, datasource: UICollectionViewDiffableDataSource<SectionWeek, ToDo>)
 //}
 
+
 enum SectionWeek:Int, CaseIterable {
     case week1 = 1, week2, week3, week4, week5, week6, week7
     
@@ -87,11 +88,19 @@ class PageViewController: BaseViewController {
     var sixWeek: Results<ToDo> {
         return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week6)
     }
+    var totalWeek: [Results<ToDo>] = []
 
     override func configure() {
         pageView.collectionView.delegate = self
         registerSectionHeaterView()
         configureCollectionViewDataSource()
+        print("1️⃣1️⃣\(firstWeek)")
+        print("2️⃣\(secondWeek)")
+        print("3️⃣\(thirdWeek)")
+        //print("4️⃣\(fourthWeek)")
+        print("5️⃣\(firstWeek)")
+        print("6️⃣\(sixWeek)")
+        totalWeek = [firstWeek, secondWeek, thirdWeek, fourthWeek, fiveWeek, sixWeek]
     }
     //let mainVC = MainViewController()
 }
@@ -104,9 +113,12 @@ extension PageViewController {
         super.viewWillAppear(animated)
         print("✅✅✅\(todoList)")
         print("🖍🖍🖍🖍\(isSelectedMonth)")
-        snapShot(month: isSelectedMonth!)
-        
+        //snapShot(month: isSelectedMonth!)
+        print("4️⃣\(fourthWeek)")
         //mainVC.delegate = self
+        
+        divideSectionByWeekSnapShot()
+        
     }
 }
 
@@ -160,17 +172,17 @@ extension PageViewController {
         //collectionViewDataSource에 item들 많이 있는상태
     }
     
-    func searchSnapShot() {
-        
+    func divideSectionByWeekSnapShot() {
+        var newSnapShot = NSDiffableDataSourceSnapshot<SectionWeek, ToDo>()
+        newSnapShot.deleteItems(repository.fetch().toArray())
+        for (section, item) in totalWeek.enumerated() {
+            if !item.isEmpty {
+                newSnapShot.appendSections([SectionWeek(rawValue: section+1)!])
+                newSnapShot.appendItems(item.toArray())
+            }
+        }
+        collectionViewDataSource.apply(newSnapShot)
     }
-    
-//    var isSearchControllerFiltering: Bool {
-//        guard let searchController = self.navigationItem.searchController, let searchBarText = self.navigationItem.searchController?.searchBar.text else { return false }
-//        let isActive = searchController.isActive
-//        let hasText = searchBarText.isEmpty == false
-//        return isActive && hasText
-//    }
-
 }
 
 extension PageViewController: passUISearchResultsUpdating {

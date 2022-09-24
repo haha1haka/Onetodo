@@ -73,7 +73,7 @@ class ToDoRepository: ToDoDataBaseRepository {
         print("🟥\(currentMonth.rawValue)")
         return database.objects(ToDo.self).filter("dateMonth == '\(currentMonth.rawValue)'")
     }
-    
+    //func filterYear(currentYear: )
     func filterWeek(currentMonth: Month, currnetWeek: SectionWeek) -> Results<ToDo> {
         return filterMonth(currentMonth: currentMonth).filter("dateWeek == '\(currnetWeek.rawValue)'")
     }

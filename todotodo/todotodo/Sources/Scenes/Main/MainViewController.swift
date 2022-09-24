@@ -96,6 +96,7 @@ extension MainViewController {
         
         pageContentViewControllers = topicDataStore.map { month in
             let vc = PageViewController()
+            print("🆗\(month)")
             vc.isSelectedMonth = month
             return vc
         }
