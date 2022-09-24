@@ -36,8 +36,10 @@ class MainViewController: BaseViewController {
     
     var pageContentViewControllers: [UIViewController] = []
     var topicDataStore = Month.allCases.map { $0 } // [Month]
-    var selectedMonth: Month = .aug
+    
     var flag = false
+    
+    var currentMonth = Int(Date().month)! // --> 9️⃣
     
     var isSearchControllerFiltering: Bool {
         guard let searchController = self.navigationItem.searchController, let searchBarText = self.navigationItem.searchController?.searchBar.text else { return false }
@@ -50,7 +52,7 @@ class MainViewController: BaseViewController {
     override func configure() {
         configureUINavigationBar()
         configureNavigationBarButtonItem()
-        configureFirstPageViewController(isSelectedMonth:selectedMonth )
+        configureFirstPageViewController()
         configureTopicViewController()
         configurePageViewControllers()
         configurePanelView()
@@ -90,21 +92,19 @@ extension MainViewController {
         transition(vc, transitionStyle: .presentNavigation)
     }
     
-    func configureFirstPageViewController(isSelectedMonth: Month) {
+    func configureFirstPageViewController() {
         
         pageContentViewControllers = topicDataStore.map { month in
             let vc = PageViewController()
             vc.isSelectedMonth = month
-            
             return vc
         }
-        print("✅\(pageContentViewControllers)")
-        let pageContentViewController = pageContentViewControllers[isSelectedMonth.rawValue]
-        print("\(pageContentViewController)")
+        let pageContentViewController = pageContentViewControllers[currentMonth-1] // [8] --> 9번째 page
+        //9월을 첫번째 페이지로
         pageViewController.setViewControllers([pageContentViewController], direction: .forward, animated: false)
-        
+        //9월을 첫번째 토픽으로
         DispatchQueue.main.async { //왜 이렇게 해줘야 할까? --> 그냥 시점만 빠르게 해줌.
-            let indexPath = IndexPath(row: isSelectedMonth.rawValue, section: 0)
+            let indexPath = IndexPath(row: self.currentMonth-1, section: 0)
             self.topicViewController.topicView.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
 
@@ -163,11 +163,7 @@ extension MainViewController: TopicViewControllerEvent {
 
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        let indexPathForFirstRow = IndexPath(row: 0, section: 0)
-//        topicViewController.topicView.selectItem(at: indexPathForFirstRow, animated: true, scrollPosition: [])
-//        collectionView(CollectionView, didSelectItemAt: indexPathForFirstRow)
-//    }
+
 }
 
 
@@ -202,8 +198,8 @@ extension MainViewController: UIPageViewControllerDataSource, UIPageViewControll
         
         if flag == false {
             flag = true
-            print("🌝🌝\(selectedMonth.rawValue)")
-            let indexPathForFirstRow = IndexPath(row: selectedMonth.rawValue, section: 0)
+            print("🌝🌝\(currentMonth)")
+            let indexPathForFirstRow = IndexPath(row: currentMonth, section: 0)
             topicViewController.topicView.collectionView.selectItem(at: indexPathForFirstRow, animated: true, scrollPosition: [.centeredHorizontally])
 
         }

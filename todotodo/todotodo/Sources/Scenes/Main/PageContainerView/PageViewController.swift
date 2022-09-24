@@ -14,6 +14,28 @@ import RealmSwift
 //    func datasource(viewController: PageViewController, datasource: UICollectionViewDiffableDataSource<SectionWeek, ToDo>)
 //}
 
+enum SectionWeek:Int, CaseIterable {
+    case week1 = 1, week2, week3, week4, week5, week6, week7
+    
+    var title: String {
+        switch self {
+        case .week1:
+            return "1주차"
+        case .week2:
+            return "2주차"
+        case .week3:
+            return "3주차"
+        case .week4:
+            return "4주차"
+        case .week5:
+            return "5주차"
+        case .week6:
+            return "6주차"
+        case .week7:
+            return "7주차"
+        }
+    }
+}
 
 
 class PageViewController: BaseViewController {
@@ -29,6 +51,7 @@ class PageViewController: BaseViewController {
     let contentVC = WriteViewController()
     
     var collectionViewDataSource: UICollectionViewDiffableDataSource<SectionWeek, ToDo>!
+    
     var isSelectedMonth: Month? //ex 3월 --> march
     
     var delegate: passUISearchResultsUpdating?
@@ -45,12 +68,25 @@ class PageViewController: BaseViewController {
         return formatter
     }
     
-    //var SectionDataStore = SectionWeek.allCases.map { $0.title }
-    //var sectionArray = SectionWeek.allCases.map { $0 } //[]
-    //var weekStatus: SectionWeek? = .week5
-    //var a: [String] = []
-    //var weekList: [Results<ToDo>] = []
     
+    var firstWeek: Results<ToDo> {
+        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week1)
+    }
+    var secondWeek: Results<ToDo> {
+        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week2)
+    }
+    var thirdWeek: Results<ToDo> {
+        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week3)
+    }
+    var fourthWeek: Results<ToDo> {
+        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week4)
+    }
+    var fiveWeek: Results<ToDo> {
+        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week5)
+    }
+    var sixWeek: Results<ToDo> {
+        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week6)
+    }
 
     override func configure() {
         pageView.collectionView.delegate = self
@@ -67,6 +103,7 @@ extension PageViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("✅✅✅\(todoList)")
+        print("🖍🖍🖍🖍\(isSelectedMonth)")
         snapShot(month: isSelectedMonth!)
         
         //mainVC.delegate = self

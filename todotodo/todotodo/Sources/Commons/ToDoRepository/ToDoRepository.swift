@@ -63,15 +63,13 @@ class ToDoRepository: ToDoDataBaseRepository {
     
     
     // MARK: - 패치
-    //- 패치(날짜별로)
+    
     func fetch() -> Results<ToDo> {
         return database.objects(ToDo.self)
-        //.sorted(byKeyPath: "date", ascending: false)
     }
     
     
     func filterMonth(currentMonth: Month) -> Results<ToDo> {
-        //return database.objects(ToDo.self).filter($0.date.month == Date().month)
         print("🟥\(currentMonth.rawValue)")
         return database.objects(ToDo.self).filter("dateMonth == '\(currentMonth.rawValue)'")
     }
