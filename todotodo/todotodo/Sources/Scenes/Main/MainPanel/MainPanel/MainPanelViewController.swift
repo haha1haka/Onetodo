@@ -62,7 +62,7 @@ class MainPanelViewController: BaseViewController {
     
     var todayToDo: Results<ToDo> {//⭐️priority 설정 화면 넣고, 해당 prioroty에 따라서 ToDo초기화 -> 램에 넣고 난후
         //이곳에서 prorot 높은 순으로 배열 만들기 --> .sorted(byKeyPath: "date", ascending: false)
-        return repository.fetch().filter("dateToday == '\(today)'")
+        return repository.fetch() //.filter("dateToday == '\(today)'")
     }
     
     var sectionTitle: Int = 0

@@ -27,6 +27,6 @@ class MainPanelCell: BaseCollectionViewCell {
     }
     
     func configureCell(item: ToDo) {
-        label.text = item.content
+        label.text = item.title
     }
 }

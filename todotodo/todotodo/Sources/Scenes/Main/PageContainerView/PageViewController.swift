@@ -62,45 +62,34 @@ class PageViewController: BaseViewController {
     }
     var isFilterling: Bool?
     
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yyyy년 MM월 dd일"
-        return formatter
-    }
     
     
-    var firstWeek: Results<ToDo> {
-        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week1)
+    
+    var firstWeek: [ToDo] {
+        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week1)
     }
-    var secondWeek: Results<ToDo> {
-        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week2)
+    var secondWeek: [ToDo] {
+        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week2)
     }
-    var thirdWeek: Results<ToDo> {
-        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week3)
+    var thirdWeek: [ToDo] {
+        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week3)
     }
-    var fourthWeek: Results<ToDo> {
-        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week4)
+    var fourthWeek: [ToDo] {
+        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week4)
     }
-    var fiveWeek: Results<ToDo> {
-        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week5)
+    var fiveWeek: [ToDo] {
+        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week5)
     }
-    var sixWeek: Results<ToDo> {
-        return repository.filterWeek(currentMonth: isSelectedMonth!, currnetWeek: .week6)
+    var sixWeek: [ToDo] {
+        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week6)
     }
-    var totalWeek: [Results<ToDo>] = []
+    var totalWeek: [[ToDo]] = []
 
     override func configure() {
         pageView.collectionView.delegate = self
         registerSectionHeaterView()
         configureCollectionViewDataSource()
-        print("1️⃣1️⃣\(firstWeek)")
-        print("2️⃣\(secondWeek)")
-        print("3️⃣\(thirdWeek)")
-        //print("4️⃣\(fourthWeek)")
-        print("5️⃣\(firstWeek)")
-        print("6️⃣\(sixWeek)")
-        totalWeek = [firstWeek, secondWeek, thirdWeek, fourthWeek, fiveWeek, sixWeek]
+        print(repository.database.configuration.fileURL!)
     }
     //let mainVC = MainViewController()
 }
@@ -113,10 +102,8 @@ extension PageViewController {
         super.viewWillAppear(animated)
         print("✅✅✅\(todoList)")
         print("🖍🖍🖍🖍\(isSelectedMonth)")
-        //snapShot(month: isSelectedMonth!)
-        print("4️⃣\(fourthWeek)")
-        //mainVC.delegate = self
-        
+        print("⭐️⭐️⭐️⭐️\(repository.database.configuration.fileURL!)")
+        totalWeek = [firstWeek, secondWeek, thirdWeek, fourthWeek, fiveWeek, sixWeek]
         divideSectionByWeekSnapShot()
         
     }
@@ -160,18 +147,18 @@ extension PageViewController {
         var snapshot = collectionViewDataSource.snapshot()
         snapshot.deleteItems(repository.fetch().toArray())
         snapshot.appendSections([.week1])
-        snapshot.appendItems(repository.filterMonth(currentMonth: month).toArray())
+        snapshot.appendItems(repository.filteringMonth(currentMonth: month))
         collectionViewDataSource.apply(snapshot)
     }
     
-    func snapShot(month: Month) {
-        var newSnapshot = NSDiffableDataSourceSnapshot<SectionWeek, ToDo>()
-        newSnapshot.deleteItems(repository.fetch().toArray()) //다른 화면 갔다 왔을 경우 때문에.
-        newSnapshot.appendSections([.week1])
-        newSnapshot.appendItems(repository.filterMonth(currentMonth: month).toArray())
-        collectionViewDataSource.apply(newSnapshot)
-        //collectionViewDataSource에 item들 많이 있는상태
-    }
+//    func snapShot(month: Month) {
+//        var newSnapshot = NSDiffableDataSourceSnapshot<SectionWeek, ToDo>()
+//        newSnapshot.deleteItems(repository.fetch().toArray()) //다른 화면 갔다 왔을 경우 때문에.
+//        newSnapshot.appendSections([.week1])
+//        newSnapshot.appendItems(repository.filte(currentMonth: month).toArray())
+//        collectionViewDataSource.apply(newSnapshot)
+//        //collectionViewDataSource에 item들 많이 있는상태
+//    }
     
     func divideSectionByWeekSnapShot() {
         var newSnapShot = NSDiffableDataSourceSnapshot<SectionWeek, ToDo>()
@@ -179,7 +166,7 @@ extension PageViewController {
         for (section, item) in totalWeek.enumerated() {
             if !item.isEmpty {
                 newSnapShot.appendSections([SectionWeek(rawValue: section+1)!])
-                newSnapShot.appendItems(item.toArray())
+                newSnapShot.appendItems(item)
             }
         }
         collectionViewDataSource.apply(newSnapShot)

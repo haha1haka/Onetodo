@@ -70,7 +70,9 @@ extension MainViewController {
         self.navigationItem.title = "todotodo"
         let appearance = UINavigationBarAppearance()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
-        appearance.shadowColor = .clear
+        //appearance.shadowColor = .clear
+        
+        appearance.backgroundColor = .black
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
     }

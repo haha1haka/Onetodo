@@ -44,12 +44,7 @@ class SettingSection: Hashable {
         return data
     }
 }
-//extension SettingSection {
-//    static var alllSections: [SettingSection] = [SettingSection(title: "필수입력", settings: [Setting(title: "날짜선택"),
-//                                                                                          Setting(title: "우선순위선택")]),
-//                                                 SettingSection(title: "Color Setting", settings: [Setting(title: "LableColor"),                                            Setting(title: "BackgroundColor")])
-//    ]
-//}
+
 
 
 
@@ -89,9 +84,7 @@ class WriteViewController: BaseViewController {
     override func loadView() {
         self.view = writeView
     }
-    
-    var fpc = FloatingPanelController()
-    var contentVC = DatePickerViewController()
+
     
     var collectionViewDataSource: UICollectionViewDiffableDataSource<SettingSection, Setting>!
     
@@ -110,13 +103,7 @@ class WriteViewController: BaseViewController {
     
     
     
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yyyy년 MM월 dd일"
-        //fpc.delegate = self
-        return formatter
-    }
+
     
     override func configure() {
         writeView.backgroundColor = .black
@@ -133,15 +120,6 @@ class WriteViewController: BaseViewController {
 }
 
 
-// MARK: - LifeCycle
-extension WriteViewController {
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        contentVC.dismiss(animated: true)
-        
-    }
-}
 
 
 extension WriteViewController {
@@ -172,7 +150,7 @@ extension WriteViewController {
             presentAlertController("날짜와 시간을 선택해주세요")
         }
         if todo == nil {
-            repository.create(ToDo(content: contentText, date: date, dateMonth: date.month, dateWeek: date.week, dateToday: date.day, completed: false, priority: priority, labelColor: colorString, backgroundColor: backgroundColorString))
+            repository.create(ToDo(title: contentText, date: date, completed: false, priority: priority, labelColor: colorString, backgroundColor: backgroundColorString))
         } else {
             guard let todo = todo else { return print("수정하기!")}
         }
@@ -182,36 +160,6 @@ extension WriteViewController {
 
     }
     
-    
-//    func configureNavigationBarButtonItem() {
-//        //self.navigationController?.navigationBar.prefersLargeTitles = true
-//        let saveButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(tappedSaveButton))
-//        navigationItem.rightBarButtonItem = saveButton
-//    }
-//
-//    @objc
-//    func tappedSaveButton() { //⭐️⭐️⭐️⭐️⭐️
-//        print("fdsfdsfs")
-//        guard let dateLabelText = writeView.dateLable.text,
-//              //let date = datepicker
-//              let textFieldText = writeView.contentTextField.text else { return }
-//        print("🟩🟩\(dateLabelText), \(textFieldText)")
-//        guard let currentDate = savedDate else { return print("시간 없음.")}
-//
-//        if dateLabelText.isEmpty {
-//            presentAlertController("날짜와 시간을 선택해주세요")
-//        }
-//        //ToDo(content: textFieldText, date: Date(), dateString: dateLabelText, completed: false, priority: 1)
-//        if todo == nil { //작성
-//            repository.create(ToDo(content: textFieldText, date: currentDate, dateMonth: currentDate.month, dateWeek: currentDate.week, dateToday: currentDate.day, completed: false, priority: 1))
-//
-//        } else { //작성
-//            guard let todo = todo else { return print("수정하기!")}
-//            repository.update(todo, content: textFieldText, date: Date(), completed: false)
-//        }
-//        navigationController?.popViewController(animated: true)
-//        //⭐️⭐️⭐️⭐️⭐️
-//    }
     func showSheetPresentatilnController() {
         let vc = DatePickerViewController()
         vc.delegate = self
@@ -254,9 +202,9 @@ extension WriteViewController {
             contentConfiguration.secondaryText = ""
             contentConfiguration.imageProperties.tintColor = .label
             contentConfiguration.secondaryTextProperties.color = .secondaryLabel
-            //contentConfiguration.description = "안녕하세요"
-            //contentConfiguration.attributedText = "dfsfsdfsdfs"
-            //contentConfiguration.secondaryTextProperties.color = .secondaryLabel
+            
+            
+            
             
             if !(self.dateString == nil) {
                 contentConfiguration.secondaryText = self.dateString
@@ -341,6 +289,7 @@ extension WriteViewController: UICollectionViewDelegate {
             default:
                 guard let selectedCell = collectionViewDataSource.itemIdentifier(for: IndexPath(row: 1, section: 0)) else { return }
                 selectedCell.value += 1
+                value += 1
                 print(selectedCell.value)
                 var snapshot = collectionViewDataSource.snapshot()
                 snapshot.reloadItems([selectedCell])
@@ -394,37 +343,6 @@ extension WriteViewController: UIColorPickerViewControllerDelegate {
 }
 
 
-
-
-// MARK: - FloatingPanelControllerDelegate
-extension WriteViewController: FloatingPanelControllerDelegate {
-    
-    func showDatePickerPanel() {
-        
-        fpc.set(contentViewController: UINavigationController(rootViewController: contentVC))
-        fpc.layout = MyFloatingPanelLayout3()
-        fpc.isRemovalInteractionEnabled = true
-        fpc.delegate = self
-        fpc.changePanelStyle()
-        //fpc.addPanel(toParent: self)
-        //fpc.invalidateLayout()
-        fpc.behavior = MyFloatingPanelBehavior()
-        self.present(fpc, animated: true, completion: nil)
-
-    }
-    
-    func floatingPanelDidMove(_ fpc: FloatingPanelController) {
-        print("\(fpc.surfaceLocation.y)")
-        print("\(fpc.surfaceLocation(for: .tip).y)")
-        if fpc.surfaceLocation.y >= fpc.surfaceLocation(for: .tip).y - 100 {
-            print("🟧🟧🟧🟧🟧🟧🟧")
-            contentVC.dismiss(animated: true)
-        }
-    }
-    
-    
-
-}
 
 
 

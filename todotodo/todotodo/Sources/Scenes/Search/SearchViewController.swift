@@ -170,7 +170,7 @@ extension SearchViewController: UISearchResultsUpdating {
             //newSnapShot.deleteItems(repository.fetch().toArray())
             newSnapShot.appendSections([.main])
             newSnapShot.appendItems(repository.fetch().filter { element in
-                let content = element.content
+                let content = element.title
                 return content.localizedStandardContains(text)
             })
             collectionViewDataSource.apply(newSnapShot, animatingDifferences: true)

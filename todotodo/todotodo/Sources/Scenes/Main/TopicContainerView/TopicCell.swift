@@ -13,7 +13,7 @@ class TopicCell: BaseCollectionViewCell {
     let label: UILabel = {
         let view = UILabel()
         //view.backgroundColor = .brown
-        view.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        view.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         return view
     }()
 

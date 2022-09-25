@@ -18,10 +18,8 @@ class ToDoRepository: ToDoDataBaseRepository {
     let database = try! Realm()
     
     
-
-    
     // MARK: - CRUD
-    //-  Create
+
     func create(_ toDo: ToDo) {
         do {
             try database.write {
@@ -32,20 +30,10 @@ class ToDoRepository: ToDoDataBaseRepository {
         }
     }
     
-    
-
-//    //- update(핀 토글)
-//    func updatePin(updateObject: Memo, isFiexd: Bool) {
-//        try! localRealm.write {
-//            updateObject.isFixed = isFiexd
-//        }
-//    }
-    //- update(게시글 수정)
-
-    func update(_ toDo: ToDo, content: String, date: Date, completed: Bool) {
+    func update(_ toDo: ToDo, title: String, date: Date, completed: Bool) {
         do {
             try database.write {
-                toDo.content = content
+                toDo.title = title
                 toDo.date = date
                 toDo.completed = completed
             }
@@ -54,12 +42,51 @@ class ToDoRepository: ToDoDataBaseRepository {
         }
 
     }
+//    var monthFormatter: DateFormatter = {
+//        let formatter = DateFormatter()
+//        formatter.locale = Locale(identifier: "ko_KR")
+//        formatter.dateFormat = "M"
+//        return formatter
+//    }()
+//    
+//    var weekFormatter: DateFormatter {
+//        let formatter = DateFormatter()
+//        formatter.locale = Locale(identifier: "ko_KR")
+//        formatter.dateFormat = "w"
+//        return formatter
+//    }
+//    var todayformatter: DateFormatter {
+//        let formatter = DateFormatter()
+//        formatter.locale = Locale(identifier: "ko_KR")
+//        formatter.dateFormat = "d"
+//        return formatter
+//    }
+
+
+
+            
+        
+
     
     
-    
-    
-    
-    
+//    func updateTodo() {
+//        let list = self.fetchTodo()
+//        let todoList = list.filter {
+//            // 완료했거나 날짜가 지난 todo들 중 현재와 todo의 day가 다르고 고정하지 않은 todo를 걸러낸다
+//            ($0.completed == true || $0.todoAt ?? Date() < Date()) && $0.createdAt?.day ?? 0 != Date().day && !$0.fix
+//        }
+//        todoList.forEach { element in
+//            persistentContainer.viewContext.delete(element)
+//        }
+//        list.forEach { element in
+//            if element.todoAt ?? Date() < Date() , element.createdAt?.day ?? 0 != Date().day {
+//                if element.fix , element.completed {
+//                    element.completed.toggle()
+//                }
+//            }
+//        }
+//        saveContext()
+//    }
     
     
     // MARK: - 패치
@@ -67,51 +94,33 @@ class ToDoRepository: ToDoDataBaseRepository {
     func fetch() -> Results<ToDo> {
         return database.objects(ToDo.self)
     }
-    
-    
-    func filterMonth(currentMonth: Month) -> Results<ToDo> {
-        print("🟥\(currentMonth.rawValue)")
-        return database.objects(ToDo.self).filter("dateMonth == '\(currentMonth.rawValue)'")
+    func filteringMonth(currentMonth: Month) -> [ToDo] {
+        let list = self.fetch().toArray()
+        //print("⚠️⚠️⚠️⚠️⚠️⚠️\(list)")
+        let monthList = list.filter {
+            $0.date.month == String(currentMonth.rawValue)
+        }
+        //print("♥️♥️♥️♥️\(monthList)")
+        return monthList
     }
-    //func filterYear(currentYear: )
-    func filterWeek(currentMonth: Month, currnetWeek: SectionWeek) -> Results<ToDo> {
-        return filterMonth(currentMonth: currentMonth).filter("dateWeek == '\(currnetWeek.rawValue)'")
+    func filteringWeek(currentMonth: Month, currentWeek: SectionWeek) -> [ToDo] {
+        let list = self.filteringMonth(currentMonth: currentMonth)
+        let weekList = list.filter {
+            $0.date.week == String(currentWeek.rawValue)
+        }
+        return weekList
     }
     
-    func filterTodoDay(object: ToDo, currentMonth: Month, currentToday: Int) -> Results<ToDo> {
-        return filterMonth(currentMonth: currentMonth).filter("dateToday == '\(currentToday)'")
-    }
-    
-    
-    
-    
-//    func fistWeek(currenMonth: Month) -> Results<ToDo> {
-//        return filterMonth(currentMonth: currenMonth).filter(<#T##isIncluded: (ToDo) -> Bool##(ToDo) -> Bool#>)
-//    }
-    
-    
-//    func makeNumberOfWeeksPerMonth(month: Int)  {
-//        let pointDateComponent = DateComponents( year: 2022, month: month)
-//        let calendar2 = Calendar.current
-//        let hateDay = calendar2.date(from: pointDateComponent)
-//        
-//        let calendar = Calendar.current
-//        let weekRange = calendar.range(of: .weekOfMonth, in: .month, for: hateDay!)
-//        for i in weekRange! {
-//            a.append(String(i) + "주")
-//        }
-//    }
-    
-//    //- 패치필터(고정,비고정)
-//    func fetchFilter(in object: Results<Memo>, isFixed: Bool) -> Results<Memo> {
-//        return object.filter("isFixed == \(isFixed)").sorted(byKeyPath: "date", ascending: false)
+
+//    func filterMonth(currentMonth: Month) -> Results<ToDo> {
+//        return database.objects(ToDo.self).filter("dateMonth == '\(currentMonth.rawValue)'")
 //    }
 //
-//
-//    //- 패치필터(검색)
-//    func fetchFilterSearchedText(in object: Results<Memo>, text: String) -> Results<Memo> {
-//        return object.filter("content  CONTAINS[c] '\(text)' OR title CONTAINS[c]  '\(text)'").sorted(byKeyPath: "date", ascending: false)
+//    func filterWeek(currentMonth: Month, currnetWeek: SectionWeek) -> Results<ToDo> {
+//        return filterMonth(currentMonth: currentMonth).filter("dateWeek == '\(currnetWeek.rawValue)'")
 //    }
-    
-    
+//
+//    func filterTodoDay(object: ToDo, currentMonth: Month, currentToday: Int) -> Results<ToDo> {
+//        return filterMonth(currentMonth: currentMonth).filter("dateToday == '\(currentToday)'")
+//    }
 }

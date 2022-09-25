@@ -16,7 +16,7 @@ class SectionHeaderView: UICollectionReusableView {
     lazy var titleLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: UIFont.preferredFont(forTextStyle: .title1).pointSize, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: UIFont.preferredFont(forTextStyle: .title2).pointSize, weight: .bold)
         label.textColor = .label
         label.textAlignment = .left
         label.numberOfLines = 1

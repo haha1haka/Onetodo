@@ -26,6 +26,6 @@ class SearchCell: BaseCollectionViewCell {
         }
     }
     func configureCell(itemIdentifier: ToDo) {
-        label.text = itemIdentifier.content
+        label.text = itemIdentifier.title
     }
 }

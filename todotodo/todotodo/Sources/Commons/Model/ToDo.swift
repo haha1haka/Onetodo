@@ -37,12 +37,10 @@ enum Month:Int, CaseIterable {
 
 
 class ToDo: Object {
-    @Persisted var content: String
+    @Persisted var title: String
     @Persisted var date: Date
-    @Persisted var dateMonth: String
-    @Persisted var dateWeek: String
-    @Persisted var dateToday: String
-    //@Persisted var date: String
+    //@Persisted var dateSting: String
+    //@Persisted var date: Date
     @Persisted var completed: Bool
     @Persisted var priority: Int
     @Persisted var labelColor: String
@@ -50,13 +48,10 @@ class ToDo: Object {
 
     @Persisted(primaryKey: true) var objectId: ObjectId
     
-    convenience init(content: String, date: Date, dateMonth: String, dateWeek: String, dateToday: String, completed: Bool, priority: Int, labelColor: String, backgroundColor: String) {
+    convenience init(title: String, date: Date, completed: Bool, priority: Int, labelColor: String, backgroundColor: String) {
         self.init()
-        self.content = content
+        self.title = title
         self.date = date
-        self.dateMonth = dateMonth
-        self.dateWeek = dateWeek
-        self.dateToday = dateToday
         self.completed = false
         self.priority = priority
         self.labelColor = labelColor

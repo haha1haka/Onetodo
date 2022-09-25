@@ -13,11 +13,11 @@ class WriteView: BaseView {
 
     let contentTextField: UITextField = {
         let view = UITextField()
-        view.backgroundColor = .darkGray
-        view.placeholder = "할 일을 입력해주세요"
+        view.backgroundColor = .black
+        view.placeholder = "  할 일을 입력해주세요"
         view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
-        view.textColor = .black
+        view.textColor = .lightGray
         return view
     }()
     
@@ -50,7 +50,7 @@ class WriteView: BaseView {
         contentTextField.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(30)
             $0.leading.trailing.equalTo(self).inset(30)
-            $0.height.equalTo(54)
+            $0.height.equalTo(44)
         }
         collectionView.snp.makeConstraints {
             $0.top.equalTo(contentTextField.snp.bottom).offset(20)

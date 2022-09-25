@@ -40,4 +40,10 @@ extension UIViewController {
         alert.addAction(cancel)
         present(alert, animated: false)
     }
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        return formatter
+    }
 }
