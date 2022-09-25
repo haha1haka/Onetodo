@@ -10,57 +10,52 @@ import SnapKit
 
 class WriteView: BaseView {
     
-    let dateButton: UIButton = {
-        let view = UIButton()
-        view.layer.cornerRadius = 8
-        view.layer.borderColor = UIColor.darkGray.cgColor
-        view.layer.borderWidth = 1
-        view.setTitle("날짜선택", for: .normal)
-        view.setTitleColor(.white, for: .normal)
-        return view
-    }()
-    
-    let dateLable: UILabel = {
-        let view = UILabel()
-        view.textColor = .white
-        
-//        view.backgroundColor = .brown
-//        view.
-        return view
-    }()
-    
+
     let contentTextField: UITextField = {
         let view = UITextField()
-        view.backgroundColor = .black
+        view.backgroundColor = .darkGray
         view.placeholder = "할 일을 입력해주세요"
+        view.layer.cornerRadius = 8
+        view.layer.masksToBounds = true
+        view.textColor = .black
         return view
     }()
+    
+    lazy var collectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
+        view.backgroundColor = .brown
+        return view
+    }()
+    
+    
+    
+    func configureCollectionViewLayout() -> UICollectionViewLayout {
+        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        listConfiguration.headerMode = .supplementary
+        listConfiguration.footerMode = .supplementary
+        //listConfiguration.backgroundColor = .secondarySystemBackground
+        return UICollectionViewCompositionalLayout.list(using: listConfiguration)
+    }
+    
     
     
     override func configure() {
-        [dateButton, dateLable].forEach { self.addSubview($0) }
-        [contentTextField].forEach { self.addSubview($0) }
+        [contentTextField, collectionView].forEach { self.addSubview($0) }
     }
     
     
     override func setConstraints() {
-        dateButton.snp.makeConstraints {
-            $0.top.leading.equalTo(self.safeAreaLayoutGuide).inset(20)
-            $0.width.equalTo(88)
-            $0.height.equalTo(55)
-        }
-        dateLable.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(30)
-            $0.leading.equalTo(dateButton.snp.trailing).offset(10)
-            $0.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
-            $0.height.equalTo(44)
-        }
+
         
         contentTextField.snp.makeConstraints {
-            $0.top.equalTo(dateLable.snp.bottom).offset(20)
-            $0.leading.trailing.equalTo(self).inset(20)
-            $0.height.equalTo(44)
-            
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(30)
+            $0.leading.trailing.equalTo(self).inset(30)
+            $0.height.equalTo(54)
+        }
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(contentTextField.snp.bottom).offset(20)
+            $0.leading.trailing.equalTo(self)
+            $0.bottom.equalToSuperview()
         }
     }
     

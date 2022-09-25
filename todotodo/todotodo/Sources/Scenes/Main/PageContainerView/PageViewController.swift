@@ -139,8 +139,9 @@ extension PageViewController {
         }
         collectionViewDataSource = .init(collectionView: pageView.collectionView) { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
-            cell.backgroundView?.backgroundColor = .red
-            cell.backgroundColor = .random
+            cell.label.textColor = UIColor(hex: itemIdentifier.labelColor)
+            cell.backgroundColor = UIColor(hex: itemIdentifier.backgroundColor)
+            
             return cell
         }
         // 2️⃣ Header

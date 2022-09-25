@@ -8,7 +8,11 @@
 import UIKit
 import RealmSwift
 
-
+extension Int {
+    func toString() -> String {
+        return String(self) + " 순위"
+    }
+}
 enum TodaySection {
     case widthScroll
     case heightScroll
@@ -19,8 +23,8 @@ enum TodaySection {
         case .heightScroll: return "펼쳐보기"
         }
     }
-    
 }
+
 struct Section22: Hashable {
 
     var name: String = ""
@@ -48,7 +52,7 @@ struct TodayItem: Hashable {
 class MainPanelViewController: BaseViewController {
     let repository = ToDoRepository()
     let mainPanelView = MainPanelView()
-    var collectionViewDataSource: UICollectionViewDiffableDataSource<Section22, ToDo>!
+    var collectionViewDataSource: UICollectionViewDiffableDataSource<Int, ToDo>!
     //var sections = TodoStatus.allSections
     
     var today = Date().day
@@ -56,11 +60,12 @@ class MainPanelViewController: BaseViewController {
         self.view = mainPanelView
     }
     
-    var todayToDo: Results<ToDo> {
+    var todayToDo: Results<ToDo> {//⭐️priority 설정 화면 넣고, 해당 prioroty에 따라서 ToDo초기화 -> 램에 넣고 난후
+        //이곳에서 prorot 높은 순으로 배열 만들기 --> .sorted(byKeyPath: "date", ascending: false)
         return repository.fetch().filter("dateToday == '\(today)'")
     }
     
-    var sectionTitle = Section22()
+    var sectionTitle: Int = 0
     var radomNumber = Int.random(in: 1...10000)
     
     override func configure() {
@@ -104,7 +109,7 @@ extension MainPanelViewController {
         // 2️⃣ Header
         let headerRegistration = UICollectionView.SupplementaryRegistration<SectionHeaderView>.init( elementKind: UICollectionView.elementKindSectionHeader) { [weak self] supplementaryView, elementKind, indexPath in
             guard let self = self, let sectionIdentifier = self.collectionViewDataSource.sectionIdentifier(for: indexPath.section) else { return }
-            supplementaryView.titleLabel.text = sectionIdentifier.name
+            supplementaryView.titleLabel.text = sectionIdentifier.toString()
         }
         collectionViewDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
             return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
@@ -115,11 +120,11 @@ extension MainPanelViewController {
     func loadInitialData() {
         var snapshot = collectionViewDataSource.snapshot()
         //.width섹션 없으면 추가
-        if !snapshot.sectionIdentifiers.contains(.width) {
-            snapshot.appendSections([.width])
+        if !snapshot.sectionIdentifiers.contains(0) {
+            snapshot.appendSections([0])
         }
         //.width섹션에 오늘 todo 만 넣기.
-        snapshot.appendItems(todayToDo.toArray(), toSection: .width)
+        snapshot.appendItems(todayToDo.toArray(), toSection: 0)
         collectionViewDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
@@ -127,18 +132,18 @@ extension MainPanelViewController {
     
     func fullScreenSnapShot() {
         //datasource 에 오늘 메모 들어가 있음
-        for item in collectionViewDataSource.snapshot(for: .width).items {
+        for (index, item) in collectionViewDataSource.snapshot(for: 0).items.enumerated() {
             //DispatchQueue.global().async {
             //해당 메모만큼 섹션 만들기 위해
-            sectionTitle = Section22(name: "\(Int.random(in: 1...1000))")
+            sectionTitle = index
             //datasource 에 오늘 메모 들어가 있음
             var snapShot = self.collectionViewDataSource.snapshot()
             //모두 지우기
             snapShot.deleteItems([item])
             
             //섹션 아이템 모두 없어졌으면 지우기
-            if snapShot.itemIdentifiers(inSection: .width).isEmpty {
-                snapShot.deleteSections([.width])
+            if snapShot.itemIdentifiers(inSection: 0).isEmpty {
+                snapShot.deleteSections([0])
             }
             
             //넣을려는 섹션이 없으면 섹션 추가
@@ -149,27 +154,25 @@ extension MainPanelViewController {
             snapShot.appendItems([item], toSection: sectionTitle)
             self.collectionViewDataSource.apply(snapShot, animatingDifferences: true, completion: nil)
             
+            
         }
         
         
         //}
     }
     
-    func halfCurrentSnapShot() {
-        var snapshot = collectionViewDataSource.snapshot()
-//        if !snapshot.sectionIdentifiers.contains(.width) {
-//            snapshot.appendSections([.width])
-//        }
-        //snapshot.deleteSections(<#T##identifiers: [Section22]##[Section22]#>)
-        snapshot.deleteItems(todayToDo.toArray())
-        snapshot.appendItems(todayToDo.toArray(), toSection: .width)
-        collectionViewDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
-        
-        
-
-        
-
-    }
+//    func halfScreenSnapShot() {
+//        var snapshot = collectionViewDataSource.snapshot()
+//        snapShot.deleteSections([sectionTitle])
+//        snapshot.deleteItems(todayToDo.toArray())
+//        snapshot.appendItems(todayToDo.toArray(), toSection: .width)
+//        collectionViewDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+//
+//
+//
+//
+//
+//    }
     
     
     

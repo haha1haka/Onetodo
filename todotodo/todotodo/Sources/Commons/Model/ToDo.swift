@@ -45,10 +45,12 @@ class ToDo: Object {
     //@Persisted var date: String
     @Persisted var completed: Bool
     @Persisted var priority: Int
+    @Persisted var labelColor: String
+    @Persisted var backgroundColor: String
 
     @Persisted(primaryKey: true) var objectId: ObjectId
     
-    convenience init(content: String, date: Date, dateMonth: String, dateWeek: String, dateToday: String, completed: Bool, priority: Int) {
+    convenience init(content: String, date: Date, dateMonth: String, dateWeek: String, dateToday: String, completed: Bool, priority: Int, labelColor: String, backgroundColor: String) {
         self.init()
         self.content = content
         self.date = date
@@ -57,6 +59,8 @@ class ToDo: Object {
         self.dateToday = dateToday
         self.completed = false
         self.priority = priority
+        self.labelColor = labelColor
+        self.backgroundColor = backgroundColor
     }
 }
 

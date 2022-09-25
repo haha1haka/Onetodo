@@ -12,7 +12,6 @@ protocol DateDelegate {
     func sendDate(_ date: Date)
 }
 
-
 class DatePickerViewController: BaseViewController {
     
     var delegate: DateDelegate?
@@ -22,13 +21,13 @@ class DatePickerViewController: BaseViewController {
         picker.timeZone = NSTimeZone.local
         picker.tintColor = .link
         picker.preferredDatePickerStyle = .inline
-        
+        picker.addTarget(self, action: #selector(changedDate), for: .valueChanged)
         return picker
     }()
     
     override func configure() {
         view.addSubview(datePicker)
-        
+        view.backgroundColor = .black
         datePicker.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
@@ -38,6 +37,12 @@ class DatePickerViewController: BaseViewController {
         
         configureNavigationBarButtonItem()
         
+    }
+    @objc
+    func changedDate() {
+        date = self.datePicker.date
+        print("🆗")
+        delegate?.sendDate(date)
     }
     
     func configureNavigationBarButtonItem() {
@@ -50,11 +55,8 @@ class DatePickerViewController: BaseViewController {
         print("🍖🍖🍖🍖🍖")
         delegate?.sendDate(date)
         self.dismiss(animated: true)
-        
     }
 
-    
-    
 }
 extension DatePickerViewController {
     override func viewDidDisappear(_ animated: Bool) {

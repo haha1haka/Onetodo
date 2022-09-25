@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F4006DDB28DAD5D400F8ECC9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4006DDA28DAD5D400F8ECC9 /* Date.swift */; };
+		F4077D4528DF008400768523 /* SectionHeaderView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4077D4428DF008300768523 /* SectionHeaderView2.swift */; };
+		F4077D4728DF084C00768523 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4077D4628DF084C00768523 /* ColorPickerViewController.swift */; };
 		F40FC49B28D59BE7005D2A6A /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FC49A28D59BE7005D2A6A /* ToDo.swift */; };
 		F40FC49E28D59F46005D2A6A /* ToDoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FC49D28D59F46005D2A6A /* ToDoRepository.swift */; };
 		F40FC4A128D5A548005D2A6A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F40FC4A028D5A548005D2A6A /* Realm */; };
@@ -66,6 +68,8 @@
 
 /* Begin PBXFileReference section */
 		F4006DDA28DAD5D400F8ECC9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		F4077D4428DF008300768523 /* SectionHeaderView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView2.swift; sourceTree = "<group>"; };
+		F4077D4628DF084C00768523 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		F40FC49A28D59BE7005D2A6A /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		F40FC49D28D59F46005D2A6A /* ToDoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRepository.swift; sourceTree = "<group>"; };
 		F427D81E28DC0ADD00D51282 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 				F4730BCE28D884CA0032C32E /* FloatingPanelLayout.swift */,
 				F4730BC828D8845C0032C32E /* FloatingPanelBehavior.swift */,
 				F4730BD028D889450032C32E /* SectionHeaderView.swift */,
+				F4077D4428DF008300768523 /* SectionHeaderView2.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -334,7 +339,6 @@
 		F4730BC428D880E20032C32E /* WritePanel */ = {
 			isa = PBXGroup;
 			children = (
-				F4C66FED28D85B2D00BC7E40 /* DatePickerViewController.swift */,
 			);
 			path = WritePanel;
 			sourceTree = "<group>";
@@ -373,6 +377,8 @@
 			children = (
 				F478AB1428CF3BE4008D838A /* WriteViewController.swift */,
 				F478AB1628CF3CA6008D838A /* WriteView.swift */,
+				F4C66FED28D85B2D00BC7E40 /* DatePickerViewController.swift */,
+				F4077D4628DF084C00768523 /* ColorPickerViewController.swift */,
 				F4730BC428D880E20032C32E /* WritePanel */,
 			);
 			path = Write;
@@ -494,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4077D4728DF084C00768523 /* ColorPickerViewController.swift in Sources */,
 				F4F2BA4028D8BE9B00A31F73 /* TestVC.swift in Sources */,
 				F44F2C4A28DCC900003CFA54 /* SearchCell.swift in Sources */,
 				F47B445D28D0757D003837F2 /* Item.swift in Sources */,
@@ -531,6 +538,7 @@
 				F47B445B28D053D7003837F2 /* PanelCell2.swift in Sources */,
 				F427D81F28DC0ADD00D51282 /* UIColor.swift in Sources */,
 				F4730BD128D889450032C32E /* SectionHeaderView.swift in Sources */,
+				F4077D4528DF008400768523 /* SectionHeaderView2.swift in Sources */,
 				F4730BCF28D884CA0032C32E /* FloatingPanelLayout.swift in Sources */,
 				F46B2EEF28CADFE600B0AB5D /* SceneDelegate.swift in Sources */,
 				F4F2BA3E28D8BD7A00A31F73 /* TestViewController.swift in Sources */,
