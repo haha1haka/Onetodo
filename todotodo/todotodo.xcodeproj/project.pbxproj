@@ -42,6 +42,7 @@
 		F4B85A8D28D0A4FF00311A29 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F4B85A8C28D0A4FF00311A29 /* SnapKit */; };
 		F4C66FEE28D85B2D00BC7E40 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C66FED28D85B2D00BC7E40 /* DatePickerViewController.swift */; };
 		F4DC37CF28DB5A6C004FEA87 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC37CE28DB5A6C004FEA87 /* PageCell.swift */; };
+		F4DDD00828E19B970002422B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DDD00728E19B970002422B /* String.swift */; };
 		F4E173C128CDB28F00D117E9 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C028CDB28F00D117E9 /* PageViewController.swift */; };
 		F4E173C428CDB34D00D117E9 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E173C328CDB34D00D117E9 /* PageView.swift */; };
 		F4E3358728D2E56F00BE64A7 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = F4E3358628D2E56F00BE64A7 /* FloatingPanel */; };
@@ -83,6 +84,7 @@
 		F49F0A1D28D4A94400BC9EC6 /* MainPanelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPanelCell.swift; sourceTree = "<group>"; };
 		F4C66FED28D85B2D00BC7E40 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		F4DC37CE28DB5A6C004FEA87 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		F4DDD00728E19B970002422B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F4E173C028CDB28F00D117E9 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		F4E173C328CDB34D00D117E9 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		F4F8F34828D0044100D47DE7 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			children = (
 				F46B2F1328CAE32E00B0AB5D /* UIViewController.swift */,
 				F427D81E28DC0ADD00D51282 /* UIColor.swift */,
+				F4DDD00728E19B970002422B /* String.swift */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				F4E173C128CDB28F00D117E9 /* PageViewController.swift in Sources */,
 				F40FC49B28D59BE7005D2A6A /* ToDo.swift in Sources */,
 				F4C66FEE28D85B2D00BC7E40 /* DatePickerViewController.swift in Sources */,
+				F4DDD00828E19B970002422B /* String.swift in Sources */,
 				F49F0A1E28D4A94400BC9EC6 /* MainPanelCell.swift in Sources */,
 				F446099628DAB10A006CD694 /* Results.swift in Sources */,
 				F46B2F1628CAE33600B0AB5D /* NSObject.swift in Sources */,

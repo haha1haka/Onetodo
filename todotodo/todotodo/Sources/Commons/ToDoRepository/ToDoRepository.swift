@@ -40,8 +40,26 @@ class ToDoRepository: ToDoDataBaseRepository {
         } catch let error {
             print(error)
         }
-
     }
+    
+    func updateComplete(item: ToDo) {
+        
+        try! database.write {
+            item.completed.toggle()
+        }
+    }
+    
+    func deleteItem(item: ToDo) {
+        do {
+            try database.write {
+                database.delete(item)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    
 //    var monthFormatter: DateFormatter = {
 //        let formatter = DateFormatter()
 //        formatter.locale = Locale(identifier: "ko_KR")

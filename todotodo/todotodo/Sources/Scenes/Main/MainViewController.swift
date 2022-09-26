@@ -12,7 +12,7 @@ import FloatingPanel
 class MainViewController: BaseViewController {
 
     lazy var pageViewController: UIPageViewController = {
-        let pageViewController = UIPageViewController()
+        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         pageViewController.delegate = self
         pageViewController.dataSource = self
         return pageViewController
@@ -85,6 +85,7 @@ extension MainViewController {
         pageContentViewControllers = topicDataStore.map { month in
             let vc = PageViewController()
             vc.selectedMonth = month
+            vc.delegate = self
             return vc
         }
         let pageContentViewController = pageContentViewControllers[thisMonth-1] // [8] --> 9번째 page
@@ -150,8 +151,13 @@ extension MainViewController: TopicViewControllerEvent {
         }
 
     }
-    
-
+}
+extension MainViewController: PageViewControllerEvent {
+    func item(_ viewController: PageViewController, itemidentifier: ToDo) {
+        var snapshot = contentVC.collectionViewDataSource.snapshot()
+        snapshot.deleteItems([itemidentifier])
+        contentVC.collectionViewDataSource.apply(snapshot, animatingDifferences: true)
+    }
 }
 
 

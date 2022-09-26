@@ -37,9 +37,16 @@ enum SectionWeek:Int, CaseIterable {
         }
     }
 }
-
+//protocol TopicViewControllerEvent: AnyObject {
+//    func topic(_ viewController: TopicViewController, didSelectItem: Month)
+//}
+protocol PageViewControllerEvent: AnyObject {
+    func item(_ viewController: PageViewController, itemidentifier: ToDo)
+}
 
 class PageViewController: BaseViewController {
+
+    
     
     let pageView = PageView()
     override func loadView() {
@@ -52,6 +59,8 @@ class PageViewController: BaseViewController {
     let contentVC = WriteViewController()
     
     var collectionViewDataSource: UICollectionViewDiffableDataSource<SectionWeek, ToDo>!
+    
+    var delegate: PageViewControllerEvent?
     
     var selectedMonth: Month?
 
@@ -80,6 +89,7 @@ class PageViewController: BaseViewController {
         registerSectionHeaterView()
         configureCollectionViewDataSource()
         print("🗂🗂🗂🗂\(repository.database.configuration.fileURL!)🗂🗂🗂🗂")
+        
     }
 }
 
@@ -97,21 +107,70 @@ extension PageViewController {
 
 // MARK: - HeaderRegister, DataSource, applySnapShot Methods
 extension PageViewController {
+    func configureContextMenu(item: ToDo) -> UIContextMenuConfiguration {
+            let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
+                
+                let edit = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in
+                    
+                    
+                    
+                    //self.totalWeek = [self.firstWeek, self.secondWeek, self.thirdWeek, self.fourthWeek, self.fiveWeek, self.sixWeek]
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+                    
+                }
+                let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil,attributes: .destructive, state: .off) { (_) in
+                    
+                    
+                    
+                    self.delegate?.item(self, itemidentifier: item)
+                    var snapShot = self.collectionViewDataSource.snapshot()
+                    snapShot.deleteItems([item])
+                    self.collectionViewDataSource.apply(snapShot, animatingDifferences: true)
+                    self.repository.deleteItem(item: item)
+                    
+                    
+
+                    
+                }
+                
+                return UIMenu(title: "todotodo", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [edit,delete])
+                
+            }
+            return context
+        }
     
     func registerSectionHeaterView() {
         pageView.collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.identifier)
     }
     
     func configureCollectionViewDataSource() {
-        
         // 1️⃣ Cell
         let cellRegistration = UICollectionView.CellRegistration<PageCell,ToDo> { cell,  indexPath, itemIdentifier in
             cell.configureCell(itemIdentifier: itemIdentifier)
+            cell.label.textColor = UIColor(hex: itemIdentifier.labelColor)
+            cell.backgroundColor = UIColor(hex: itemIdentifier.backgroundColor)
+            
+//            cell.addInteraction(UIContextMenuInteraction(delegate: self))
+//            cell.isUserInteractionEnabled = true
+            
+            
+            if itemIdentifier.completed { //완료됐으면
+                cell.label.attributedText = itemIdentifier.title.strikeThrough()
+            }
         }
         collectionViewDataSource = .init(collectionView: pageView.collectionView) { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
-            cell.label.textColor = UIColor(hex: itemIdentifier.labelColor)
-            cell.backgroundColor = UIColor(hex: itemIdentifier.backgroundColor)
+
             return cell
         }
         
@@ -123,7 +182,6 @@ extension PageViewController {
         collectionViewDataSource.supplementaryViewProvider = .some({ collectionView, elementKind, indexPath in
             return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         })
-
     }
     
     
@@ -145,14 +203,35 @@ extension PageViewController {
 // MARK: - CollectionViewDelegate
 extension PageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        fpc.set(contentViewController: contentVC)
-        fpc.layout = MyFloatingPanelLayout2()
-        fpc.isRemovalInteractionEnabled = true
-        fpc.delegate = self
-        fpc.changePanelStyle()
-        fpc.behavior = MyFloatingPanelBehavior()
-        self.present(fpc, animated: true, completion: nil)
+        
+        
+        
+        guard let selectedItem = collectionViewDataSource.itemIdentifier(for: indexPath) else { return }
+        repository.updateComplete(item: selectedItem)
+        
+        var snapShot = collectionViewDataSource.snapshot()
+        snapShot.reloadItems([selectedItem])
+        collectionViewDataSource.apply(snapShot, animatingDifferences: true)
+            
+
+//        fpc.set(contentViewController: contentVC)
+//        fpc.layout = MyFloatingPanelLayout2()
+//        fpc.isRemovalInteractionEnabled = true
+//        fpc.delegate = self
+//        fpc.changePanelStyle()
+//        fpc.behavior = MyFloatingPanelBehavior()
+//        self.present(fpc, animated: true, completion: nil)
     }
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        guard let selectedItem = collectionViewDataSource.itemIdentifier(for: indexPath) else { return nil }
+        return configureContextMenu(item: selectedItem)
+        print(selectedItem)
+        //configureContextMenu(item: selectedItem)
+        
+    }
+
+    
+    
 }
 
 
@@ -166,3 +245,26 @@ extension PageViewController: FloatingPanelControllerDelegate {
         }
     }
 }
+//extension PageViewController: UIContextMenuInteractionDelegate {
+//    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+//        return UIContextMenuConfiguration(identifier: <#T##NSCopying?#>, previewProvider: nil) { _ -> UIMenu? in
+//            let correctionButton = UIAction(title: "수정하기", image: UIImage(systemName: "square.and.pencil")) {
+//                (UIAction) in
+//                print("좋아요 클릭됨")
+//            }
+//
+//
+//
+//
+//            let deleteButton = UIAction(title: "todo 제거", image: UIImage(systemName: "minus.circle"), attributes: .destructive) {
+//                (UIAction) in
+//
+//                var snapshot = self.collectionViewDataSource.snapshot()
+//                //snapshot.deleteItems(<#T##identifiers: [ToDo]##[ToDo]#>)
+//
+//
+//            }
+//            return UIMenu(children: [correctionButton, deleteButton])
+//        }
+//    }
+//}
