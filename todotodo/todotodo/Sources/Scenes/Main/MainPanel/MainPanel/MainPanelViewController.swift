@@ -13,79 +13,36 @@ extension Int {
         return String(self) + " 순위"
     }
 }
-enum TodaySection {
-    case widthScroll
-    case heightScroll
-    
-    var title: String {
-        switch self {
-        case .widthScroll: return "오늘의 주요사항"
-        case .heightScroll: return "펼쳐보기"
-        }
-    }
-}
-
-struct Section22: Hashable {
-
-    var name: String = ""
-
-    static let width: Section22 = .init(name: "오늘의 주요사항")
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
-    }
-}
-
-
-struct TodayItem: Hashable {
-    var name: String
-    var color: UIColor
-    var length: Int
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
-    }
-}
-
 
 
 class MainPanelViewController: BaseViewController {
-    let repository = ToDoRepository()
-    let mainPanelView = MainPanelView()
-    var collectionViewDataSource: UICollectionViewDiffableDataSource<Int, ToDo>!
-    //var sections = TodoStatus.allSections
     
-    var today = Date().day
+    let mainPanelView = MainPanelView()
     override func loadView() {
         self.view = mainPanelView
     }
     
-    var todayToDo: Results<ToDo> {//⭐️priority 설정 화면 넣고, 해당 prioroty에 따라서 ToDo초기화 -> 램에 넣고 난후
-        //이곳에서 prorot 높은 순으로 배열 만들기 --> .sorted(byKeyPath: "date", ascending: false)
-        return repository.fetch() //.filter("dateToday == '\(today)'")
-    }
+    let repository = ToDoRepository()
     
+    var collectionViewDataSource: UICollectionViewDiffableDataSource<Int, ToDo>!
+    
+    var today = Date()
+
     var sectionTitle: Int = 0
-    var radomNumber = Int.random(in: 1...10000)
     
     override func configure() {
         mainPanelView.backgroundColor = .red
         registerSectionHeaderView()
         configureCollectionViewDataSource()
-        loadInitialData()
-        
-        
-    }
-}
-extension MainPanelViewController {
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //loadInitialData()
-        //fullScreenSnapShot()
-        print("업데이트됨")
     }
 }
 
+extension MainPanelViewController {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        applySnapShot()
+    }
+}
 
 
 
@@ -117,14 +74,16 @@ extension MainPanelViewController {
     }
     
     
-    func loadInitialData() {
+    func applySnapShot() {
         var snapshot = collectionViewDataSource.snapshot()
         //.width섹션 없으면 추가
+        snapshot.deleteAllItems()
+        snapshot.deleteSections([0])
         if !snapshot.sectionIdentifiers.contains(0) {
             snapshot.appendSections([0])
         }
         //.width섹션에 오늘 todo 만 넣기.
-        snapshot.appendItems(todayToDo.toArray(), toSection: 0)
+        snapshot.appendItems(repository.filteringToday(today: today), toSection: 0)
         collectionViewDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
@@ -133,11 +92,13 @@ extension MainPanelViewController {
     func fullScreenSnapShot() {
         //datasource 에 오늘 메모 들어가 있음
         for (index, item) in collectionViewDataSource.snapshot(for: 0).items.enumerated() {
-            //DispatchQueue.global().async {
+            
             //해당 메모만큼 섹션 만들기 위해
-            sectionTitle = index
+            sectionTitle = 1
+            
             //datasource 에 오늘 메모 들어가 있음
             var snapShot = self.collectionViewDataSource.snapshot()
+            
             //모두 지우기
             snapShot.deleteItems([item])
             
@@ -158,7 +119,7 @@ extension MainPanelViewController {
         }
         
         
-        //}
+        
     }
     
 //    func halfScreenSnapShot() {

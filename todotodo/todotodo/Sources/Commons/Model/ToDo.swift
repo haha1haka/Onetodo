@@ -28,7 +28,7 @@ enum Month:Int, CaseIterable {
         case .nov: return "11월"
         case .dec: return "12월"
         }
-    }
+    } 
     
 }
 //struct SectionWeek: Hashable {
@@ -39,21 +39,19 @@ enum Month:Int, CaseIterable {
 class ToDo: Object {
     @Persisted var title: String
     @Persisted var date: Date
-    //@Persisted var dateSting: String
-    //@Persisted var date: Date
     @Persisted var completed: Bool
-    @Persisted var priority: Int
+    @Persisted var priority: Bool
     @Persisted var labelColor: String
     @Persisted var backgroundColor: String
 
     @Persisted(primaryKey: true) var objectId: ObjectId
     
-    convenience init(title: String, date: Date, completed: Bool, priority: Int, labelColor: String, backgroundColor: String) {
+    convenience init(title: String, date: Date, completed: Bool, priority: Bool, labelColor: String, backgroundColor: String) {
         self.init()
         self.title = title
         self.date = date
-        self.completed = false
-        self.priority = priority
+        self.completed = completed
+        self.priority = priority // 보통
         self.labelColor = labelColor
         self.backgroundColor = backgroundColor
     }

@@ -12,7 +12,7 @@ class PageCell: BaseCollectionViewCell {
     
     var label: UILabel = {
         let view = UILabel()
-        view.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        view.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         return view
     }()
     
@@ -23,9 +23,10 @@ class PageCell: BaseCollectionViewCell {
     override func setConstraints() {
         label.snp.makeConstraints {
             $0.top.bottom.equalTo(self).inset(10)
-            $0.leading.trailing.equalTo(self).inset(5)
+            $0.leading.trailing.equalTo(self).inset(10)
         }
     }
+    
     func configureCell(itemIdentifier: ToDo) {
         label.text = itemIdentifier.title
     }

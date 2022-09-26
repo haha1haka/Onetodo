@@ -29,6 +29,8 @@ class TopicCell: BaseCollectionViewCell {
             invalidateCell()
         }
     }
+
+
     
     func invalidateCell() {
         selectionView.isHidden = !isSelected
@@ -51,6 +53,7 @@ class TopicCell: BaseCollectionViewCell {
     
     func configureCell(itemIdentifier: Month) {
         label.text = itemIdentifier.title
+        
     }  
 }
 

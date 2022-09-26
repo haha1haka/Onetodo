@@ -40,6 +40,10 @@ extension UIViewController {
         alert.addAction(cancel)
         present(alert, animated: false)
     }
+
+}
+
+extension UIViewController {
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")

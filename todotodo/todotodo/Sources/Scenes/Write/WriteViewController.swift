@@ -34,12 +34,12 @@ class SettingSection: Hashable {
     
     static func makeData() -> [SettingSection] {
         let data = [SettingSection(headerText: "필수 입력사항",footerText: "날짜와 우선순위를 지정해서 관리하세요", settings: [
-                        Setting(name: "car", type: .requiredSetting, title: "날짜선택"),
-                        Setting(name: "car", type: .colorSetting, title: "우선순위")]
+            Setting(name: "car", type: .requiredSetting, title: "날짜선택",priority: false),
+                        Setting(name: "car", type: .colorSetting, title: "중요도",priority: false),]
                                   ),
                     SettingSection(headerText: "Color Setting",footerText: "각 이벤트에 맞게 색상을 지정해 주세요.", settings: [
-                        Setting(name: "car", type: .requiredSetting, title: "Lable Color"),
-                        Setting(name: "car", type: .colorSetting, title: "Background Color")]
+                        Setting(name: "car", type: .requiredSetting, title: "Lable Color", priority: false),
+                        Setting(name: "car", type: .colorSetting, title: "Background Color", priority: false)]
                                   )]
         return data
     }
@@ -54,15 +54,15 @@ class Setting: Hashable {
     var title: String
     var image: UIImage
     var type: Type
-    var value: Int
+    var priority: Bool
     
-    init(name: String,type: Type, title: String, value: Int = 0) {
+    init(name: String,type: Type, title: String, priority: Bool) {
         self.id = UUID()
         self.name = name //이미지 떄문
         self.title = title //
         self.image = UIImage(systemName: name)!
         self.type = type
-        self.value = value
+        self.priority = false
     }
     
     func hash(into hasher: inout Hasher) {
@@ -97,7 +97,10 @@ class WriteViewController: BaseViewController {
     
     
     var dateString: String?
-    var value: Int = 0
+    var priority: Bool = false
+        
+        
+    var priorityString = ""
     var colorString = "#000000"
     var backgroundColorString = "#555555"
     
@@ -141,15 +144,23 @@ extension WriteViewController {
     
     @objc
     func tappedSaveButton() {
-        guard let contentText = writeView.contentTextField.text else { return }
-        guard let date = savedDate else { return print("알럿 : 시간을 선택해 주세요") }
+        guard let contentText = writeView.contentTextField.text else {
+            showAlertMessage(title: "할일을 등록해주세요")
+            return
+        }
+        guard let date = savedDate else {
+            showAlertMessage(title: "날짜와 시간 선택은 필수입니다")
+            return
+        }
         guard let dateText = dateString else { return print("...") }
-        let priority = value
+        let priority = self.priority
+        print("📭📭📭📭📭📭📭\(priority)")
         
         if dateText.isEmpty {
             presentAlertController("날짜와 시간을 선택해주세요")
         }
         if todo == nil {
+            
             repository.create(ToDo(title: contentText, date: date, completed: false, priority: priority, labelColor: colorString, backgroundColor: backgroundColorString))
         } else {
             guard let todo = todo else { return print("수정하기!")}
@@ -210,7 +221,17 @@ extension WriteViewController {
                 contentConfiguration.secondaryText = self.dateString
             }
             if indexPath.section == 0 && indexPath.row == 1 {
-                contentConfiguration.secondaryText = String(itemIdentifier.value)
+                if self.priority {
+                    self.priorityString = "높음"
+                    contentConfiguration.secondaryText = self.priorityString
+                    self.priority = true
+                } else {
+                    self.priorityString = "낮음"
+                    contentConfiguration.secondaryText = self.priorityString
+                    self.priority = false
+                }
+                print(self.priorityString)
+                print(self.priority)
             }
             
             cell.contentConfiguration = contentConfiguration
@@ -285,12 +306,14 @@ extension WriteViewController: UICollectionViewDelegate {
         case 0:
             switch indexPath.row {
             case 0:
+                writeView.contentTextField.resignFirstResponder()
                 showSheetPresentatilnController()
             default:
+                writeView.contentTextField.resignFirstResponder()
                 guard let selectedCell = collectionViewDataSource.itemIdentifier(for: IndexPath(row: 1, section: 0)) else { return }
-                selectedCell.value += 1
-                value += 1
-                print(selectedCell.value)
+                selectedCell.priority.toggle()
+                self.priority.toggle()
+                print("📮📮📮📮📮📮\(selectedCell.priority)")
                 var snapshot = collectionViewDataSource.snapshot()
                 snapshot.reloadItems([selectedCell])
                 collectionViewDataSource.apply(snapshot, animatingDifferences: true)

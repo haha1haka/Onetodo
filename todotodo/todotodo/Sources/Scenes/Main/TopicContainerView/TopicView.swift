@@ -50,9 +50,7 @@ class TopicView: BaseView {
             $0.height.equalTo(1)
             $0.leading.trailing.equalTo(self)
             $0.bottom.equalTo(self)
-            
         }
-        
     }
 }
 

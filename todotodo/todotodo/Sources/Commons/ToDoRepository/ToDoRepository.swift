@@ -98,7 +98,7 @@ class ToDoRepository: ToDoDataBaseRepository {
         let list = self.fetch().toArray()
         //print("⚠️⚠️⚠️⚠️⚠️⚠️\(list)")
         let monthList = list.filter {
-            $0.date.month == String(currentMonth.rawValue)
+            $0.date.month == currentMonth.rawValue
         }
         //print("♥️♥️♥️♥️\(monthList)")
         return monthList
@@ -106,9 +106,18 @@ class ToDoRepository: ToDoDataBaseRepository {
     func filteringWeek(currentMonth: Month, currentWeek: SectionWeek) -> [ToDo] {
         let list = self.filteringMonth(currentMonth: currentMonth)
         let weekList = list.filter {
-            $0.date.week == String(currentWeek.rawValue)
+            $0.date.week == currentWeek.rawValue
         }
         return weekList
+    }
+    
+    func filteringToday(today: Date) -> [ToDo] {
+        let list = self.fetch().toArray()
+        let todayList = list.filter {
+            $0.date.day == today.day
+        }
+        return todayList
+        
     }
     
 

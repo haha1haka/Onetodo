@@ -84,30 +84,7 @@ class SearchViewController: UIViewController {
 
 
 extension SearchViewController {
-    
-//    func configureCollectionViewLayout() -> UICollectionViewLayout {
-//        let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int,
-//            layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection in
-//            let contentSize = layoutEnvironment.container.effectiveContentSize
-//            let columns = contentSize.width > 800 ? 3 : 2
-//            let spacing = CGFloat(10)
-//            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-//                                                  heightDimension: .fractionalHeight(1.0))
-//            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-//                                                   heightDimension: .absolute(32))
-//            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
-//            group.interItemSpacing = .fixed(spacing)
-//
-//            let section = NSCollectionLayoutSection(group: group)
-//            section.interGroupSpacing = spacing
-//            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-//
-//            return section
-//        }
-//        return layout
-//    }
-    
+        
     func configureCollectionViewLayout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
         return UICollectionViewCompositionalLayout.init(sectionProvider: { sectionIndex, environment in
@@ -136,8 +113,12 @@ extension SearchViewController {
 
             //cell.backgroundColor = .random
             //cell.layer.backgroundColor = UIColor.random.cgColor
+
             cell.layer.borderWidth = 1
-            cell.layer.borderColor = UIColor.random.cgColor
+            cell.layer.masksToBounds = true
+            cell.backgroundColor = UIColor(hex: itemIdentifier.backgroundColor)
+            cell.label.textColor = UIColor(hex: itemIdentifier.labelColor)
+            
             return cell
         }
 

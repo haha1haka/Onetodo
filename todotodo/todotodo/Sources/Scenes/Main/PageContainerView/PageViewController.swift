@@ -53,35 +53,25 @@ class PageViewController: BaseViewController {
     
     var collectionViewDataSource: UICollectionViewDiffableDataSource<SectionWeek, ToDo>!
     
-    var isSelectedMonth: Month? //ex 3월 --> march
-    
-    var delegate: passUISearchResultsUpdating?
-    
-    var todoList: Results<ToDo> {
-        return repository.fetch()
-    }
-    var isFilterling: Bool?
-    
-    
-    
-    
+    var selectedMonth: Month?
+
     var firstWeek: [ToDo] {
-        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week1)
+        return repository.filteringWeek(currentMonth: selectedMonth!, currentWeek: .week1)
     }
     var secondWeek: [ToDo] {
-        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week2)
+        return repository.filteringWeek(currentMonth: selectedMonth!, currentWeek: .week2)
     }
     var thirdWeek: [ToDo] {
-        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week3)
+        return repository.filteringWeek(currentMonth: selectedMonth!, currentWeek: .week3)
     }
     var fourthWeek: [ToDo] {
-        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week4)
+        return repository.filteringWeek(currentMonth: selectedMonth!, currentWeek: .week4)
     }
     var fiveWeek: [ToDo] {
-        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week5)
+        return repository.filteringWeek(currentMonth: selectedMonth!, currentWeek: .week5)
     }
     var sixWeek: [ToDo] {
-        return repository.filteringWeek(currentMonth: isSelectedMonth!, currentWeek: .week6)
+        return repository.filteringWeek(currentMonth: selectedMonth!, currentWeek: .week6)
     }
     var totalWeek: [[ToDo]] = []
 
@@ -89,9 +79,8 @@ class PageViewController: BaseViewController {
         pageView.collectionView.delegate = self
         registerSectionHeaterView()
         configureCollectionViewDataSource()
-        print(repository.database.configuration.fileURL!)
+        print("🗂🗂🗂🗂\(repository.database.configuration.fileURL!)🗂🗂🗂🗂")
     }
-    //let mainVC = MainViewController()
 }
 
 
@@ -100,12 +89,8 @@ class PageViewController: BaseViewController {
 extension PageViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("✅✅✅\(todoList)")
-        print("🖍🖍🖍🖍\(isSelectedMonth)")
-        print("⭐️⭐️⭐️⭐️\(repository.database.configuration.fileURL!)")
         totalWeek = [firstWeek, secondWeek, thirdWeek, fourthWeek, fiveWeek, sixWeek]
-        divideSectionByWeekSnapShot()
-        
+        applySnapShot()
     }
 }
 
@@ -113,7 +98,6 @@ extension PageViewController {
 // MARK: - HeaderRegister, DataSource, applySnapShot Methods
 extension PageViewController {
     
-    //
     func registerSectionHeaterView() {
         pageView.collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.identifier)
     }
@@ -128,9 +112,9 @@ extension PageViewController {
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             cell.label.textColor = UIColor(hex: itemIdentifier.labelColor)
             cell.backgroundColor = UIColor(hex: itemIdentifier.backgroundColor)
-            
             return cell
         }
+        
         // 2️⃣ Header
         let headerRegistration = UICollectionView.SupplementaryRegistration<SectionHeaderView>.init( elementKind: UICollectionView.elementKindSectionHeader) { [weak self] supplementaryView, elementKind, indexPath in
             guard let self = self, let sectionIdentifier = self.collectionViewDataSource.sectionIdentifier(for: indexPath.section) else { return }
@@ -143,24 +127,7 @@ extension PageViewController {
     }
     
     
-    func applyInitialSnapShot(month: Month) {
-        var snapshot = collectionViewDataSource.snapshot()
-        snapshot.deleteItems(repository.fetch().toArray())
-        snapshot.appendSections([.week1])
-        snapshot.appendItems(repository.filteringMonth(currentMonth: month))
-        collectionViewDataSource.apply(snapshot)
-    }
-    
-//    func snapShot(month: Month) {
-//        var newSnapshot = NSDiffableDataSourceSnapshot<SectionWeek, ToDo>()
-//        newSnapshot.deleteItems(repository.fetch().toArray()) //다른 화면 갔다 왔을 경우 때문에.
-//        newSnapshot.appendSections([.week1])
-//        newSnapshot.appendItems(repository.filte(currentMonth: month).toArray())
-//        collectionViewDataSource.apply(newSnapshot)
-//        //collectionViewDataSource에 item들 많이 있는상태
-//    }
-    
-    func divideSectionByWeekSnapShot() {
+    func applySnapShot() {
         var newSnapShot = NSDiffableDataSourceSnapshot<SectionWeek, ToDo>()
         newSnapShot.deleteItems(repository.fetch().toArray())
         for (section, item) in totalWeek.enumerated() {
@@ -171,30 +138,6 @@ extension PageViewController {
         }
         collectionViewDataSource.apply(newSnapShot)
     }
-}
-
-extension PageViewController: passUISearchResultsUpdating {
-//    func pass(,searchController: UISearchController, searchedText: String) {
-//        <#code#>
-//    }
-    func pass(_ viewController: MainViewController, searchController: UISearchController, searchedText: String) {
-        if viewController.isSearchControllerFiltering || searchController.isActive {
-             //pageVC 에서 생성한 이 매서드 넘겨주기
-            //writeVC.delgate = self  -> 다음
-            
-            print("🥧🥧🥧🥧\(searchedText)")
-            var snapShot = self.collectionViewDataSource.snapshot()
-            snapShot.deleteItems(self.repository.fetch().toArray())
-            snapShot.appendSections([.week1])
-            snapShot.appendItems(self.repository.fetch().toArray())
-            //contentVC.collectionViewDataSource.apply(snapShot, to: .)
-            collectionViewDataSource.apply(snapShot)
-            
-            
-        }
-    }
-    
-    
 }
 
 
@@ -223,27 +166,3 @@ extension PageViewController: FloatingPanelControllerDelegate {
         }
     }
 }
-
-
-
-
-
-
-
-
-//extension PageViewController {
-//
-//    func makeNumberOfWeeksPerMonth(month: Int)  {
-//        let pointDateComponent = DateComponents( year: 2022, month: month)
-//        let calendar2 = Calendar.current
-//        let hateDay = calendar2.date(from: pointDateComponent)
-//
-//        let calendar = Calendar.current
-//        let weekRange = calendar.range(of: .weekOfMonth, in: .month, for: hateDay!)
-//        for i in weekRange! {
-//            a.append(String(i) + "주")
-//        }
-//    }
-//
-//}
-

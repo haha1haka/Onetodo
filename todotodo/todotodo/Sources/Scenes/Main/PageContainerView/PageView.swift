@@ -45,10 +45,8 @@ class PageView: BaseView {
             $0.top.equalTo(self)
             $0.leading.equalTo(self)
             $0.trailing.equalTo(self)
-            //$0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(self).inset(20)
         }
-        
     }
 }
 
