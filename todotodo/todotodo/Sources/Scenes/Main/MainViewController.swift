@@ -198,12 +198,13 @@ extension MainViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidMove(_ fpc: FloatingPanelController) {
         
         var height =  fpc.surfaceLocation.y
+        print(height)
         if round(height) == fpc.surfaceLocation(for: .full).y {
             print("🟥🟥🟥🟥🟥🟥\(fpc.surfaceLocation.y)")
             contentVC.fullScreenSnapShot()
-            //⚽️ 개선하기 
-        } else if round(height) == 459 {
-            print(fpc.surfaceLocation.y , fpc.surfaceLocation(for: .full).y)
+            //⚽️ 개선하기
+        } else if round(height) == fpc.surfaceLocation(for: .half).y {
+            print(fpc.surfaceLocation.y , fpc.surfaceLocation(for: .half).y)
             print("🟩🟩🟩🟩🟩🟩")
             contentVC.applySnapShot()
             //contentVC.halfCurrentSnapShot()
