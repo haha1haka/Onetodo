@@ -27,8 +27,15 @@ class MainPanelViewController: BaseViewController {
     var collectionViewDataSource: UICollectionViewDiffableDataSource<String, ToDo>!
     
     var today = Date()
-
+    
     var sectionTitle: String = ""
+    
+    var coreItem: [ToDo] {
+        return repository.fetch().filter("priority == true").toArray()
+    }
+    var generalItem: [ToDo] {
+        return repository.fetch().filter("priority == false").toArray()
+    }
     
     override func configure() {
         mainPanelView.backgroundColor = .red
@@ -87,64 +94,36 @@ extension MainPanelViewController {
         snapshot.appendItems(repository.filteringToday(today: today), toSection: "오늘 확인")
         collectionViewDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
-
-
+    
+    
     
     func fullScreenSnapShot() {
         //datasource 에 오늘 메모 들어가 있음
-        for (index, item) in collectionViewDataSource.snapshot(for: "오늘 확인").items.enumerated() {
-
-            var coreItem: ToDo?
-            var genralItem: ToDo?
-            var value = ""
-
-            //해당 메모만큼 섹션 만들기 위해
-            switch index {
-            case 0:
-                value = "중요도 높음"
-            default :
-                value = "중요도 보통"
+        var snapshot = collectionViewDataSource.snapshot()
+        for item in collectionViewDataSource.snapshot(for: "오늘 확인").items {
+            
+            
+            
+            snapshot.deleteItems([item])
+            
+            if snapshot.itemIdentifiers(inSection: "오늘 확인").isEmpty {
+                snapshot.deleteSections(["오늘 확인"])
             }
             
-            sectionTitle = value
             
-            //datasource 에 오늘 메모 들어가 있음
-            var snapShot = self.collectionViewDataSource.snapshot()
-            
-            //모두 지우기
-            snapShot.deleteItems([item])
-            
-            //섹션 아이템 모두 없어졌으면 지우기
-            if snapShot.itemIdentifiers(inSection: "오늘 확인").isEmpty {
-                snapShot.deleteSections(["오늘 확인"])
-            }
-            
-            //넣을려는 섹션이 없으면 섹션 추가
-            if !snapShot.sectionIdentifiers.contains(sectionTitle) {
-                snapShot.appendSections([sectionTitle])
-            }
-            print("🥎\(item.priority) - \(item.title)")
             if item.priority {
-                coreItem = item
-                snapShot.appendItems([coreItem!], toSection: "중요도 높음")
+                if !snapshot.sectionIdentifiers.contains("중요 todo") {
+                    snapshot.appendSections(["중요 todo"])
+                }
+                snapshot.appendItems([item], toSection: "중요 todo")
             } else {
-                genralItem = item
-                snapShot.appendItems([genralItem!], toSection: "중요도 보통")
+                if !snapshot.sectionIdentifiers.contains("일반 todo") {
+                    snapshot.appendSections(["일반 todo"])
+                }
+                snapshot.appendItems([item], toSection: "일반 todo")
             }
-            
-            self.collectionViewDataSource.apply(snapShot, animatingDifferences: true, completion: nil)
-            
             
         }
-        
-        
-        
+        collectionViewDataSource.apply(snapshot, animatingDifferences: true)
     }
-    
-
-    
-    
-    
-    
-    
 }

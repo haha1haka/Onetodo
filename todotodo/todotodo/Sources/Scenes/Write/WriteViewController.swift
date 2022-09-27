@@ -156,6 +156,19 @@ extension WriteViewController {
         let priority = self.priority
         print("📭📭📭📭📭📭📭\(priority)")
         
+        
+//        if contentText.isEmpty {
+//            contentText.text = ""
+//            showAlertMessage(title: "할일을 입력해주시요")
+//        } else if {
+//
+//        }
+        
+        
+        
+        
+        
+        
         if dateText.isEmpty {
             presentAlertController("날짜와 시간을 선택해주세요")
         }

@@ -120,25 +120,26 @@ extension PageViewController {
                     
                     
                     
-                    
-                    
-                    
-                    
-
-                    
-                    
                 }
+                
                 let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil,attributes: .destructive, state: .off) { (_) in
                     
                     
                     
                     self.delegate?.item(self, itemidentifier: item)
-                    var snapShot = self.collectionViewDataSource.snapshot()
-                    snapShot.deleteItems([item])
-                    self.collectionViewDataSource.apply(snapShot, animatingDifferences: true)
+
+                    var newSnapShot = self.collectionViewDataSource.snapshot()
+                    
+                    var currentSection = newSnapShot.sectionIdentifier(containingItem: item)
+                    if newSnapShot.itemIdentifiers(inSection: currentSection!).count == 1 {
+                        newSnapShot.deleteSections([currentSection!])
+                        
+                    }
+                    newSnapShot.deleteItems([item])
+                    
+                    self.collectionViewDataSource.apply(newSnapShot)
+                    
                     self.repository.deleteItem(item: item)
-                    
-                    
 
                     
                 }
@@ -245,26 +246,4 @@ extension PageViewController: FloatingPanelControllerDelegate {
         }
     }
 }
-//extension PageViewController: UIContextMenuInteractionDelegate {
-//    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-//        return UIContextMenuConfiguration(identifier: <#T##NSCopying?#>, previewProvider: nil) { _ -> UIMenu? in
-//            let correctionButton = UIAction(title: "수정하기", image: UIImage(systemName: "square.and.pencil")) {
-//                (UIAction) in
-//                print("좋아요 클릭됨")
-//            }
-//
-//
-//
-//
-//            let deleteButton = UIAction(title: "todo 제거", image: UIImage(systemName: "minus.circle"), attributes: .destructive) {
-//                (UIAction) in
-//
-//                var snapshot = self.collectionViewDataSource.snapshot()
-//                //snapshot.deleteItems(<#T##identifiers: [ToDo]##[ToDo]#>)
-//
-//
-//            }
-//            return UIMenu(children: [correctionButton, deleteButton])
-//        }
-//    }
-//}
+
