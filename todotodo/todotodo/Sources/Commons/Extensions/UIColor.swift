@@ -77,6 +77,20 @@ let modeColor2: UIColor = {
         return UIColor.white
     }
 }()
+let modeTextColor: UIColor = {
+    if #available(iOS 13, *) {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return UIColor.white
+            } else {
+                return UIColor.black
+            }
+        }
+    } else {
+        return UIColor.white
+    }
+}()
+
 let textFiledBackgrounView: UIColor = {
     if #available(iOS 13, *) {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in

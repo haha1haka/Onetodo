@@ -10,7 +10,7 @@ import FloatingPanel
 
 class MainFPCPanelLayout: FloatingPanelLayout {
     var position: FloatingPanelPosition = .bottom
-    var initialState: FloatingPanelState = .half
+    var initialState: FloatingPanelState = .tip
     var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
         return [
             .full: FloatingPanelLayoutAnchor(absoluteInset: 0.0, edge: .top, referenceGuide: .safeArea),

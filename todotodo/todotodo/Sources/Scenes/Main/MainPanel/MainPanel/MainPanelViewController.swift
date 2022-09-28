@@ -38,7 +38,7 @@ class MainPanelViewController: BaseViewController {
     }
     
     override func configure() {
-        mainPanelView.backgroundColor = .red
+        //mainPanelView.backgroundColor = .red
         registerSectionHeaderView()
         configureCollectionViewDataSource()
     }
@@ -49,6 +49,32 @@ extension MainPanelViewController {
         super.viewWillAppear(animated)
         applySnapShot()
     }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        setBlur()
+//    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        //setBlur()
+    }
+    
+    
+    
+    func setBlur() {
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = mainPanelView.bounds
+        self.view.addSubview(blurEffectView)
+        
+        self.view.sendSubviewToBack(blurEffectView)
+        
+        
+        blurEffectView.layer.cornerRadius = 35
+        blurEffectView.clipsToBounds = true
+    }
+
+    
+    
 }
 
 
@@ -126,4 +152,9 @@ extension MainPanelViewController {
         }
         collectionViewDataSource.apply(snapshot, animatingDifferences: true)
     }
+    
+    
+
+    
+    
 }

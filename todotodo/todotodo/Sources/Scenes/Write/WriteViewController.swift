@@ -21,7 +21,7 @@ class WriteViewController: BaseViewController {
     
     var collectionViewDataSource: UICollectionViewDiffableDataSource<SettingSection, Setting>!
     
-    
+    let datepickerViewController = DatePickerViewController()
     let repository = ToDoRepository()
     var itemidentifier: ToDo?
     var savedDate: Date?
@@ -35,6 +35,8 @@ class WriteViewController: BaseViewController {
     var colorString = "#000000"
     var backgroundColorString = "#555555"
     
+    var flag = false
+    
     override func configure() {
         configureNavigationBarButtonItem()
         configureCollectionViewDataSource()
@@ -42,6 +44,38 @@ class WriteViewController: BaseViewController {
         writeView.collectionView.delegate = self
     }
 }
+
+extension WriteViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
+        self.navigationItem.leftBarButtonItem = newBackButton
+    }
+    @objc
+    func back(sender: UIBarButtonItem) {
+
+        if flag {
+            dismissSheetPresentationController()
+            navigationController?.popViewController(animated: true)
+            
+        } else {
+            print("dfsfsd")
+            navigationController?.popViewController(animated: true)
+        }
+        
+        
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
+    }
+}
+
 
 
 
@@ -93,10 +127,14 @@ extension WriteViewController {
     }
     
     func showSheetPresentatilnController() {
-        let vc = DatePickerViewController()
-        vc.delegate = self
-        let navi = UINavigationController(rootViewController: vc)
+        
+        flag = true
+        datepickerViewController.delegate = self
+        let navi = UINavigationController(rootViewController: datepickerViewController)
         isModalInPresentation = true
+        
+        
+        
         if let sheet = navi.sheetPresentationController {
             print("fdsfds")
             sheet.detents = [.medium()]
@@ -104,15 +142,16 @@ extension WriteViewController {
             sheet.largestUndimmedDetentIdentifier = .medium
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersGrabberVisible = true
+            sheet.delegate = self
         }
         
         self.present(navi, animated: true)
-    }
-    func showColorPickerController() {
         
     }
     
-    
+    func dismissSheetPresentationController() {
+        datepickerViewController.dismiss(animated: true)
+    }
 }
 
 
@@ -279,7 +318,12 @@ extension WriteViewController: UIColorPickerViewControllerDelegate {
     }
 
 }
-
+extension WriteViewController: UISheetPresentationControllerDelegate {
+    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+        print("🥡🥡🥡🥡🥡asdfadsfadsfasd")
+        return true
+    }
+}
 
 
 

@@ -23,7 +23,7 @@ class SearchViewController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-        
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -43,7 +43,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupSearchController()
         configureUINavigationBar()
-        view.backgroundColor = .black
+        view.backgroundColor = .clear
         
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints {
@@ -55,7 +55,7 @@ class SearchViewController: UIViewController {
         
         configureCollectionViewDataSource()
         applyInitialSnapShot()
-        
+        setBlur()
     }
     
     func setupSearchController() {
@@ -71,9 +71,21 @@ class SearchViewController: UIViewController {
         self.navigationItem.title = "todotodo"
         let appearance = UINavigationBarAppearance()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
+        appearance.backgroundColor = .clear
+        
         appearance.shadowColor = .clear
+        navigationController?.navigationBar.backgroundColor = .clear
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
+    }
+    func setBlur() {
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.bounds
+        self.view.addSubview(blurEffectView)
+        self.view.sendSubviewToBack(blurEffectView)
+        blurEffectView.layer.cornerRadius = 35
+        blurEffectView.clipsToBounds = true
     }
 
 }

@@ -122,6 +122,7 @@ extension MainViewController {
     
     func configurePanelView() {
         contentVC = MainPanelViewController()
+        
         fpc = FloatingPanelController()
         fpc.changePanelStyle()
         fpc.delegate = self
@@ -135,6 +136,7 @@ extension MainViewController {
             guard let self = self else { return }
             self.didMove(toParent: self)
         }
+        
     }
     
     

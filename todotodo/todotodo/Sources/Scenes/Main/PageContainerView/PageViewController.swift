@@ -37,9 +37,7 @@ enum SectionWeek:Int, CaseIterable {
         }
     }
 }
-//protocol TopicViewControllerEvent: AnyObject {
-//    func topic(_ viewController: TopicViewController, didSelectItem: Month)
-//}
+
 protocol PageViewControllerEvent: AnyObject {
     func item(_ viewController: PageViewController, itemidentifier: ToDo)
 }
@@ -123,8 +121,8 @@ extension PageViewController {
                     vc.savedDate = item.date
                     vc.priority = item.completed
                     
-                    //vc.dateString =
-                    //vc.writeView.collectionView.
+                    
+                    
                     self.transition(vc, transitionStyle: .push)
  
                     
@@ -214,22 +212,14 @@ extension PageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         
-        
         guard let selectedItem = collectionViewDataSource.itemIdentifier(for: indexPath) else { return }
         repository.updateComplete(item: selectedItem)
-        
         var snapShot = collectionViewDataSource.snapshot()
         snapShot.reloadItems([selectedItem])
         collectionViewDataSource.apply(snapShot, animatingDifferences: true)
             
 
-//        fpc.set(contentViewController: contentVC)
-//        fpc.layout = MyFloatingPanelLayout2()
-//        fpc.isRemovalInteractionEnabled = true
-//        fpc.delegate = self
-//        fpc.changePanelStyle()
-//        fpc.behavior = MyFloatingPanelBehavior()
-//        self.present(fpc, animated: true, completion: nil)
+
     }
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         guard let selectedItem = collectionViewDataSource.itemIdentifier(for: indexPath) else { return nil }
