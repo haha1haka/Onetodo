@@ -20,6 +20,7 @@ class DatePickerViewController: BaseViewController {
         let picker = UIDatePicker()
         picker.timeZone = NSTimeZone.local
         picker.tintColor = .link
+        picker.backgroundColor = UIColor.green
         picker.preferredDatePickerStyle = .inline
         picker.addTarget(self, action: #selector(changedDate), for: .valueChanged)
         return picker
@@ -27,7 +28,7 @@ class DatePickerViewController: BaseViewController {
     
     override func configure() {
         view.addSubview(datePicker)
-        view.backgroundColor = .black
+        view.backgroundColor = modeColor
         datePicker.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)

@@ -5,7 +5,7 @@
 //  Created by HWAKSEONG KIM on 2022/09/17.
 //
 
-import Foundation
+import UIKit
 import RealmSwift
 
 enum Month:Int, CaseIterable {
@@ -60,3 +60,67 @@ class ToDo: Object {
 
 
 
+
+enum Type: String, CaseIterable {
+case requiredSetting = "필수사항"
+case colorSetting = "Color Setting"
+}
+
+class SettingSection: Hashable {
+    var id = UUID()
+    var headerText: String
+    var footerText: String
+    var settings: [Setting]
+    
+    init(headerText: String,footerText: String, settings: [Setting]) {
+        self.headerText = headerText
+        self.footerText = footerText
+        self.settings = settings
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    static func == (lhs: SettingSection, rhs: SettingSection) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    static func makeData() -> [SettingSection] {
+        let data = [SettingSection(headerText: "필수 입력사항",footerText: "우선순위 기본값은 보통 입니다", settings: [
+            Setting(name: "calendar", type: .requiredSetting, title: "날짜선택",priority: false),
+            Setting(name: "hand.thumbsup", type: .colorSetting, title: "중요도",priority: false),]
+                                  ),
+                    SettingSection(headerText: "옵션 사항",footerText: "중요한 이벤트에 색상을 지정해주세요", settings: [
+                        Setting(name: "highlighter", type: .requiredSetting, title: "Lable color", priority: false),
+                        Setting(name: "scribble.variable", type: .colorSetting, title: "Background color", priority: false)]
+                                  )]
+        return data
+    }
+}
+
+
+
+
+class Setting: Hashable {
+    var id = UUID()
+    var name: String
+    var title: String
+    var image: UIImage
+    var type: Type
+    var priority: Bool
+    
+    init(name: String,type: Type, title: String, priority: Bool) {
+        self.id = UUID()
+        self.name = name //이미지 떄문
+        self.title = title //
+        self.image = UIImage(systemName: name)!
+        self.type = type
+        self.priority = false
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    static func == (lhs: Setting, rhs: Setting) -> Bool {
+        lhs.id == rhs.id
+    }
+}

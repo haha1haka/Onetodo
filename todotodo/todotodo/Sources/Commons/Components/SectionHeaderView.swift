@@ -33,7 +33,7 @@ class SectionHeaderView: UICollectionReusableView {
         self.backgroundColor = .clear
         
         titleLabel.snp.makeConstraints {
-            $0.leading.trailing.equalTo(self)
+            $0.leading.trailing.equalTo(self).offset(15)
             $0.top.equalTo(self).offset(30)
             $0.bottom.equalTo(self).offset(-8)
             //$0.centerY.equalTo(self)

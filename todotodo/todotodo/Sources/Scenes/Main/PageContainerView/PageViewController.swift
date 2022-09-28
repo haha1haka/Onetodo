@@ -112,13 +112,21 @@ extension PageViewController {
                 
                 let edit = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in
                     
+                    let vc = WriteViewController()
+                    vc.itemidentifier = item
+                    vc.writeView.contentTextField.text = item.title
+                    vc.writeView.contentTextField.backgroundColor =  UIColor(hex: item.backgroundColor)
+                    vc.backgroundColorString = item.backgroundColor
+                    vc.writeView.contentTextField.textColor = UIColor(hex: item.labelColor)
+                    vc.colorString = item.labelColor
+                    vc.dateString = self.dateFormatter.string(from: item.date)
+                    vc.savedDate = item.date
+                    vc.priority = item.completed
                     
-                    
-                    //self.totalWeek = [self.firstWeek, self.secondWeek, self.thirdWeek, self.fourthWeek, self.fiveWeek, self.sixWeek]
-                    
-                    
-                    
-                    
+                    //vc.dateString =
+                    //vc.writeView.collectionView.
+                    self.transition(vc, transitionStyle: .push)
+ 
                     
                 }
                 
@@ -130,7 +138,7 @@ extension PageViewController {
 
                     var newSnapShot = self.collectionViewDataSource.snapshot()
                     
-                    var currentSection = newSnapShot.sectionIdentifier(containingItem: item)
+                    let currentSection = newSnapShot.sectionIdentifier(containingItem: item)
                     if newSnapShot.itemIdentifiers(inSection: currentSection!).count == 1 {
                         newSnapShot.deleteSections([currentSection!])
                         

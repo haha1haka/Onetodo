@@ -14,6 +14,9 @@ extension UIColor {
                 blue: CGFloat.random(in: 0...255)/255,
                 alpha: 1.0)
     }
+    static var myLightGray: UIColor {
+        UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1.0)
+    }
 }
 
 extension UIColor {
@@ -47,3 +50,44 @@ extension UIColor {
         return String(format:"#%06x", rgb)
     }
 }
+let modeColor: UIColor = {
+    if #available(iOS 13, *) {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return UIColor.black
+            } else {
+                return UIColor.white
+            }
+        }
+    } else {
+        return UIColor.white
+    }
+}()
+
+let modeColor2: UIColor = {
+    if #available(iOS 13, *) {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return UIColor.black
+            } else {
+                return UIColor.myLightGray
+            }
+        }
+    } else {
+        return UIColor.white
+    }
+}()
+let textFiledBackgrounView: UIColor = {
+    if #available(iOS 13, *) {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return UIColor.darkGray
+            } else {
+                return UIColor.white
+            }
+        }
+    } else {
+        return UIColor.white
+    }
+}()
+

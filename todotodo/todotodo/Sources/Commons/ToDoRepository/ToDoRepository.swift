@@ -29,6 +29,19 @@ class ToDoRepository: ToDoDataBaseRepository {
             print(error)
         }
     }
+    func update2(_ toDo: ToDo,title: String, date: Date, priority: Bool, labelColor: String, backgroundColor: String) {
+        do {
+            try database.write {
+                toDo.date = date
+                toDo.title = title
+                toDo.priority = priority
+                toDo.labelColor = labelColor
+                toDo.backgroundColor = backgroundColor
+            }
+        } catch let error {
+            print(error)
+        }
+    }
     
     func update(_ toDo: ToDo, title: String, date: Date, completed: Bool) {
         do {

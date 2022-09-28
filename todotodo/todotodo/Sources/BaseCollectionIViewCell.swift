@@ -15,7 +15,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         configure()
         setConstraints()
-        self.backgroundColor = .black
+//        self.backgroundColor = .
         layer.cornerRadius = 8
         layer.masksToBounds = true
         

@@ -13,7 +13,7 @@ class WriteView: BaseView {
 
     let contentTextField: UITextField = {
         let view = UITextField()
-        view.backgroundColor = .black
+        view.backgroundColor = textFiledBackgrounView
         view.placeholder = "  할 일을 입력해주세요"
         view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
@@ -40,6 +40,7 @@ class WriteView: BaseView {
     
     
     override func configure() {
+        self.backgroundColor = modeColor2
         [contentTextField, collectionView].forEach { self.addSubview($0) }
     }
     
@@ -49,7 +50,7 @@ class WriteView: BaseView {
         
         contentTextField.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(30)
-            $0.leading.trailing.equalTo(self).inset(30)
+            $0.leading.trailing.equalTo(self).inset(20)
             $0.height.equalTo(44)
         }
         collectionView.snp.makeConstraints {
