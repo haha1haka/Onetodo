@@ -12,7 +12,6 @@ class TopicCell: BaseCollectionViewCell {
     
     let label: UILabel = {
         let view = UILabel()
-        //view.backgroundColor = .brown
         view.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         return view
     }()
@@ -29,8 +28,6 @@ class TopicCell: BaseCollectionViewCell {
             invalidateCell()
         }
     }
-
-
     
     func invalidateCell() {
         selectionView.isHidden = !isSelected
@@ -44,6 +41,7 @@ class TopicCell: BaseCollectionViewCell {
         label.snp.makeConstraints {
             $0.center.equalTo(self)
         }
+        
         selectionView.snp.makeConstraints {
             $0.height.equalTo(2)
             $0.leading.trailing.equalTo(self).inset(20)

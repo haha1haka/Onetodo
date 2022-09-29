@@ -11,14 +11,14 @@ import SnapKit
 class MainPanelView: BaseView {
     let containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = modeColor
+        view.backgroundColor = ColorType.backgroundColorSet
         return view
     }()
     
     let mainTitle: UILabel = {
         let view = UILabel()
-        view.backgroundColor = modeColor
-        view.textColor = modeTextColor
+        view.backgroundColor = ColorType.backgroundColorSet
+        view.textColor = ColorType.lableColorSet
         view.text = " Today"
         view.font = .systemFont(ofSize: 44, weight: .bold)
         return view
@@ -26,8 +26,8 @@ class MainPanelView: BaseView {
     
     let dateLabel: UILabel = {
         let view = UILabel()
-        view.backgroundColor = modeColor
-        view.textColor = modeTextColor
+        view.backgroundColor = ColorType.backgroundColorSet
+        view.textColor = ColorType.lableColorSet
         view.font = .systemFont(ofSize: 12, weight: .regular)
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")

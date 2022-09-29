@@ -36,6 +36,8 @@ class WriteViewController: BaseViewController {
     var backgroundColorString = "#555555"
     
     var flag = false
+    var flag2 = false
+    var flag3 = false
     
     override func configure() {
         configureNavigationBarButtonItem()
@@ -48,6 +50,7 @@ class WriteViewController: BaseViewController {
 extension WriteViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        writeView.contentTextField.delegate = self
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
         self.navigationItem.leftBarButtonItem = newBackButton
@@ -69,11 +72,6 @@ extension WriteViewController {
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        
-    }
 }
 
 
@@ -124,6 +122,13 @@ extension WriteViewController {
         // 수정 했을때
         navigationController?.popViewController(animated: true)
         
+        if flag2 {
+            
+            dismissSheetPresentationController()
+            navigationController?.popViewController(animated: true)
+            
+        }
+        
     }
     
     func showSheetPresentatilnController() {
@@ -139,7 +144,7 @@ extension WriteViewController {
             print("fdsfds")
             sheet.detents = [.medium()]
             sheet.selectedDetentIdentifier = .medium
-            sheet.largestUndimmedDetentIdentifier = .medium
+            //sheet.largestUndimmedDetentIdentifier = .medium
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersGrabberVisible = true
             sheet.delegate = self
@@ -150,7 +155,20 @@ extension WriteViewController {
     }
     
     func dismissSheetPresentationController() {
+
         datepickerViewController.dismiss(animated: true)
+    }
+    
+    func configureData(item: ToDo) {
+        itemidentifier = item
+        savedDate = item.date
+        priority = item.completed
+        colorString = item.labelColor
+        backgroundColorString = item.backgroundColor
+        writeView.contentTextField.text = item.title
+        dateString = self.dateFormatter.string(from: item.date)
+        writeView.contentTextField.backgroundColor =  UIColor(hex: item.backgroundColor)
+        writeView.contentTextField.textColor = UIColor(hex: item.labelColor)
     }
 }
 
@@ -294,8 +312,6 @@ extension WriteViewController: UICollectionViewDelegate {
                 self.present(picker, animated: true, completion: nil)
             }
         }
-        
-        
     }
 }
 
@@ -318,20 +334,32 @@ extension WriteViewController: UIColorPickerViewControllerDelegate {
     }
 
 }
+
+
 extension WriteViewController: UISheetPresentationControllerDelegate {
     func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
         print("🥡🥡🥡🥡🥡asdfadsfadsfasd")
         return true
     }
+    
 }
 
-
+extension WriteViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if !flag3 {
+            flag3 = true
+            dismissSheetPresentationController()
+            return true
+        }
+        return true
+        
+    }
+}
 
 
 // MARK: - dateDelegate
 extension WriteViewController: DateDelegate {
     func sendDate(_ date: Date) {
-        //writeView.contentTextField.text = dateFormatter.string(from: date)
         dateString = dateFormatter.string(from: date) //이걸로 판단하기
         print("\(date)")
         savedDate = date

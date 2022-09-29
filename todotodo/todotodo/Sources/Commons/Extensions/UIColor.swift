@@ -6,6 +6,51 @@
 //
 
 import UIKit
+enum ColorType {
+    static var backgroundColorSet: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+                if UITraitCollection.userInterfaceStyle == .dark {
+                    return UIColor.black
+                } else {
+                    return UIColor.white
+                }
+            }
+        } else {
+            return UIColor.white
+        }
+    }
+    
+    static var lableColorSet: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+                if UITraitCollection.userInterfaceStyle == .dark {
+                    return UIColor.white
+                } else {
+                    return UIColor.black
+                }
+            }
+        } else {
+            return UIColor.white
+        }
+    }
+    static var writeViewColorSet: UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+                if UITraitCollection.userInterfaceStyle == .dark {
+                    return UIColor.black
+                } else {
+                    return UIColor.myLightGray
+                }
+            }
+        } else {
+            return UIColor.white
+        }
+    }
+    
+
+    
+}
 
 extension UIColor {
     static var random: UIColor {
@@ -17,28 +62,25 @@ extension UIColor {
     static var myLightGray: UIColor {
         UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1.0)
     }
+    static var myDarkGray: UIColor {
+        UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1.0)
+    }
+    
 }
 
 extension UIColor {
-
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         var hexFormatted: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
-
         if hexFormatted.hasPrefix("#") {
             hexFormatted = String(hexFormatted.dropFirst())
         }
-
-        //assert(hexFormatted.count == 6, "Invalid hex code used.")
-
         var rgbValue: UInt64 = 0
         Scanner(string: hexFormatted).scanHexInt64(&rgbValue)
-
         self.init(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
                   green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
                   blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
                   alpha: alpha)
     }
-
     func toHexString() -> String {
         var r:CGFloat = 0
         var g:CGFloat = 0
@@ -46,50 +88,16 @@ extension UIColor {
         var a:CGFloat = 0
         getRed(&r, green: &g, blue: &b, alpha: &a)
         let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
-
         return String(format:"#%06x", rgb)
     }
 }
-let modeColor: UIColor = {
-    if #available(iOS 13, *) {
-        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-            if UITraitCollection.userInterfaceStyle == .dark {
-                return UIColor.black
-            } else {
-                return UIColor.white
-            }
-        }
-    } else {
-        return UIColor.white
-    }
-}()
 
-let modeColor2: UIColor = {
-    if #available(iOS 13, *) {
-        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-            if UITraitCollection.userInterfaceStyle == .dark {
-                return UIColor.black
-            } else {
-                return UIColor.myLightGray
-            }
-        }
-    } else {
-        return UIColor.white
-    }
-}()
-let modeTextColor: UIColor = {
-    if #available(iOS 13, *) {
-        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-            if UITraitCollection.userInterfaceStyle == .dark {
-                return UIColor.white
-            } else {
-                return UIColor.black
-            }
-        }
-    } else {
-        return UIColor.white
-    }
-}()
+
+
+
+
+
+
 
 let textFiledBackgrounView: UIColor = {
     if #available(iOS 13, *) {

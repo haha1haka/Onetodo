@@ -54,7 +54,7 @@ class DatePickerViewController: BaseViewController {
         
         imageView  = UIImageView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height));
         let bounds = CGRect(x: 0, y: 0, width: 100, height: 50)
-        imageView!.image = UIImage.gradientImage(bounds: bounds,colors: [modeColor.cgColor, randomColor])
+        imageView!.image = UIImage.gradientImage(bounds: bounds,colors: [ ColorType.backgroundColorSet.cgColor, UIColor.blue.cgColor])
         self.view.addSubview(imageView!)
         
         //applyImageBackgroundToTheNavigationBar()

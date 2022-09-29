@@ -29,7 +29,6 @@ class TopicView: BaseView {
         let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupLayoutSize, subitems: [itemLayout])
         let sectionLayout = NSCollectionLayoutSection(group: groupLayout)
         sectionLayout.orthogonalScrollingBehavior = .continuous
-        
         sectionLayout.contentInsets.leading = 16
         sectionLayout.contentInsets.trailing = 16
         sectionLayout.interGroupSpacing = 16
@@ -46,6 +45,7 @@ class TopicView: BaseView {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide)
             $0.height.equalTo(44)
         }
+        
         dividerView.snp.makeConstraints {
             $0.height.equalTo(1)
             $0.leading.trailing.equalTo(self)

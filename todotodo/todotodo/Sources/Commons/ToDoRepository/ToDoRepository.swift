@@ -134,15 +134,15 @@ class ToDoRepository: ToDoDataBaseRepository {
     func fetch() -> Results<ToDo> {
         return database.objects(ToDo.self)
     }
+    
     func filteringMonth(currentMonth: Month) -> [ToDo] {
         let list = self.fetch().toArray()
-        //print("⚠️⚠️⚠️⚠️⚠️⚠️\(list)")
         let monthList = list.filter {
             $0.date.month == currentMonth.rawValue
         }
-        //print("♥️♥️♥️♥️\(monthList)")
         return monthList
     }
+    
     func filteringWeek(currentMonth: Month, currentWeek: SectionWeek) -> [ToDo] {
         let list = self.filteringMonth(currentMonth: currentMonth)
         let weekList = list.filter {

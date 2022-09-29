@@ -194,11 +194,13 @@
 
 
 
+### 9월 29일
 
 
 
 
 
+<img src="/Users/haha1haka/Library/Application Support/typora-user-images/simulator_screenshot_8B704BE8-4C68-45AD-B4E0-B43FEA981369.png" alt="simulator_screenshot_8B704BE8-4C68-45AD-B4E0-B43FEA981369" style="zoom: 25%;" />
 
 
 

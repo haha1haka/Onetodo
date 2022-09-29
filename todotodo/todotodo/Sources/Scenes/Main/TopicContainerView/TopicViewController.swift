@@ -17,14 +17,15 @@ class TopicViewController: BaseViewController {
     override func loadView() {
         self.view = topicView
     }
-    
     var collectionViewDataSource: UICollectionViewDiffableDataSource<String, Month>!
+    
     weak var eventDelegate: TopicViewControllerEvent?
+    
     var months = Month.allCases
     
     override func configure() {
         configureCollectionViewDataSource()
-        applySnapShot(items: months)
+        applyInitSnapShot(items: months)
         topicView.collectionView.delegate = self
     }
 }
@@ -32,7 +33,7 @@ class TopicViewController: BaseViewController {
 
 
 
-// MARK: - DataSource, applySnapShot
+// MARK: - DataSource, snapShot
 extension TopicViewController {
     
     func configureCollectionViewDataSource() {
@@ -45,13 +46,11 @@ extension TopicViewController {
         }
     }
     
-    func applySnapShot(items: [Month]) {
+    func applyInitSnapShot(items: [Month]) {
         var snapshot = collectionViewDataSource.snapshot()
         snapshot.appendSections(["topic"])
         snapshot.appendItems(items, toSection: "topic")
-        collectionViewDataSource.apply(snapshot) { [weak self] in
-            self?.topicView.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
-        }
+        collectionViewDataSource.apply(snapshot)
     }
 }
 

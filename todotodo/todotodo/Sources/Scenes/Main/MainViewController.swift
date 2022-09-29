@@ -10,6 +10,12 @@ import SnapKit
 import FloatingPanel
 
 class MainViewController: BaseViewController {
+    
+    lazy var topicViewController: TopicViewController = {
+        let topicViewController = TopicViewController()
+        topicViewController.eventDelegate = self
+        return topicViewController
+    }()
 
     lazy var pageViewController: UIPageViewController = {
         let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
@@ -18,14 +24,8 @@ class MainViewController: BaseViewController {
         return pageViewController
     }()
     
-    lazy var topicViewController: TopicViewController = {
-        let topicViewController = TopicViewController()
-        topicViewController.eventDelegate = self
-        return topicViewController
-    }()
-    
-    var fpc: FloatingPanelController!
-    var contentVC: MainPanelViewController!
+    var BackFloatingPanel: FloatingPanelController!
+    var floatingPanel: MainPanelViewController!
     
     var pageContentViewControllers: [UIViewController] = []
     var topicDataStore = Month.allCases.map { $0 } // [Month]
@@ -58,7 +58,7 @@ extension MainViewController {
         self.navigationItem.title = "todotodo"
         let appearance = UINavigationBarAppearance()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
-        appearance.backgroundColor = modeColor
+        appearance.backgroundColor = ColorType.backgroundColorSet
         appearance.shadowColor = .clear
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
@@ -82,7 +82,6 @@ extension MainViewController {
     }
     
     func configureFirstPageViewController() {
-        
         pageContentViewControllers = topicDataStore.map { month in
             let vc = PageViewController()
             vc.selectedMonth = month
@@ -97,7 +96,6 @@ extension MainViewController {
             let indexPath = IndexPath(row: self.thisMonth-1, section: 0)
             self.topicViewController.topicView.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
-
     }
     
     func configureTopicViewController() {
@@ -121,48 +119,46 @@ extension MainViewController {
     }
     
     func configurePanelView() {
-        contentVC = MainPanelViewController()
-        
-        fpc = FloatingPanelController()
-        fpc.changePanelStyle()
-        fpc.delegate = self
-        fpc.set(contentViewController: contentVC)
-        fpc.track(scrollView: contentVC.mainPanelView.collectionView)
-        fpc.addPanel(toParent: self)
-        fpc.behavior = MyFloatingPanelBehavior()
-        fpc.layout = MainFPCPanelLayout()
-        fpc.invalidateLayout()
-        fpc.show(animated: false) { [weak self] in
+        floatingPanel = MainPanelViewController()
+        BackFloatingPanel = FloatingPanelController()
+        BackFloatingPanel.changePanelStyle()
+        BackFloatingPanel.delegate = self
+        BackFloatingPanel.set(contentViewController: floatingPanel)
+        BackFloatingPanel.track(scrollView: floatingPanel.mainPanelView.collectionView)
+        BackFloatingPanel.addPanel(toParent: self)
+        BackFloatingPanel.behavior = MyFloatingPanelBehavior()
+        BackFloatingPanel.layout = MainFPCPanelLayout()
+        BackFloatingPanel.invalidateLayout()
+        BackFloatingPanel.show(animated: false) { [weak self] in
             guard let self = self else { return }
             self.didMove(toParent: self)
         }
-        
     }
-    
-    
 }
 
 
 
 
-// MARK: - TopicViewControllerEvent
+
+// MARK: - TopicViewControllerEventDelegate
 extension MainViewController: TopicViewControllerEvent {
     //didSelectItem 받아오기
     func topic(_ viewController: TopicViewController, didSelectItem: Month) {
         if let selectedIndex = topicDataStore.firstIndex(of: didSelectItem) {
             pageViewController.setViewControllers([pageContentViewControllers[selectedIndex]], direction: .forward, animated: false)
         }
-
     }
 }
+
+
+// MARK: - TopicViewControllerEventDelegate
 extension MainViewController: PageViewControllerEvent {
     func item(_ viewController: PageViewController, itemidentifier: ToDo) {
-        var snapshot = contentVC.collectionViewDataSource.snapshot()
+        var snapshot = floatingPanel.collectionViewDataSource.snapshot()
         snapshot.deleteItems([itemidentifier])
-        contentVC.collectionViewDataSource.apply(snapshot, animatingDifferences: true)
+        floatingPanel.collectionViewDataSource.apply(snapshot, animatingDifferences: true)
     }
 }
-
 
 
 
@@ -203,20 +199,14 @@ extension MainViewController: UIPageViewControllerDataSource, UIPageViewControll
 
 
 // MARK: - FloatingPanelControllerDelegate
+// ⚠️Refactor: 시점
 extension MainViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidMove(_ fpc: FloatingPanelController) {
-        
-        var height =  fpc.surfaceLocation.y
-        print(height)
+        let height =  fpc.surfaceLocation.y
         if round(height) == fpc.surfaceLocation(for: .full).y {
-            print("🟥🟥🟥🟥🟥🟥\(fpc.surfaceLocation.y)")
-            contentVC.fullScreenSnapShot()
-            //⚽️ 개선하기
+            floatingPanel.fullScreenSnapShot()
         } else if round(height) == fpc.surfaceLocation(for: .half).y {
-            print(fpc.surfaceLocation.y , fpc.surfaceLocation(for: .half).y)
-            print("🟩🟩🟩🟩🟩🟩")
-            contentVC.applySnapShot()
-            //contentVC.halfCurrentSnapShot()
+            floatingPanel.applySnapShot()
         }
     }
 }
