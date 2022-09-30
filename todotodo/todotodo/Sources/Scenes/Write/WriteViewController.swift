@@ -23,60 +23,45 @@ class WriteViewController: BaseViewController {
     
     let datepickerViewController = DatePickerViewController()
     let repository = ToDoRepository()
-    var itemidentifier: ToDo?
-    var savedDate: Date?
     var sections = SettingSection.makeData()
     var sectionIndexPath: Int = 0
     
+    var itemidentifier: ToDo?
     
+    var savedDate: Date?
     var dateString: String?
     var priority: Bool = false
     var priorityString = ""
-    var colorString = "#000000"
-    var backgroundColorString = "#555555"
+    var colorString = ColorType.lableColorSet.toHexString()
+    var backgroundColorString = ColorType.completeStringSet.toHexString()
     
-    var flag = false
-    var flag2 = false
-    var flag3 = false
     
     override func configure() {
+        writeView.collectionView.delegate = self
+        writeView.contentTextField.delegate = self
         configureNavigationBarButtonItem()
         configureCollectionViewDataSource()
         applyInitialSnapShot()
-        writeView.collectionView.delegate = self
+        configureToolbar()
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: writeView.contentTextField)
+        
+        
     }
 }
 
+// MARK: - LifeCycles
 extension WriteViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        writeView.contentTextField.delegate = self
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     @objc
     func back(sender: UIBarButtonItem) {
-
-        if flag {
-            dismissSheetPresentationController()
-            navigationController?.popViewController(animated: true)
-            
-        } else {
-            print("dfsfsd")
-            navigationController?.popViewController(animated: true)
-        }
-        
-        
-        
-        
+        navigationController?.popViewController(animated: true)
     }
-    
 }
-
-
-
-
 
 // MARK: - configure Methods
 extension WriteViewController {
@@ -96,17 +81,12 @@ extension WriteViewController {
             showAlertMessage(title: "날짜를 입력해주세요")
             return
         }
-        guard let dateText = dateString else { return }
+        
         let priority = self.priority
-        print("📭📭📭📭📭📭📭\(priority)")
-        
-        
         
         if itemidentifier == nil {
-            
             repository.create(ToDo(title: contentText, date: date, completed: false, priority: priority, labelColor: colorString, backgroundColor: backgroundColorString))
         } else {
-            
             guard let itemidentifier = itemidentifier else { return print("수정하기!")}
             guard let contentText = writeView.contentTextField.text else { return }
             if contentText == "" {
@@ -114,55 +94,61 @@ extension WriteViewController {
                 return
             }
             guard let date = savedDate else { return }
-    
             repository.update2(itemidentifier, title: contentText,  date: date, priority: self.priority, labelColor: colorString, backgroundColor: backgroundColorString)
-            print("🎾\(itemidentifier)잘 넘어옴")
+
         }
-        
-        // 수정 했을때
         navigationController?.popViewController(animated: true)
-        
-        if flag2 {
-            
-            dismissSheetPresentationController()
-            navigationController?.popViewController(animated: true)
-            
-        }
-        
     }
     
     func showSheetPresentatilnController() {
-        
-        flag = true
         datepickerViewController.delegate = self
         let navi = UINavigationController(rootViewController: datepickerViewController)
-        isModalInPresentation = true
-        
-        
-        
+
         if let sheet = navi.sheetPresentationController {
             print("fdsfds")
             sheet.detents = [.medium()]
             sheet.selectedDetentIdentifier = .medium
-            //sheet.largestUndimmedDetentIdentifier = .medium
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersGrabberVisible = true
-            sheet.delegate = self
         }
-        
         self.present(navi, animated: true)
-        
     }
-    
-    func dismissSheetPresentationController() {
+    func configureToolbar() {
+        let toolbar = UIToolbar()
+        
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(tappedDoneButton))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        toolbar.sizeToFit()
+        toolbar.setItems([flexibleSpace, doneButton], animated: false)
+        toolbar.backgroundColor = .clear
+        
+        toolbar.tintColor = .link
+        toolbar.layer.cornerRadius = 8
+        
+        toolbar.layer.masksToBounds = true
+        
+        let blurEffect = UIBlurEffect(style: .prominent)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = toolbar.bounds
+        toolbar.addSubview(blurEffectView)
+        toolbar.sendSubviewToBack(blurEffectView)
+        blurEffectView.layer.cornerRadius = 8
+        blurEffectView.clipsToBounds = true
+        
+        writeView.contentTextField.inputAccessoryView = toolbar
+    }
 
-        datepickerViewController.dismiss(animated: true)
+    
+    @objc
+    func tappedDoneButton() {
+        view.endEditing(true)
     }
     
     func configureData(item: ToDo) {
         itemidentifier = item
         savedDate = item.date
-        priority = item.completed
+        priority = item.priority
         colorString = item.labelColor
         backgroundColorString = item.backgroundColor
         writeView.contentTextField.text = item.title
@@ -179,37 +165,40 @@ extension WriteViewController {
 
 
 
-
+// MARK: - DataSource, applySnapShot HeaderFooter, Methods
 extension WriteViewController {
     
-    // MARK: - 데이터소스
     func configureCollectionViewDataSource() {
-        // 1️⃣ Cell
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell,Setting> { cell,  indexPath, itemIdentifier in
             var contentConfiguration = UIListContentConfiguration.valueCell()
             contentConfiguration.text = itemIdentifier.title
             contentConfiguration.secondaryText = ""
-            //contentConfiguration.imageProperties.tintColor = .label
             contentConfiguration.secondaryTextProperties.color = .secondaryLabel
             contentConfiguration.imageProperties.tintColor = .tintColor
             contentConfiguration.image = itemIdentifier.image
-            guard let selectedItem = self.collectionViewDataSource.itemIdentifier(for: indexPath) else { return }
+            //guard let selectedItem = self.collectionViewDataSource.itemIdentifier(for: indexPath) else { return }
         
             //수정화면
             if !(self.itemidentifier == nil) {
                 if indexPath.section == 0 && indexPath.row == 0 {
                     let dateStr = self.dateFormatter.string(from: self.itemidentifier?.date ?? Date())
-                    contentConfiguration.secondaryText = dateStr
+                    if self.dateString == nil {
+                        contentConfiguration.secondaryText = dateStr
+                    } else {
+                        contentConfiguration.secondaryText = self.dateString
+                    }
                     
+                    
+                }
+            } else {
+                if indexPath.section == 0 && indexPath.row == 0 {
+                    contentConfiguration.secondaryText = self.dateString
                 }
             }
             
-            if !(self.dateString == nil) {
-                contentConfiguration.secondaryText = self.dateString
-            }
+
             
-            
-            
+
             
             if indexPath.section == 0 && indexPath.row == 1 {
                 if self.priority {
@@ -226,8 +215,6 @@ extension WriteViewController {
             }
             
             cell.contentConfiguration = contentConfiguration
-            
-            
         }
         
         collectionViewDataSource = .init(collectionView: writeView.collectionView) { collectionView, indexPath, itemIdentifier in
@@ -269,10 +256,47 @@ extension WriteViewController {
         }
         collectionViewDataSource.apply(snapshot)
     }
+    func checkMaxLength(textField: UITextField!, maxLength: Int) {
+        if ((writeView.contentTextField.text?.count)! > maxLength) {
+            textField.deleteBackward()
+        }
+    }
+    
+    @objc
+    func textDidChange(notification: NSNotification) {
+        if let textField = notification.object as? UITextField {
+            var maxLength = 20
+            if let text = textField.text {
+                
+                if text.count > maxLength {
+                    // 8글자 넘어가면 자동으로 키보드 내려감
+                    textField.resignFirstResponder()
+                    showAlertMessage(title: "15글자 까지 입력됩니다")
+                }
+                
+                // 초과되는 텍스트 제거
+                if text.count >= maxLength {
+                    let index = text.index(text.startIndex, offsetBy: maxLength)
+                    let newString = text[text.startIndex..<index]
+                    textField.text = String(newString)
+                }
+                
+//                else if text.count < 2 {
+//                    warningLabel.text = "2글자 이상 8글자 이하로 입력해주세요"
+//                    warningLabel.textColor = .red
+//
+//                }
+//                else {
+//                    warningLabel.text = "사용 가능한 닉네임입니다."
+//                    warningLabel.textColor = .green
+//
+//                }
+            }
+        }
+    }
     
     
 }
-
 
 
 
@@ -291,7 +315,6 @@ extension WriteViewController: UICollectionViewDelegate {
                 guard let selectedCell = collectionViewDataSource.itemIdentifier(for: IndexPath(row: 1, section: 0)) else { return }
                 selectedCell.priority.toggle()
                 self.priority.toggle()
-                print("📮📮📮📮📮📮\(selectedCell.priority)")
                 var snapshot = collectionViewDataSource.snapshot()
                 snapshot.reloadItems([selectedCell])
                 collectionViewDataSource.apply(snapshot, animatingDifferences: true)
@@ -336,25 +359,6 @@ extension WriteViewController: UIColorPickerViewControllerDelegate {
 }
 
 
-extension WriteViewController: UISheetPresentationControllerDelegate {
-    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
-        print("🥡🥡🥡🥡🥡asdfadsfadsfasd")
-        return true
-    }
-    
-}
-
-extension WriteViewController: UITextFieldDelegate {
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if !flag3 {
-            flag3 = true
-            dismissSheetPresentationController()
-            return true
-        }
-        return true
-        
-    }
-}
 
 
 // MARK: - dateDelegate
@@ -370,7 +374,30 @@ extension WriteViewController: DateDelegate {
     }
 }
 
+extension WriteViewController: UITextFieldDelegate {
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = writeView.contentTextField.text else { return false }
+        
+        if let char = string.cString(using: String.Encoding.utf8) {
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 {
+                return true
+            }
+        }
 
+        guard let text = textField.text else { return false }
+        if text.count >= 20 {
+            return false
+        }
+
+        return true
+
+    }
+    
+    
+}
 
 
 

@@ -12,7 +12,7 @@ import RealmSwift
 
 
 protocol PageViewControllerEvent: AnyObject {
-    func item(_ viewController: PageViewController, itemidentifier: ToDo)
+    func item(_ viewController: PageViewController, itemidentifier: ToDo, identifier: dataPassType)
 }
 
 class PageViewController: BaseViewController {
@@ -58,18 +58,20 @@ class PageViewController: BaseViewController {
     override func configure() {
         pageView.collectionView.delegate = self
         registerSectionHeaterView()
-        configureCollectionViewDataSource()
+        
         print("🗂🗂🗂🗂\(repository.database.configuration.fileURL!)🗂🗂🗂🗂")
     }
 }
 
 
 
-
+// MARK: - LifeCycle
 extension PageViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         totalWeek = [firstWeek, secondWeek, thirdWeek, fourthWeek, fiveWeek, sixWeek]
+        print("fasdfsdfsdfsdfsdfsadfsdfsadfas✅")
+        configureCollectionViewDataSource()
         applySnapShot()
     }
 }
@@ -83,7 +85,7 @@ extension PageViewController {
     }
     
     func configureCollectionViewDataSource() {
-        // 1️⃣ Cell
+        
         let cellRegistration = UICollectionView.CellRegistration<PageCell,ToDo> { cell,  indexPath, itemIdentifier in
             cell.configureCell(itemIdentifier: itemIdentifier)
             cell.label.textColor = UIColor(hex: itemIdentifier.labelColor)
@@ -91,16 +93,15 @@ extension PageViewController {
 
             if itemIdentifier.completed {
                 cell.label.attributedText = itemIdentifier.title.strikeThrough()
-                cell.backgroundColor = UIColor(hex: "#1C1C1E") //⚠️리터럴제거하기
+                cell.backgroundColor = ColorType.completeColorSet //⚠️리터럴제거하기
+                //⭐️ todayPanel 에도 레이블 strike 랑, backgroundColor 적용 해주기
             }
         }
-        
         collectionViewDataSource = .init(collectionView: pageView.collectionView) { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         }
         
-        // 2️⃣ Header
         let headerRegistration = UICollectionView.SupplementaryRegistration<SectionHeaderView>.init( elementKind: UICollectionView.elementKindSectionHeader) { [weak self] supplementaryView, elementKind, indexPath in
             guard let self = self, let sectionIdentifier = self.collectionViewDataSource.sectionIdentifier(for: indexPath.section) else { return }
             supplementaryView.titleLabel.text = sectionIdentifier.title
@@ -109,8 +110,7 @@ extension PageViewController {
             return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         })
     }
-    
-    
+    //⚠️ Section 구조화 하기
     func applySnapShot() {
         var newSnapShot = NSDiffableDataSourceSnapshot<SectionWeek, ToDo>()
         newSnapShot.deleteItems(repository.fetch().toArray())
@@ -133,7 +133,7 @@ extension PageViewController {
                 
                 let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil,attributes: .destructive, state: .off) { (_) in
                     
-                    self.delegate?.item(self, itemidentifier: item)
+                    self.delegate?.item(self, itemidentifier: item, identifier: .delete)
 
                     var newSnapShot = self.collectionViewDataSource.snapshot()
                     let currentSection = newSnapShot.sectionIdentifier(containingItem: item)
@@ -144,9 +144,7 @@ extension PageViewController {
                     self.collectionViewDataSource.apply(newSnapShot)
                     self.repository.deleteItem(item: item)
                 }
-                
-                return UIMenu(title: "todotodo", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [edit,delete])
-                
+                return UIMenu(title: "Onetodo", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [edit,delete])
             }
             return context
         }
@@ -156,39 +154,19 @@ extension PageViewController {
 
 // MARK: - CollectionViewDelegate
 extension PageViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
         guard let selectedItem = collectionViewDataSource.itemIdentifier(for: indexPath) else { return }
         repository.updateComplete(item: selectedItem)
         var snapShot = collectionViewDataSource.snapshot()
         snapShot.reloadItems([selectedItem])
         collectionViewDataSource.apply(snapShot, animatingDifferences: true)
-            
-
-
+        self.delegate?.item(self, itemidentifier: selectedItem, identifier: .completed)
+        //⚠️ int로 구별하는거 enum 으로 개선해보기
     }
+    
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         guard let selectedItem = collectionViewDataSource.itemIdentifier(for: indexPath) else { return nil }
         return configureContextMenu(item: selectedItem)
-        print(selectedItem)
-        //configureContextMenu(item: selectedItem)
-        
-    }
-
-    
-    
-}
-
-
-
-// MARK: - FloatingPanelControllerDelegate
-extension PageViewController: FloatingPanelControllerDelegate {
-    func floatingPanelDidMove(_ fpc: FloatingPanelController) {
-        if fpc.surfaceLocation.y >= fpc.surfaceLocation(for: .tip).y - 100 {
-            print("🟧🟧🟧🟧🟧🟧🟧")
-            floatingPanel.dismiss(animated: true)
-        }
     }
 }
-

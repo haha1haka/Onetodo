@@ -15,7 +15,7 @@ class MainFPCPanelLayout: FloatingPanelLayout {
         return [
             .full: FloatingPanelLayoutAnchor(absoluteInset: 0.0, edge: .top, referenceGuide: .safeArea),
             .half: FloatingPanelLayoutAnchor(absoluteInset: 350, edge: .bottom, referenceGuide: .safeArea),
-            .tip: FloatingPanelLayoutAnchor(absoluteInset: 44.0 + 44, edge: .bottom, referenceGuide: .safeArea),
+            .tip: FloatingPanelLayoutAnchor(absoluteInset: 115, edge: .bottom, referenceGuide: .safeArea),
         ]
     }
 }

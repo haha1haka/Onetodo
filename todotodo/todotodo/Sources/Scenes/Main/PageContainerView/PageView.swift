@@ -15,6 +15,7 @@ class PageView: BaseView {
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.alwaysBounceVertical = false
+        view.showsVerticalScrollIndicator = false
         return view
     }()
     
@@ -38,6 +39,7 @@ class PageView: BaseView {
 
     override func configure() {
         self.addSubview(collectionView)
+        self.backgroundColor = ColorType.backgroundColorSet
     }
         
     override func setConstraints() {
@@ -45,7 +47,7 @@ class PageView: BaseView {
             $0.top.equalTo(self)
             $0.leading.equalTo(self)
             $0.trailing.equalTo(self)
-            $0.bottom.equalTo(self).inset(20)
+            $0.bottom.equalTo(self).inset(120)
         }
     }
 }

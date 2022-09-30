@@ -8,13 +8,6 @@
 import UIKit
 import RealmSwift
 
-extension Int {
-    func toString() -> String {
-        return String(self) + " 순위"
-    }
-}
-
-
 class MainPanelViewController: BaseViewController {
     
     let mainPanelView = MainPanelView()
@@ -28,53 +21,27 @@ class MainPanelViewController: BaseViewController {
     
     var today = Date()
     
-    var sectionTitle: String = ""
-    
     var coreItem: [ToDo] {
         return repository.fetch().filter("priority == true").toArray()
     }
+    
     var generalItem: [ToDo] {
         return repository.fetch().filter("priority == false").toArray()
     }
     
     override func configure() {
-        //mainPanelView.backgroundColor = .red
         registerSectionHeaderView()
-        configureCollectionViewDataSource()
+        
     }
 }
 
 extension MainPanelViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureCollectionViewDataSource()
         applySnapShot()
     }
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        setBlur()
-//    }
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        //setBlur()
-    }
-    
-    
-    
-    func setBlur() {
-        let blurEffect = UIBlurEffect(style: .light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = mainPanelView.bounds
-        self.view.addSubview(blurEffectView)
-        
-        self.view.sendSubviewToBack(blurEffectView)
-        
-        
-        blurEffectView.layer.cornerRadius = 35
-        blurEffectView.clipsToBounds = true
-    }
 
-    
-    
 }
 
 
@@ -87,7 +54,7 @@ extension MainPanelViewController {
     }
     
     func configureCollectionViewDataSource() {
-        // 1️⃣ Cell
+        
         let cellRegistration = UICollectionView.CellRegistration<MainPanelCell,ToDo> { cell,  indexPath, itemIdentifier in
             cell.configureCell(item: itemIdentifier)
         }
@@ -95,9 +62,15 @@ extension MainPanelViewController {
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             cell.label.textColor = UIColor(hex: itemIdentifier.labelColor)
             cell.backgroundColor = UIColor(hex: itemIdentifier.backgroundColor)
+            
+            if itemIdentifier.completed {
+                cell.label.attributedText = itemIdentifier.title.strikeThrough()
+                cell.backgroundColor = ColorType.completeColorSet //⚠️리터럴제거하기
+                //⭐️ todayPanel 에도 레이블 strike 랑, backgroundColor 적용 해주기
+            }
             return cell
         }
-        // 2️⃣ Header
+        
         let headerRegistration = UICollectionView.SupplementaryRegistration<SectionHeaderView>.init( elementKind: UICollectionView.elementKindSectionHeader) { [weak self] supplementaryView, elementKind, indexPath in
             guard let self = self, let sectionIdentifier = self.collectionViewDataSource.sectionIdentifier(for: indexPath.section) else { return }
             supplementaryView.titleLabel.text = sectionIdentifier.description
@@ -128,14 +101,11 @@ extension MainPanelViewController {
         var snapshot = collectionViewDataSource.snapshot()
         for item in collectionViewDataSource.snapshot(for: "오늘 확인").items {
             
-            
-            
             snapshot.deleteItems([item])
             
             if snapshot.itemIdentifiers(inSection: "오늘 확인").isEmpty {
                 snapshot.deleteSections(["오늘 확인"])
             }
-            
             
             if item.priority {
                 if !snapshot.sectionIdentifiers.contains("중요 todo") {
@@ -152,9 +122,5 @@ extension MainPanelViewController {
         }
         collectionViewDataSource.apply(snapshot, animatingDifferences: true)
     }
-    
-    
 
-    
-    
 }

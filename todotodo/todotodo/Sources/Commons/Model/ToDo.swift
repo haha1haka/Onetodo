@@ -15,18 +15,18 @@ enum Month:Int, CaseIterable {
     
     var title: String {
         switch self {
-        case .jan: return "1월"
-        case .feb: return "2월"
-        case .mar: return "3월"
-        case .apr: return "4월"
-        case .may: return "5월"
-        case .jun: return "6월"
-        case .jul: return "7월"
-        case .aug: return "8월"
-        case .sep: return "9월"
-        case .oct: return "10월"
-        case .nov: return "11월"
-        case .dec: return "12월"
+        case .jan: return "January"
+        case .feb: return "February"
+        case .mar: return "March"
+        case .apr: return "April"
+        case .may: return "May"
+        case .jun: return "June"
+        case .jul: return "July"
+        case .aug: return "August"
+        case .sep: return "September"
+        case .oct: return "October"
+        case .nov: return "November"
+        case .dec: return "December"
         }
     } 
     

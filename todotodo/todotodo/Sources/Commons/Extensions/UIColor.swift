@@ -6,51 +6,6 @@
 //
 
 import UIKit
-enum ColorType {
-    static var backgroundColorSet: UIColor {
-        if #available(iOS 13, *) {
-            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-                if UITraitCollection.userInterfaceStyle == .dark {
-                    return UIColor.black
-                } else {
-                    return UIColor.white
-                }
-            }
-        } else {
-            return UIColor.white
-        }
-    }
-    
-    static var lableColorSet: UIColor {
-        if #available(iOS 13, *) {
-            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-                if UITraitCollection.userInterfaceStyle == .dark {
-                    return UIColor.white
-                } else {
-                    return UIColor.black
-                }
-            }
-        } else {
-            return UIColor.white
-        }
-    }
-    static var writeViewColorSet: UIColor {
-        if #available(iOS 13, *) {
-            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-                if UITraitCollection.userInterfaceStyle == .dark {
-                    return UIColor.black
-                } else {
-                    return UIColor.myLightGray
-                }
-            }
-        } else {
-            return UIColor.white
-        }
-    }
-    
-
-    
-}
 
 extension UIColor {
     static var random: UIColor {
@@ -65,7 +20,6 @@ extension UIColor {
     static var myDarkGray: UIColor {
         UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1.0)
     }
-    
 }
 
 extension UIColor {
@@ -91,25 +45,4 @@ extension UIColor {
         return String(format:"#%06x", rgb)
     }
 }
-
-
-
-
-
-
-
-
-let textFiledBackgrounView: UIColor = {
-    if #available(iOS 13, *) {
-        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-            if UITraitCollection.userInterfaceStyle == .dark {
-                return UIColor.darkGray
-            } else {
-                return UIColor.white
-            }
-        }
-    } else {
-        return UIColor.white
-    }
-}()
 

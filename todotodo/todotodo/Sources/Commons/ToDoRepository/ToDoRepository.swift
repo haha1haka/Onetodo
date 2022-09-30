@@ -61,15 +61,7 @@ class ToDoRepository: ToDoDataBaseRepository {
             item.completed.toggle()
         }
     }
-//    func updateBackgroundColor(item: ToDo, completed: Bool, backgroundColor: String) {
-//        try! database.write {
-//            if item.completed == completed {
-//                item.backgroundColor = "#555555"
-//            } else {
-//                item.backgroundColor = backgroundColor
-//            }
-//        }
-//    }
+
     
     func deleteItem(item: ToDo) {
         do {

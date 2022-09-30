@@ -210,13 +210,13 @@
 
 
 
+​	se 대응 해결책 --> 가탕호의 스크롤뷰
 
 
 
 
 
-
-
+![스크린샷 2022-09-29 19.59.21](/Users/haha1haka/Library/Application Support/typora-user-images/스크린샷 2022-09-29 19.59.21.png)
 
 
 

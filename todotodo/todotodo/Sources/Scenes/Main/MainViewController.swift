@@ -41,6 +41,7 @@ class MainViewController: BaseViewController {
     
     override func configure() {
         configureUINavigationBar()
+        view.backgroundColor = ColorType.backgroundColorSet
         configureNavigationBarButtonItem()
         configureFirstPageViewController()
         configureTopicViewController()
@@ -55,7 +56,7 @@ class MainViewController: BaseViewController {
 extension MainViewController {
 
     func configureUINavigationBar() {
-        self.navigationItem.title = "todotodo"
+        self.navigationItem.title = "Onetodo"
         let appearance = UINavigationBarAppearance()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
         appearance.backgroundColor = ColorType.backgroundColorSet
@@ -65,6 +66,7 @@ extension MainViewController {
     }
     
     func configureNavigationBarButtonItem() {
+        
         let createButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(tappedCreateButton))
         navigationItem.rightBarButtonItem = createButton
         let searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(tappedSearchButton))
@@ -94,6 +96,7 @@ extension MainViewController {
         //9월을 첫번째 토픽으로
         DispatchQueue.main.async { //왜 이렇게 해줘야 할까? --> 그냥 시점만 빠르게 해줌.
             let indexPath = IndexPath(row: self.thisMonth-1, section: 0)
+            self.topicViewController.topicView.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
             self.topicViewController.topicView.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
@@ -126,6 +129,7 @@ extension MainViewController {
         BackFloatingPanel.set(contentViewController: floatingPanel)
         BackFloatingPanel.track(scrollView: floatingPanel.mainPanelView.collectionView)
         BackFloatingPanel.addPanel(toParent: self)
+        BackFloatingPanel.backdropView.backgroundColor = .clear
         BackFloatingPanel.behavior = MyFloatingPanelBehavior()
         BackFloatingPanel.layout = MainFPCPanelLayout()
         BackFloatingPanel.invalidateLayout()
@@ -133,7 +137,18 @@ extension MainViewController {
             guard let self = self else { return }
             self.didMove(toParent: self)
         }
+        setBlur()
     }
+    func setBlur() {
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.bounds
+        floatingPanel.view.addSubview(blurEffectView)
+        floatingPanel.view.sendSubviewToBack(blurEffectView)
+        blurEffectView.layer.cornerRadius = 35
+        blurEffectView.clipsToBounds = true
+    }
+
 }
 
 
@@ -153,10 +168,25 @@ extension MainViewController: TopicViewControllerEvent {
 
 // MARK: - TopicViewControllerEventDelegate
 extension MainViewController: PageViewControllerEvent {
-    func item(_ viewController: PageViewController, itemidentifier: ToDo) {
-        var snapshot = floatingPanel.collectionViewDataSource.snapshot()
-        snapshot.deleteItems([itemidentifier])
-        floatingPanel.collectionViewDataSource.apply(snapshot, animatingDifferences: true)
+    func item(_ viewController: PageViewController, itemidentifier: ToDo, identifier: dataPassType) {
+        //⚠️ int로 구별하는거 enum 으로 개선해보기 
+        switch identifier {
+        case .delete:
+            var snapshot = floatingPanel.collectionViewDataSource.snapshot()
+            snapshot.deleteItems([itemidentifier])
+            floatingPanel.collectionViewDataSource.apply(snapshot, animatingDifferences: true)
+        case .completed:
+            var snapshot = floatingPanel.collectionViewDataSource.snapshot()
+            //⚠️ item 날짜 옴기게 되면, Today 에 item 없음 -> 따라서, 없는 datasource를 apply 해서 오류남
+            // 일단 이렇게 막아 놨는데 다시 확인하기
+            if snapshot.indexOfItem(itemidentifier) == nil {
+                
+            } else {
+                snapshot.reloadItems([itemidentifier])
+                floatingPanel.collectionViewDataSource.apply(snapshot, animatingDifferences: true)
+            }
+
+        }
     }
 }
 

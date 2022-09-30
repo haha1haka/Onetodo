@@ -12,7 +12,7 @@ class MainPanelCell: BaseCollectionViewCell {
 
     let label: UILabel = {
         let view = UILabel()
-        
+        view.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return view
     }()
     
@@ -24,6 +24,9 @@ class MainPanelCell: BaseCollectionViewCell {
         label.snp.makeConstraints{
             $0.top.leading.top.trailing.leading.equalTo(self).inset(20)
         }
+    }
+    override func prepareForReuse() {
+        label.attributedText = nil
     }
     
     func configureCell(item: ToDo) {

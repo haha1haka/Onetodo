@@ -23,13 +23,11 @@ class SearchViewController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-        view.backgroundColor = .clear
+        view.backgroundColor = ColorType.backgroundColorSet
         return view
     }()
     
     var collectionViewDataSource: UICollectionViewDiffableDataSource<SearchSection, ToDo>!
-    
-    
     
     var isSearchControllerFiltering: Bool {
         guard let searchController = self.navigationItem.searchController, let searchBarText = self.navigationItem.searchController?.searchBar.text else { return false }
@@ -41,24 +39,16 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSearchController()
+        configureSearchController()
         configureUINavigationBar()
-        view.backgroundColor = .clear
-        
-        view.addSubview(collectionView)
-        collectionView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.bottom.equalToSuperview()
-        }
-        
-        
-        
+        configureViewConstraints()
         configureCollectionViewDataSource()
         applyInitialSnapShot()
-        setBlur()
+        //setBlur()
     }
+
     
-    func setupSearchController() {
+    func configureSearchController() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchResultsUpdater = self
@@ -68,31 +58,40 @@ class SearchViewController: UIViewController {
     
     func configureUINavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "todotodo"
+        self.navigationItem.title = "Onetodo"
         let appearance = UINavigationBarAppearance()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
-        appearance.backgroundColor = .clear
-        
+        appearance.backgroundColor = ColorType.backgroundColorSet
+        //navigationController?.navigationBar.backdr
+        appearance.backgroundImage = UIImage()
+        appearance.backgroundEffect = nil
+        appearance.shadowImage = UIImage()
+        //navigationController?.navigationBar.backgroundColor = .red
         appearance.shadowColor = .clear
-        navigationController?.navigationBar.backgroundColor = .clear
+        
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
     }
-    func setBlur() {
-        let blurEffect = UIBlurEffect(style: .light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.view.bounds
-        self.view.addSubview(blurEffectView)
-        self.view.sendSubviewToBack(blurEffectView)
-        blurEffectView.layer.cornerRadius = 35
-        blurEffectView.clipsToBounds = true
+    func configureViewConstraints() {
+        view.backgroundColor = .clear
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalToSuperview()
+        }
     }
+    
+//    func setBlur() {
+//        let blurEffect = UIBlurEffect(style: .light)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = self.view.bounds
+//        self.view.addSubview(blurEffectView)
+//        self.view.sendSubviewToBack(blurEffectView)
+//        blurEffectView.layer.cornerRadius = 35
+//        blurEffectView.clipsToBounds = true
+//    }
 
 }
-
-
-
-
 
 
 extension SearchViewController {
@@ -126,7 +125,7 @@ extension SearchViewController {
             //cell.backgroundColor = .random
             //cell.layer.backgroundColor = UIColor.random.cgColor
 
-            cell.layer.borderWidth = 1
+            //cell.layer.borderWidth = 1
             cell.layer.masksToBounds = true
             cell.backgroundColor = UIColor(hex: itemIdentifier.backgroundColor)
             cell.label.textColor = UIColor(hex: itemIdentifier.labelColor)
@@ -168,6 +167,17 @@ extension SearchViewController: UISearchResultsUpdating {
             })
             collectionViewDataSource.apply(newSnapShot, animatingDifferences: true)
         }
+        
+        if !searchController.isActive {
+            
+            var snapShot = collectionViewDataSource.snapshot()
+            snapShot.deleteAllItems()
+            snapShot.appendSections([.main])
+            snapShot.appendItems(allTodoObjects.toArray())
+            collectionViewDataSource.apply(snapShot,animatingDifferences: true)
+        }
+        
+    
 
     }
     
