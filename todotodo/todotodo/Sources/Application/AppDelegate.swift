@@ -40,6 +40,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
+    // foreground 상태 일때 link 타게 해주는 코드
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
+        guard let viewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+        
+        //SearchViewController 에 있을시 푸쉬 안오게끔,
+        //그외 viewController 에서는 알림 오게끔 설정
+        if viewController is SearchViewController {
+            
+        } else {
+            // .banner, .list: iOS14+
+            completionHandler([.badge, .sound, .banner, .list])
+        }
+    }
 }
 
 extension AppDelegate: MessagingDelegate {
