@@ -92,6 +92,7 @@
 		F4A8708228E579EB00675EE3 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
 		F4A8708428E57C9100675EE3 /* DataPassType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPassType.swift; sourceTree = "<group>"; };
 		F4B6DD4128F6810D0013A7C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F4B6DD4B28F6A0B20013A7C1 /* todotodoDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = todotodoDebug.entitlements; sourceTree = "<group>"; };
 		F4B8786428E5E4410086C8A1 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F4C66FED28D85B2D00BC7E40 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		F4DC37CE28DB5A6C004FEA87 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
@@ -155,6 +156,7 @@
 		F46B2EEB28CADFE600B0AB5D /* todotodo */ = {
 			isa = PBXGroup;
 			children = (
+				F4B6DD4B28F6A0B20013A7C1 /* todotodoDebug.entitlements */,
 				F4B6DD4128F6810D0013A7C1 /* GoogleService-Info.plist */,
 				F46B2F0028CAE19C00B0AB5D /* Sources */,
 				F46B2F0128CAE1A000B0AB5D /* Resources */,
@@ -651,6 +653,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = todotodo/todotodoDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M526U856M5;
