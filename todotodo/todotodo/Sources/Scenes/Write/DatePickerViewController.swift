@@ -46,8 +46,6 @@ class DatePickerViewController: BaseViewController {
         scrollView.addSubview(datePicker)
         
         
-        
-
         scrollView.snp.makeConstraints {
             $0.width.equalTo(UIScreen.main.bounds.width)
             $0.leading.trailing.equalTo(self.view)
