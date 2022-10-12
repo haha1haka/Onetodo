@@ -40,19 +40,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
-    // foreground 상태 일때 link 타게 해주는 코드
+    // foreground 상태 에서 배너 띄우게만 하는 것
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 
         guard let viewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
-        
-        //SearchViewController 에 있을시 푸쉬 안오게끔,
-        //그외 viewController 에서는 알림 오게끔 설정
+
+        //SearchViewController 에 있을시 배너만 push 되게끔
+        //그외 viewController, background상태 에서는 알림 오게끔 설정
         if viewController is SearchViewController {
-            
+            completionHandler([.banner])
         } else {
             // .banner, .list: iOS14+
             completionHandler([.badge, .sound, .banner, .list])
         }
+    }
+    
+    
+    // 배너를 클릭 했을때!!
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("사용자가 푸시를 클릭 했습니다.")
+        print("\(response.notification.request.content.body)")
+        print("\(response.notification.request.content.userInfo)")
+
+        let userInfo = response.notification.request.content.userInfo
+
+        if userInfo[AnyHashable("sesac")] as? String == "project" {
+            print("SESAC PROJECT")
+        } else {
+            print("NOTHING")
+        }
+
+        
+        guard let viewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+
+        // 현재 MainVC 이면 writeVC 로
+        if viewController is MainViewController {
+            viewController.navigationController?.pushViewController(WriteViewController(), animated: true)
+        } else if viewController is SearchViewController { // (현재)SearchVC이면 dismiss 되게끔
+            viewController.dismiss(animated: true)
+
+        }
+
+
     }
 }
 
