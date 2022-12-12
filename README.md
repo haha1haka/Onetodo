@@ -94,7 +94,7 @@
 
 ### 1. Add Todo
 
-![AddTodo](https://user-images.githubusercontent.com/106936018/206976375-bed3852c-e4a2-48c4-884a-419335b53a81.gif)
+![AddTodo](https://user-images.githubusercontent.com/106936018/206976818-67d365d3-100c-4e40-bf50-f089f28b52bc.gif)
 
 ### 2. Delete and Edit Todo
 
