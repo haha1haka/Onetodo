@@ -98,13 +98,25 @@
 
 ### 2. Delete and Edit Todo
 
-
+![Delete and Edit Todo](https://user-images.githubusercontent.com/106936018/206977655-b9ba0754-8978-461d-85c5-6a8815b7712a.gif)
 
 ### 3. Search and Complete Todo
 
 
 
+![Search and Complete Todo](https://user-images.githubusercontent.com/106936018/206978547-6e3186c8-f92c-4d86-9fcb-54b46a7217bf.gif)
+
+
+
 ### 4. checkToday with Pandel 
+
+
+
+
+
+![checkToday](https://user-images.githubusercontent.com/106936018/206978919-aeaa018e-1938-424d-a3f7-37added708cc.gif)
+
+
 
 
 
@@ -114,6 +126,7 @@
 
 
 
+![다크모드](https://user-images.githubusercontent.com/106936018/206979434-4e52d432-89a0-4178-9f86-242463d61dac.gif)
 
 
 
@@ -126,67 +139,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-* todo Create
-
-https://user-images.githubusercontent.com/106936018/206963200-2eb25ce1-d125-4b58-8962-eec95a02a68f.mp4
-
-
-
-<br/>
-
-* todo Edit
-
-https://user-images.githubusercontent.com/106936018/206963435-1635beb3-ee55-47a8-9e68-2c784af2d01d.MP4
-
-<br/>
-
-
-
-* todo delete
-
-https://user-images.githubusercontent.com/106936018/206963505-b9f2c78e-b818-48b0-86da-fc9b054b8e0c.MP4
-
-<br/>
-
-
-
-* todo complete
-
-https://user-images.githubusercontent.com/106936018/206963574-5edafd97-575c-4fe2-a74f-c16d988ef266.MP4
-
-
-
-<br/>
-
-* todo Search
-
-https://user-images.githubusercontent.com/106936018/206963755-c6de2a42-d746-48d8-9c04-c7da8d6c2d61.MP4
-
-
-
-<br/>
-
-* 오늘 날짜 todo  확인 
-
-https://user-images.githubusercontent.com/106936018/206965052-88303739-e2aa-455e-9872-230f07d833fa.MP4
-
-<br/>
-
-
-
-* DarkMode, LightMode 대응
-
-https://user-images.githubusercontent.com/106936018/206964377-845af6bb-c822-4223-bc19-09aa338785a9.mp4
 
 
 
