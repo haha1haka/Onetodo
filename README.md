@@ -88,11 +88,97 @@
 
 <br/>
 
-* simulation
-
-https://user-images.githubusercontent.com/106936018/206968285-f53d3769-695d-47ab-8134-fc8c1cef1820.mp4
 
 
+
+
+### 1. Add Todo
+
+![AddTodo](https://user-images.githubusercontent.com/106936018/206976375-bed3852c-e4a2-48c4-884a-419335b53a81.gif)
+
+### 2. Delete and Edit Todo
+
+
+
+### 3. Search and Complete Todo
+
+
+
+### 4. checkToday with Pandel 
+
+
+
+### 5. Dark and Light Mode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* todo Create
+
+https://user-images.githubusercontent.com/106936018/206963200-2eb25ce1-d125-4b58-8962-eec95a02a68f.mp4
+
+
+
+<br/>
+
+* todo Edit
+
+https://user-images.githubusercontent.com/106936018/206963435-1635beb3-ee55-47a8-9e68-2c784af2d01d.MP4
+
+<br/>
+
+
+
+* todo delete
+
+https://user-images.githubusercontent.com/106936018/206963505-b9f2c78e-b818-48b0-86da-fc9b054b8e0c.MP4
+
+<br/>
+
+
+
+* todo complete
+
+https://user-images.githubusercontent.com/106936018/206963574-5edafd97-575c-4fe2-a74f-c16d988ef266.MP4
+
+
+
+<br/>
+
+* todo Search
+
+https://user-images.githubusercontent.com/106936018/206963755-c6de2a42-d746-48d8-9c04-c7da8d6c2d61.MP4
+
+
+
+<br/>
+
+* 오늘 날짜 todo  확인 
+
+https://user-images.githubusercontent.com/106936018/206965052-88303739-e2aa-455e-9872-230f07d833fa.MP4
 
 <br/>
 
