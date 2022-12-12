@@ -269,8 +269,9 @@
 		F46B2F1128CAE31800B0AB5D /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				F46B2F1528CAE33600B0AB5D /* NSObject.swift */,
 				F4006DDA28DAD5D400F8ECC9 /* Date.swift */,
+				F4DDD00728E19B970002422B /* String.swift */,
+				F46B2F1528CAE33600B0AB5D /* NSObject.swift */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -278,10 +279,9 @@
 		F46B2F1228CAE32000B0AB5D /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				F46B2F1328CAE32E00B0AB5D /* UIViewController.swift */,
 				F427D81E28DC0ADD00D51282 /* UIColor.swift */,
-				F4DDD00728E19B970002422B /* String.swift */,
 				F4B8786428E5E4410086C8A1 /* UIImage.swift */,
+				F46B2F1328CAE32E00B0AB5D /* UIViewController.swift */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -670,7 +670,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.haha1haka.todotodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -703,7 +703,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.haha1haka.todotodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

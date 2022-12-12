@@ -56,17 +56,17 @@ extension MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Analytics.logEvent("rejack", parameters: [
-            // "고래밥" 이라는 유저가 얼마나 로깅 됐는지
-            // "안녕하세요" 라는 text 가 얼마나 로깅 됐는지
-          "name": "고래밥",
-          "full_text": "안녕하세요"
-        ])
-        
-        Analytics.setDefaultEventParameters([
-          "level_name": "Caverns01",
-          "level_difficulty": 4
-        ])
+//        Analytics.logEvent("rejack", parameters: [
+//            // "고래밥" 이라는 유저가 얼마나 로깅 됐는지
+//            // "안녕하세요" 라는 text 가 얼마나 로깅 됐는지
+//          "name": "고래밥",
+//          "full_text": "안녕하세요"
+//        ])
+//
+//        Analytics.setDefaultEventParameters([
+//          "level_name": "Caverns01",
+//          "level_difficulty": 4
+//        ])
     }
 }
 

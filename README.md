@@ -1,530 +1,28 @@
+![스크린샷 2022-10-16 12.54.31](/Users/haha1haka/Desktop/Workspace/정리정리정리/0.imageServer/스크린샷 2022-10-16 12.54.31-0822446.png)
+
+
+
+
+
+<br/><br/><br/><br/><br/>
+
+
+
+## Onetodo
+
 <br/>
 
+주차에 할일을 가볍게 적을수 있는 todo 앱 입니다.
 
+오늘 할일만 빠르게 확인 해보실 수 있습니다.
 
+색상별로 할일에 카테고리를 나눠 투두를 작성 할수 있습니다.
 
+애플의 UI/UX 를 사랑합니다. 애플기본앱(UI/UX)을 많이 참고하여, 이질감 없는 앱을 경험 하실수 있습니다.
 
-# 개인일지 
+<br/>
 
-
-
-### 9월13일
-
-
-
-
-
-
-
-
-
-<br/><br/><br/>
-
-### 9월 14일
-
-오늘 해야할거 
-
-* 다시 기획 하기
-* 컴포지션얼, 디퍼블, 리유저블셀 이해
-* 네비게이션탭바 달기
-* 탭바 안에 작성버튼 달기 -> 화면이동
-* 판넬 만들기 (못함)
-
-
-
-### 9월 15일
-
-* ✅판넬 만들기
-* ⚠️탭바 안에 작성버튼 달기
-* ⚠️플로팅 딜리게이트 공부
-* ✅속도감 줄려고 코드추가
-* ⚠️모든 화면 이동 구현하기(판넬팝업, 셀클릭시 팝업)
-
-
-
-* 
-* UI: InsetGrouped 로 변경
-* UI: ListContentConfiguration 적용 해보기 
-
-### 9월 16일(금)
-
-
-
-* UI: (Main)Section 간격 띄우기
-* UI: (Main)InsetGrouped 로 변경
-* UI: (Main)ListContentConfiguration 적용 해보기 
-
-### 
-
-* picker 학습
-* picker 적용
-
-
-
-
-
-* d일반상태 PanelVC 구체화 
-
-
-
-
-
-
-
-
-
-* 기획 완전 구체화 하기(데이터 흐름 중요)
-
-* 불러온 데이터 어떻게 셀에 뿌려지는 형태인지 학습(완료버튼 일때 어떤지, 삭제일때 어떤지)
-
-
-
-* 스키마 짜기
-
-
-
-
-
-
-
-
-
-* 화면 모두 구성 하기 
-* 스키마 리스트 구성.
-
-
-
-### 9월 17일토
-
-### ![스크린샷 2022-09-24 01.49.51](/Users/haha1haka/Desktop/스크린샷/스크린샷 2022-09-24 01.49.51.png)
-
-
-
-![스크린샷 2022-09-17 15.54.07](/Users/haha1haka/Desktop/스크린샷/스크린샷 2022-09-17 15.54.07.png)
-
-
-
-[https://blog.dehol.kr/modern-collection-view/](https://blog.dehol.kr/modern-collection-view/)
-
-
-
-
-
-
-
-* ##  **[UIContentConfiguration](https://zeddios.tistory.com/1206)**
-
-* https://www.biteinteractive.com/cell-content-configuration-in-ios-14/
-
-
-
-
-
-
-
-## [https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/implementing_modern_collection_views*](https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/implementing_modern_collection_views*)
-
-
-
-<br/><br/><br/>
-
-
-
-
-
-### 9월 18일
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 9월 22일 
-
-### 23(금)
-
-발표
-
-### 24(토)
-
-
-
-
-
-25
-
-
-
-
-
-### 9월 27일
-
-
-
-![스크린샷 2022-09-27 00.43.22](/Users/haha1haka/Desktop/스크린샷/스크린샷 2022-09-27 00.43.22.png)
-
-
-
-
-
-![스크린샷 2022-09-27 09.32.36](/Users/haha1haka/Desktop/스크린샷/스크린샷 2022-09-27 09.32.36.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 9월 29일
-
-
-
-
-
-<img src="/Users/haha1haka/Library/Application Support/typora-user-images/simulator_screenshot_8B704BE8-4C68-45AD-B4E0-B43FEA981369.png" alt="simulator_screenshot_8B704BE8-4C68-45AD-B4E0-B43FEA981369" style="zoom: 25%;" />
-
-
-
-
-
-
-
-
-
-​	se 대응 해결책 --> 가탕호의 스크롤뷰
-
-
-
-
-
-![스크린샷 2022-09-29 19.59.21](/Users/haha1haka/Library/Application Support/typora-user-images/스크린샷 2022-09-29 19.59.21.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-![스크린샷 2022-09-22 12.09.48](/Users/haha1haka/Desktop/스크린샷/스크린샷 2022-09-22 12.09.48.png)
-
-![스크린샷 2022-09-22 12.09.57](/Users/haha1haka/Desktop/스크린샷/스크린샷 2022-09-22 12.09.57.png)
-
-
-
-
-
-
-
-
-
-9월 25일
-
-
-
-![스크린샷 2022-09-25 11.15.40](/Users/haha1haka/Desktop/스크린샷/스크린샷 2022-09-25 11.15.40.png)
-
-
-
-
-
-![스크린샷 2022-09-25 11.15.48](/Users/haha1haka/Desktop/스크린샷/스크린샷 2022-09-25 11.15.48.png)
-
-
-
-
-
-
-
-![스크린샷 2022-09-25 11.32.58](/Users/haha1haka/Desktop/스크린샷/스크린샷 2022-09-25 11.32.58.png)
-
-
-
-
-
-![스크린샷 2022-09-25 11.33.38](/Users/haha1haka/Library/Application Support/typora-user-images/스크린샷 2022-09-25 11.33.38.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 앱소개 
-
-
-
-<br/><br/>
-
-
-
-하루단위의 todo 라기 보다는
-
-Week 에 초점을 맞춘 
-
-주단위 Todo 앱 입니다
-
-
-
-<br/><br/>
-
-
-
-<img width="951" alt="스크린샷 2022-08-30 19 51 38" src="https://user-images.githubusercontent.com/106936018/187418494-96b967f9-0c29-4d6d-aaed-b7ce889f7b1f.png">
-
-
+> Appstore: [https://apps.apple.com/kr/app/onetodo-%ED%88%AC%EB%91%90/id1645004556](https://apps.apple.com/kr/app/onetodo-%ED%88%AC%EB%91%90/id1645004556)
 
 
 
@@ -532,93 +30,53 @@ Week 에 초점을 맞춘
 
 
 
-# 개발공수
+## Tech Stack
 
 
-
-
-
-## 이터레이션1
 
 <br/>
 
-### UI구성 
-
-<br/>
-
-|                                                              | 9/8(목) ~ 9/11(일)(22H) |      |
-| ------------------------------------------------------------ | ----------------------- | ---- |
-| CoedBaseUI구성(with.SnapKit)                                 | 4H                      |      |
-| 각 Scene에 CollectionView 구현                               | 3H                      |      |
-| NaviBar, NavigationItemBar appearence (standard, scrollEdge control) | 2H                      |      |
-| FloatingPanel 라이브 러리 이용 panelViewController 구현      | 1H                      |      |
-| Font, assetColor extension 구현                              | 1H                      |      |
-
-
+| 아케텍쳐 | 기술 및 라이브러리                                           |
+| -------- | ------------------------------------------------------------ |
+| MVC      | Swift5.7<br />UIKit<br />Snapkit<br />RealmDatabase<br />Firebase analytics, crashlytics<br />Firebase remoteNotification |
 
 <br/><br/><br/><br/>
 
 
 
-## 이터레이션2
+## Table of Apple's API and  Patterns
 
 <br/>
 
-### Todo기능구현, DB CRUD
+### Used API
 
 <br/>
 
-|                                              | 9/12(월) ~ 9/14(수)(15H) | Todo기능구현, DB CRUD |
-| -------------------------------------------- | ------------------------ | --------------------- |
-| Floating Button 추가 및 화면이동(WriteScene) | 2H                       |                       |
-| todo 기능 구현(+delete)                      | 3H                       |                       |
-| 날짜, 시간 가져와서 뿌려주기                 | 3H                       |                       |
-| 키워드 색상 기능 구현                        | 2H                       |                       |
-| DB 구조짜기                                  | 1H                       |                       |
-| View reload 시점 파악 및 고찰                | 4H                       |                       |
+* [UICollectionViewDiffableDataSource](https://github.com/haha1haka/iOS-Topics/issues/3)
 
+* [UICollectionViewCompositionalLayout](https://github.com/haha1haka/iOS-Topics/issues/1)
 
+* [NSMutableAttributedString](https://github.com/haha1haka/iOS-Topics/issues/22)
 
-<br/><br/><br/><br/>
+* [UIColorPicker](https://github.com/haha1haka/iOS-Topics/issues/25)
 
+* [UIDatePicker](https://github.com/haha1haka/iOS-Topics/issues/24)
 
+* [UIPageViewController](https://github.com/haha1haka/iOS-Topics/issues/23)
+* [Firebase Analytics, Crashlytics](https://github.com/haha1haka/iOS-Topics/issues/15)
+* [Firebase Remote Notification(FCM)](https://github.com/haha1haka/iOS-Topics/issues/31)
 
-## 이터레이션3
+* UISheetPresentationController
 
-<br/>
-
-### DB CRUD, Calendar 학습 
+* Floating Panel Library
 
 <br/>
 
+### Pattern
 
+* [SingletonPattern](https://github.com/haha1haka/iOS-Topics/issues/30)
 
-| dataDB 연동(Realm) 및 CRUD          | 9/15(목) ~ 9/18(일)(18H) |      |
-| ----------------------------------- | ------------------------ | ---- |
-| DB 와 View 싱크 관련 고찰 및 적용   | 4H                       |      |
-| Task 완료, 미완료 기능 추가         | 4H                       |      |
-| 완료 미완료에 따른 키워드 색상 변경 | 5H                       |      |
-| FSCalendar 라이브러리 이용 및 학습  | 5H                       |      |
-|                                     |                          |      |
-
-<br/><br/><br/><br/>
-
-## 이터레이션4
-
-<br/>
-
-### Calendar 데이터 CRUD, 검색기능 
-
-<br/>
-
-|                                                        | 9/19(월) ~ 9/21(수)(15H) |      |
-| ------------------------------------------------------ | ------------------------ | ---- |
-| Calendar 관련 데이터 DB Create, Delete CalendarVC 구성 | 6H                       |      |
-| Main에 검색 기능 구현                                  | 4H                       |      |
-| 모든 앱 오류 확인                                      | 3H                       |      |
-| 코드리펙토링                                           | 2H                       |      |
-
-
+* [RepositoryPattern](https://github.com/haha1haka/iOS-Topics/issues/20)
 
 
 
@@ -626,42 +84,71 @@ Week 에 초점을 맞춘
 
 <br/><br/><br/><br/>
 
-
-
-## 이터레이션5
-
-<br/>
-
-### Notification 알림기능
+## Simulation
 
 <br/>
 
 
 
-|                                                              | 9/22(목) ~ 9/25(일)(18H) |      |
-| ------------------------------------------------------------ | ------------------------ | ---- |
-| CollectionViewCell UI dynamic하게 바꿔보기( + animation 추가) | 7H                       |      |
-| Notification 이용 미완료 Task 알람기능 구현하기              | 8H                       |      |
-| 코드 리펙토링                                                | 3H                       |      |
+
+
+* todo Create
+
+https://user-images.githubusercontent.com/106936018/206963200-2eb25ce1-d125-4b58-8962-eec95a02a68f.mp4
+
+
+
+<br/>
+
+* todo Edit
+
+https://user-images.githubusercontent.com/106936018/206963435-1635beb3-ee55-47a8-9e68-2c784af2d01d.MP4
+
+<br/>
+
+
+
+* todo delete
+
+https://user-images.githubusercontent.com/106936018/206963505-b9f2c78e-b818-48b0-86da-fc9b054b8e0c.MP4
+
+<br/>
+
+
+
+* todo complete
+
+https://user-images.githubusercontent.com/106936018/206963574-5edafd97-575c-4fe2-a74f-c16d988ef266.MP4
+
+
+
+<br/>
+
+* todo Search
+
+https://user-images.githubusercontent.com/106936018/206963755-c6de2a42-d746-48d8-9c04-c7da8d6c2d61.MP4
+
+
+
+<br/>
+
+* 오늘 날짜 todo  확인 
+
+https://user-images.githubusercontent.com/106936018/206965052-88303739-e2aa-455e-9872-230f07d833fa.MP4
+
+<br/>
+
+
+
+* DarkMode, LightMode 대응
+
+https://user-images.githubusercontent.com/106936018/206964377-845af6bb-c822-4223-bc19-09aa338785a9.mp4
 
 
 
 <br/><br/><br/><br/>
 
-
-
-## 이터레이션6
-
-<br/>
-
-### PanelVC 검색기능
-
-<br/>
-
-|                           | 9/26(월) ~ 9/28(수) |      |
-| ------------------------- | ------------------- | ---- |
-| PanelVC 에 검색 기능 구현 | 12H                 |      |
-| 코드 리펙토링             | 3H                  |      |
+## 회고
 
 
 
@@ -669,51 +156,44 @@ Week 에 초점을 맞춘
 
 <br/><br/><br/><br/>
 
-
-
-
-
-
-
-## 이터레이션7
+## Progressing....
 
 <br/>
 
-### Line Graph Animation 
+주차별로 관리 하는 todo가 불편하다는 피드백받고, 저도 그렇게 생각하여,
 
-<br/>
-
-
-
-|                                                           | 9/29(목) ~ 10/2(일) |      |
-| --------------------------------------------------------- | ------------------- | ---- |
-| 완료 미완료에 따른 Line Graph Animation 기능 학습 및 구현 | 18H                 |      |
-| 코드 리펙토링                                             | 2H                  |      |
-
-
-
-
-
-<br/><br/><br/><br/>
-
-
-
-
-
-## 이터레이션8
+달력을 넣어서 일별로 관리하는 todo 를 만드는중..
 
 
 
 <br/>
 
-### cell에 UIAnimation 기능 추가
+https://user-images.githubusercontent.com/106936018/206966342-3de9e7ac-0812-4020-8760-606680c72b2d.mov
 
-<br/>
 
-|                              | 10/3(월) ~ 10/5(수) |      |
-| ---------------------------- | ------------------- | ---- |
-| cell에 UIAnimation 기능 추가 | 12H                 |      |
-| 코드 리펙토링                | 3H                  |      |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
