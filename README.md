@@ -26,9 +26,22 @@
 
 
 
-<br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 
 
+
+## Table Of Contents
+
+* [TechStack](https://github.com/haha1haka/todotodo#tech-stack)
+
+* [Table of Apple's API and  Patterns](https://github.com/haha1haka/todotodo#table-of-apples-api-and--patterns)
+* [Simulation](https://github.com/haha1haka/todotodo#simulation)
+* [회고](https://github.com/haha1haka/todotodo#%ED%9A%8C%EA%B3%A0)
+* [Updating](https://github.com/haha1haka/todotodo#progressing%ED%96%A5%ED%9B%84-update-%EC%98%88%EC%A0%95)
+
+
+
+<br/><br/><br/><br/><br/><br/>
 
 ## Tech Stack
 
@@ -40,7 +53,7 @@
 | -------- | ------------------------------------------------------------ |
 | MVC      | Swift5.7<br />UIKit<br />Snapkit<br />RealmDatabase<br />Firebase analytics, crashlytics<br />Firebase remoteNotification |
 
-<br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 
 
 
@@ -82,7 +95,7 @@
 
 
 
-<br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 
 ## Simulation
 
