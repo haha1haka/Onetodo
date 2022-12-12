@@ -1,4 +1,4 @@
-![스크린샷 2022-10-16 12.54.31](/Users/haha1haka/Desktop/Workspace/정리정리정리/0.imageServer/스크린샷 2022-10-16 12.54.31-0822446.png)
+<img width="770" alt="스크린샷 2022-12-12 14 23 33" src="https://user-images.githubusercontent.com/106936018/206966844-d08b5c49-81b7-4c31-814a-6216132c860f.png">
 
 
 
