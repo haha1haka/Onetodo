@@ -90,21 +90,23 @@
 
 
 
-| todo Create                                                  | todo Edit                                                    |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| https://user-images.githubusercontent.com/106936018/206963200-2eb25ce1-d125-4b58-8962-eec95a02a68f.mp4 | https://user-images.githubusercontent.com/106936018/206963435-1635beb3-ee55-47a8-9e68-2c784af2d01d.MP4 |
+| todo Create                                                  |
+| ------------------------------------------------------------ |
+| https://user-images.githubusercontent.com/106936018/206963200-2eb25ce1-d125-4b58-8962-eec95a02a68f.mp4 |
 
 
 
-* 
+* git
 
 
 
-git
+
 
 <br/>
 
-* 
+* todo Edit
+
+https://user-images.githubusercontent.com/106936018/206963435-1635beb3-ee55-47a8-9e68-2c784af2d01d.MP4
 
 <br/>
 
