@@ -1,4 +1,4 @@
-<img width="770" alt="스크린샷 2022-12-12 14 23 33" src="https://user-images.githubusercontent.com/106936018/206966844-d08b5c49-81b7-4c31-814a-6216132c860f.png">
+<img width="999" alt="스크린샷 2022-12-13 14 08 23" src="https://user-images.githubusercontent.com/106936018/207231624-940b02b4-bcda-47b3-8525-acd492111cd4.png">
 
 
 
@@ -34,7 +34,8 @@
 
 * [TechStack](https://github.com/haha1haka/todotodo#tech-stack)
 
-* [Table of Apple's API and  Patterns](https://github.com/haha1haka/todotodo#table-of-apples-api-and--patterns)
+* [Tech Posting](https://github.com/haha1haka/todotodo#table-of-apples-api-and--patterns)
+* Application architecture
 * [Simulation](https://github.com/haha1haka/todotodo#simulation)
 * [회고](https://github.com/haha1haka/todotodo#%ED%9A%8C%EA%B3%A0)
 * [Updating](https://github.com/haha1haka/todotodo#progressing%ED%96%A5%ED%9B%84-update-%EC%98%88%EC%A0%95)
@@ -49,19 +50,31 @@
 
 <br/>
 
-| 아케텍쳐 | 기술 및 라이브러리                                           |
-| -------- | ------------------------------------------------------------ |
-| MVC      | Swift5.7<br />UIKit<br />Snapkit<br />RealmDatabase<br />Firebase analytics, crashlytics<br />Firebase remoteNotification |
-
-<br/><br/><br/><br/><br/><br/>
 
 
+* MVC
 
-## Table of Apple's API and  Patterns
+* Swift5.7
 
-<br/>
+* UIKit
 
-### Used API
+* Snapkit
+
+* RelamDatabase
+
+* Firebase Analytics, Crashlytics
+
+* Firebase RemoteNotification
+
+
+
+<br/><br/><br/><br/>
+
+
+
+## Used Tech Posting
+
+
 
 <br/>
 
@@ -83,15 +96,29 @@
 
 * Floating Panel Library
 
-<br/>
-
-### Pattern
-
 * [SingletonPattern](https://github.com/haha1haka/iOS-Topics/issues/30)
 
 * [RepositoryPattern](https://github.com/haha1haka/iOS-Topics/issues/20)
 
 
+
+
+
+<br/><br/><br/><br/><br/><br/>
+
+
+
+## Application architecture
+
+<br/>
+
+<img width="1044" alt="스크린샷 2022-12-13 14 07 09" src="https://user-images.githubusercontent.com/106936018/207231464-1bcd605e-96b7-48a4-b731-fd357086e570.png">
+
+<br/>
+
+MVC 패턴을 활용 하였습니다. view로 부터 UserAction이 발생하면 controller 에서 Model 이 변경 되고
+
+Model 이 변경이 완료 되면 controller 를 통해 변경된 model 을 다시 View를 통해 사용자 에게 보여지게 합니다.
 
 
 
@@ -284,7 +311,7 @@ Panel 이 fullScreen 일때, 내가 설정한 priority(우선순위)를 통해  
 
 > ex) 나는 주차별로 todo를 관리하는게 굉장히 simple 해서 좋다고 생각하고 만들었지만, 
 >
-> 대부분 피드백 주신분들이 불편하다고 호소 --> ✅향후 달력을 직접 만들어서 대응 (바닐라 코딩을 선호해서..)
+> 대부분 피드백 주신분들이 불편하다고 호소 --> ✅향후 달력을 직접 만들어서 대응 (바닐라 코딩을 선호해서)
 
 <br/><br/>
 
@@ -316,7 +343,7 @@ Apple 의 Design 을 사랑 하기 때문에, 많은 iPone 기본앱을 참조 �
 
 한번 api 를 공부 해보니 apple에서 말하는 naming 이나 키워드 등이 다른 api 를 공부 할때도 많이 도움이 되고
 
- 다른 trandy 한 기술을 익히는데 거부감이 확실히 없어져서 너무 좋았습니다.
+ 다른 trendy 한 기술을 익히는데 거부감이 확실히 없어져서 너무 좋았습니다.
 
 
 
@@ -361,7 +388,6 @@ User입장에서 기획을 못한 것에 대한 뒤늦은 깨달음을 느끼고
 > ✅리펙토링방향: item에 그날짜의 date 를 가지고 있게 해서, 
 >
 > 데이터가 fetch 될때 해당 날짜에 todo 를 뿌려주는 식으로 해보기
-
 
 
 
