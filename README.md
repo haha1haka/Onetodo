@@ -79,26 +79,16 @@
 <br/>
 
 * [UICollectionViewDiffableDataSource](https://github.com/haha1haka/iOS-Topics/issues/3)
-
 * [UICollectionViewCompositionalLayout](https://github.com/haha1haka/iOS-Topics/issues/1)
-
 * [NSMutableAttributedString](https://github.com/haha1haka/iOS-Topics/issues/22)
-
 * [UIColorPicker](https://github.com/haha1haka/iOS-Topics/issues/25)
-
 * [UIDatePicker](https://github.com/haha1haka/iOS-Topics/issues/24)
-
 * [UIPageViewController](https://github.com/haha1haka/iOS-Topics/issues/23)
 * [Firebase Analytics, Crashlytics](https://github.com/haha1haka/iOS-Topics/issues/15)
 * [Firebase Remote Notification(FCM)](https://github.com/haha1haka/iOS-Topics/issues/31)
-
-* UISheetPresentationController
-
-* Floating Panel Library
-
 * [SingletonPattern](https://github.com/haha1haka/iOS-Topics/issues/30)
-
 * [RepositoryPattern](https://github.com/haha1haka/iOS-Topics/issues/20)
+* UISheetPresentationController(update..)
 
 
 
