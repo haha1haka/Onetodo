@@ -35,7 +35,7 @@
 * [TechStack](https://github.com/haha1haka/todotodo#tech-stack)
 
 * [Tech Posting](https://github.com/haha1haka/todotodo#table-of-apples-api-and--patterns)
-* Application architecture
+* [Application architecture](https://github.com/haha1haka/todotodo#application-architecture)
 * [Simulation](https://github.com/haha1haka/todotodo#simulation)
 * [회고](https://github.com/haha1haka/todotodo#%ED%9A%8C%EA%B3%A0)
 * [Updating](https://github.com/haha1haka/todotodo#progressing%ED%96%A5%ED%9B%84-update-%EC%98%88%EC%A0%95)
