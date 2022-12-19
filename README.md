@@ -23,7 +23,6 @@
 ## Table Of Contents
 
 * [TechStack](https://github.com/haha1haka/todotodo#tech-stack)
-
 * [Tech Posting](https://github.com/haha1haka/todotodo#table-of-apples-api-and--patterns)
 * [Application architecture](https://github.com/haha1haka/todotodo#application-architecture)
 * [Simulation](https://github.com/haha1haka/todotodo#simulation)
