@@ -13,13 +13,9 @@
 > *개발기간: 2022.09.08 ~ 2022.09.28*
 
 * 주차에 할일을 가볍게 적을수 있는 todo 앱 입니다.
-
 * 오늘 할일만 빠르게 확인 해보실 수 있습니다.
-
 * 색상별로 할일에 카테고리를 나눠 투두를 작성 할수 있습니다.
-
 * 애플의 UI/UX 를 사랑합니다. 애플기본앱(UI/UX)을 많이 참고하여, 이질감 없는 앱을 경험 하실수 있습니다.
-
 <br/><br/>
 
 
@@ -41,17 +37,11 @@
 ## Tech Stack
 
 * MVC
-
 * Swift5.7
-
 * UIKit
-
 * Snapkit
-
 * RelamDatabase
-
 * Firebase Analytics, Crashlytics
-
 * Firebase RemoteNotification
 
 <br/><br/>
